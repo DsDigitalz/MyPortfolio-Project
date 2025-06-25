@@ -1,5 +1,5 @@
 import React from "react";
-import rectangle from "./public/Rectangle.png";
+// import rectangle from "./public/Rectangle.png";
 import Danny from "./public/Danny.png";
 
 export default function Hero() {
@@ -16,7 +16,7 @@ export default function Hero() {
           <h1>Hi, I'm</h1>
           <h1>Daniel Sanu</h1>
           <p className="text-[18px] mt-3 w-70 text-center">UIUX DESIGNER/FRONTEND SOFTWARE DEVELOPER</p>
-          <p className="text-[16px] w-[325px] text-center mt-3 font-normal">
+          <p className="text-[16px] w-[325px] text-center mt-3 font-normal leading-7">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
             tenetur eveniet in dolorum? Sunt pariatur eveniet dolores
             perspiciatis voluptate rem nisi officiis ab laborum facilis! In

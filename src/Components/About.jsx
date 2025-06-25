@@ -9,7 +9,7 @@ export default function About() {
           I am a front-end developer based in Nigeria. Has Mechanical
           Engineering background.
         </p>
-        <p className="text-center text-[16px] w-[260px] mt-5">
+        <p className="text-center text-[16px] w-[260px] mt-5 leading-7">
           I am a front-end developer based in Sydney looking for exciting
           opportunities. Has Mechanical Engineering background. Likes to focus
           on accessibility when developing. Passionate and curious about solving
@@ -21,21 +21,19 @@ export default function About() {
         <div className="flex flex-col items-center gap-5 text-[16px]">
           <h1 className="text-[30px] font-semibold mt-10">My Skills</h1>
           <div className="flex gap-3">
-            <p className="bg-sky-50 rounded-2xl py-1 px-2 ">HTML</p>
-            <p className="bg-sky-50 rounded-2xl py-1 px-2">
-               CSS
-            </p>
-            <p className="bg-sky-50 rounded-2xl py-1 px-2">Javascript</p>
+            <p className="bg-sky-50 rounded-lg py-1 px-2 ">HTML</p>
+            <p className="bg-sky-50 rounded-lg py-1 px-2">CSS</p>
+            <p className="bg-sky-50 rounded-lg py-1 px-2">Javascript</p>
           </div>
           <div className="flex gap-3">
-            <p className="bg-sky-50 rounded-2xl py-1 px-2">React</p>
-            <p className="bg-sky-50 rounded-2xl py-1 px-2">Figma</p>
-            <p className="bg-sky-50 rounded-2xl py-1 px-2">Adobe Xd</p>
+            <p className="bg-sky-50 rounded-lg py-1 px-2">React</p>
+            <p className="bg-sky-50 rounded-lg py-1 px-2">Figma</p>
+            <p className="bg-sky-50 rounded-lg py-1 px-2">Adobe Xd</p>
           </div>
         </div>
         <div className="flex flex-col items-center">
           <h1 className="text-[30px] font-semibold mt-10">My Experience</h1>
-          <p className="text-center text-[16px] w-[260px] mt-5">
+          <p className="text-center text-[16px] w-[260px] mt-5 leading-7">
             I am a front-end developer based in Sydney looking for exciting
             opportunities. Has Mechanical Engineering background. Likes to focus
             on accessibility when developing. Passionate and curious about
