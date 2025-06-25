@@ -1,0 +1,8 @@
+@import "tailwindcss";
+:root {
+  font-family: poppins;
+}
+
+.hero {
+  background: linear-gradient(to left, #fcdeff, #ddf9ff 30%, white 100%);
+}
