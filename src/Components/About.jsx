@@ -2,9 +2,11 @@ import React from "react";
 
 export default function About() {
   return (
-    <section className="bg-white py-20">
-      <div className="w-[332px] rounded-xl bg-white flex flex-col items-center mx-auto p-10  shadow-2xl shadow-teal-200 lg:w-[80%]">
-        <h1 className="text-[40px] font-semibold lg:text-[80px]">About Me</h1>
+    <section className="bg-white items-center flex flex-col pt-10 ">
+      <h1 className="text-[35px] font-semibold lg:text-[80px]">
+        About <span className="text-[#02BDEA]">Me</span>
+      </h1>
+      <div className="mt-7 w-[332px] rounded-2xl bg-white flex flex-col items-center mx-auto p-10  shadow-2xl shadow-sky-200 lg:w-[80%]">
         <p className="text-[18px] w-[282px] mt-5 font-semibold text-center lg:text-[20px] lg:w-[500px]">
           I am a front-end developer based in Nigeria. Has Mechanical
           Engineering background.
@@ -43,6 +45,9 @@ export default function About() {
             skill
           </p>
         </div>
+         <button className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10">
+            <p className="text-[16px] text-white font-semibold">Download CV</p>
+          </button>
       </div>
     </section>
   );

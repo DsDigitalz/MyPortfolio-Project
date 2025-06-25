@@ -36,9 +36,9 @@ export default function Hero() {
           <img src={instagram} alt="" />
           <img src={github} alt="" />
         </div>
-          <div className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10">
-            <p className="text-[16px] text-white ">Contact Me</p>
-          </div>
+          <button className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10">
+            <p className="text-[16px] text-white font-semibold">Contact Me</p>
+          </button>
         </div>
       </div>
     </section>
