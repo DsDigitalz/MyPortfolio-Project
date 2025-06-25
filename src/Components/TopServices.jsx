@@ -1,12 +1,55 @@
 import React from "react";
+import web from "./public/web.png";
+import mobile from "./public/mobile.png";
+import code from "./public/code.png";
 
 export default function TopServices() {
   return (
-    <section className="bg-zinc-100 mt-10 py-20 flex flex-col items-center">
-        <h1 className="text-[35px] font-semibold lg:text-[80px]">
-       Top <span className="text-[#02BDEA]">Services</span>
+    <section className="bg-zinc-100 mt-10 py-20 flex flex-col items-center h-[1669px]">
+      <h1 className="text-[35px] font-semibold lg:text-[80px]">
+        Top <span className="text-[#02BDEA]">Services</span>
       </h1>
       <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl">
+        <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
+          <div>
+            <img src={web} alt="" />
+          </div>
+          <h1 className="font-semibold text-2xl text-center">Responsive Web Design</h1>
+          <p className="text-center">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
+            provident exercitationem quae. Vero ea id explicabo debitis rerum
+            alias, inventore molestias aliquam reprehenderit. Iure deleniti vel
+            iusto, voluptatem ut.
+          </p>
+        </div>
+      </div>
+      <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl">
+        <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
+          <div>
+            <img src={mobile} alt="" />
+          </div>
+          <h1 className="font-semibold text-2xl text-center">Mobile App Design</h1>
+          <p className="text-center">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
+            provident exercitationem quae. Vero ea id explicabo debitis rerum
+            alias, inventore molestias aliquam reprehenderit. Iure deleniti vel
+            iusto, voluptatem ut.
+          </p>
+        </div>
+      </div>
+      <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl">
+        <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
+          <div>
+            <img src={code} alt="" />
+          </div>
+          <h1 className="font-semibold text-2xl text-center">Web (Front-end) Development</h1>
+          <p className="text-center">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
+            provident exercitationem quae. Vero ea id explicabo debitis rerum
+            alias, inventore molestias aliquam reprehenderit. Iure deleniti vel
+            iusto, voluptatem ut.
+          </p>
+        </div>
       </div>
     </section>
   );

@@ -37,7 +37,7 @@ export default function Hero() {
           <img src={github} alt="" />
         </div>
           <button className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10">
-            <p className="text-[16px] text-white font-semibold">Contact Me</p>
+            <p className="text-[16px] text-white font-semibold  ">Contact Me</p>
           </button>
         </div>
       </div>
