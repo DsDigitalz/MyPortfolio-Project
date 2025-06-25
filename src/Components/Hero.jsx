@@ -15,8 +15,8 @@ export default function Hero() {
         <div className="font-semibold text-[40px] flex flex-col items-center mt-[30px] bg-white py-10">
           <h1>Hi, I'm</h1>
           <h1>Daniel Sanu</h1>
-          <p className="text-[14px] mt-3">UIUX DESIGNER/FRONT-END DEVELOPER</p>
-          <p className="text-[12px] w-[325px] text-center mt-3 font-medium">
+          <p className="text-[18px] mt-3 w-70 text-center">UIUX DESIGNER/FRONTEND SOFTWARE DEVELOPER</p>
+          <p className="text-[16px] w-[325px] text-center mt-3 font-normal">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
             tenetur eveniet in dolorum? Sunt pariatur eveniet dolores
             perspiciatis voluptate rem nisi officiis ab laborum facilis! In
