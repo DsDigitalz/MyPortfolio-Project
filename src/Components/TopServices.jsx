@@ -58,7 +58,7 @@ export default function TopServices() {
             </p>
           </div>
         </div>
-        <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl">
+        {/* <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl">
           <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
             <div>
               <img src={code} alt="" />
@@ -73,7 +73,7 @@ export default function TopServices() {
               vel iusto, voluptatem ut.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>  
     </section>
   );
