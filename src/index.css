@@ -6,3 +6,7 @@
 .hero {
   background: linear-gradient(to left, #fcdeff, #ddf9ff 30%, white 100%);
 }
+
+.portfolio{
+  background: linear-gradient(90deg, #F8DDFB, #fff, #F3FDFB, #E6FBF6);
+}
