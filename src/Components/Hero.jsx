@@ -17,7 +17,7 @@ export default function Hero() {
           <img src={Danny} alt="" className="shadow-2xl shadow-white" />
         </div>
         {/* Hero info */}
-        <div className="font-semibold text-[40px] flex flex-col items-center mt-[30px] bg-white py-10 lg:flex-1 ">
+        <div className="font-semibold text-[40px] flex flex-col items-center mt-[30px] py-10 lg:flex-1 ">
           <h1 className="lg:text-[64px]">Hi, I'm</h1>
           <h1 className="lg:text-[64px]">Daniel Sanu</h1>
           <p className="text-[18px] mt-3 w-70 text-center">
