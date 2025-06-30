@@ -5,6 +5,7 @@ import About from "./Components/About";
 import TopServices from "./Components/TopServices";
 import Portfolio from "./Components/Portfolio";
 import Testimonials from "./Components/public/Testimonials";
+import Contact from "./Components/Contact";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <TopServices />
       <Portfolio />
       <Testimonials />
+      <Contact />
     </div>
   );
 }

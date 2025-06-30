@@ -11,7 +11,7 @@ export default function TopServices() {
           Top <span className="text-[#02BDEA]">Services</span>
         </h1>
         <div className="lg:grid lg:grid-cols-2 2xl:grid 2xl:grid-cols-3 gap-10">
-          <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl ">
+          <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
             <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
               <div>
                 <img src={web} alt="" />
@@ -27,7 +27,7 @@ export default function TopServices() {
               </p>
             </div>
           </div>
-          <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl">
+          <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
             <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
               <div>
                 <img src={mobile} alt="" />
@@ -43,7 +43,7 @@ export default function TopServices() {
               </p>
             </div>
           </div>
-          <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl">
+          <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
             <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
               <div>
                 <img src={code} alt="" />

@@ -49,7 +49,7 @@ export default function About() {
               to improve skill
             </p>
           </div>
-          <button className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10">
+          <button className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10 active:bg-[#50cbea] cursor-pointer">
             <p className="text-[16px] text-white font-semibold">Download CV</p>
           </button>
         </div>
