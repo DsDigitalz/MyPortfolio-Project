@@ -1,11 +1,17 @@
 import React from "react";
 // import rectangle from "./public/Rectangle.png";
 import Danny from "./public/Danny.png";
-import facebook from "./public/facebook.png";
-import x from "./public/x.png";
-import linkedin from "./public/linkedin.png";
-import instagram from "./public/instagram.png";
-import github from "./public/github.png";
+// // import facebook from "./public/facebook.png";
+// import x from "./public/x.png";
+// import linkedin from "./public/linkedin.png";
+// import instagram from "./public/instagram.png";
+// import github from "./public/github.png"
+import { FaFacebook } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
+import { ImLinkedin } from "react-icons/im";
+import { FaInstagram } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
+
 
 export default function Hero() {
   return (
@@ -13,7 +19,7 @@ export default function Hero() {
       {/* hero image */}
       <div className="flex flex-col pt-30 pb-20  lg:justify-center gap-7">
         {/* <img src={rectangle} alt="" /> */}
-        
+
         <div className="mx-auto lg:flex-1">
           <img src={Danny} alt="" className="shadow-2xl shadow-white" />
         </div>
@@ -35,16 +41,13 @@ export default function Hero() {
             ipsum facere quibusdam dignissimos eaque cum possimus amet, et
             impedit dicta adipisci. Debitis, sequi
           </p>
-          <div className="flex gap-7 pt-[40px]">
-            <img
-              src={facebook}
-              alt=""
-              className="cursor-pointer active:bg-[#50cbea]"
-            />
-            <img src={x} alt="" />
-            <img src={linkedin} alt="" />
-            <img src={instagram} alt="" />
-            <img src={github} alt="" />
+          <div className="flex gap-7 pt-[40px] text-2xl ">
+            <FaFacebook className="cursor-pointer active:text-[#02BDEA]"/>
+            <BsTwitterX className="cursor-pointer active:text-[#02BDEA]"/>
+            <ImLinkedin className="cursor-pointer active:text-[#02BDEA]"/>
+            <FaInstagram className="cursor-pointer active:text-[#02BDEA]"/>
+            <FaGithub className="cursor-pointer active:text-[#02BDEA]"/>
+            
           </div>
           <button className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10 cursor-pointer active:bg-[#50cbea]">
             <p className="text-[16px] text-white font-semibold ">Contact Me</p>
