@@ -37,13 +37,13 @@ export default function Navbar() {
           {/* <img src={hamburger} alt="" /> */}
         </div>
       </div>
-          <div className="absolute right-5 top-15 font-semibold bg-white rounded-2xl px-10 py-6 shadow-2xl leading-10">
+          {/* <div className="absolute right-5 top-15 font-semibold bg-white rounded-2xl px-10 py-6 shadow-2xl leading-10">
             <p className="cursor-pointer hover:text-sky-400  active:text-sky-500">Home</p>
             <p className="cursor-pointer hover:text-sky-400  active:text-sky-500">About</p>
             <p className="cursor-pointer hover:text-sky-400  active:text-sky-500">Services</p>
             <p className="cursor-pointer hover:text-sky-400  active:text-sky-500">Portfolio</p>
             <p className="cursor-pointer hover:text-sky-400  active:text-sky-500">Contact</p>
-          </div>
+          </div> */}
     </section>
   );
 }
