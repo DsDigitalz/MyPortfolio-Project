@@ -5,8 +5,38 @@
 
 .hero {
   background: linear-gradient(to left, #fcdeff, #ddf9ff 30%, white 100%);
+  opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly below */
+    animation: fadeInUp 1s forwards; /* Apply animation */
+}
+@keyframes fadeInUp {
+    to {
+        opacity: 1; /* End fully visible */
+        transform: translateY(0); /* End at original position */
+    }
 }
 
-.portfolio{
+.portfolio1w{
   background: linear-gradient(90deg, #F8DDFB, #fff, #F3FDFB, #E6FBF6);
 }
+
+.About_Container, .top_services, .portfolio {
+   opacity: 1;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+ 
+.About_Container:hover, .top_services:hover, .portfolio:hover {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade_text {
+            animation: colorFade 10s ease-in-out infinite;
+        }
+
+        @keyframes colorFade {
+            0% { color: #000000; opacity: 1; }
+            50% { color: #00ccff; opacity: 0.7; }
+            100% { color: #000000; opacity: 1; }
+        }

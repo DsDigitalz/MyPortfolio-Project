@@ -1,5 +1,5 @@
 import React from "react";
-import { IoIosArrowRoundUp } from "react-icons/io";
+
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
@@ -8,18 +8,19 @@ import { BsTwitterX } from "react-icons/bs";
 import { ImLinkedin } from "react-icons/im";
 import { FaInstagram } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
+import { BsSend } from "react-icons/bs";
 export default function Contact() {
   return (
-    <section className="w-100% pt-10  flex flex-col justify-center bg-white relative lg:flex lg:flex-1 ">
+    <section className="w-100% pt-10  flex flex-col justify-center bg-white relative lg:flex lg:flex-1" id="contact">
       <div className="mt-10">
         <div className="">
           <h1 className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center">
             Contact <span className="text-sky-300">Me</span>
           </h1>
-          <div className=" bg-white shadow-2xl p-10 shadow-sky-200 lg:flex justify-center gap-[252px]">
+          <div className=" bg-white shadow-2xl p-10 px-20 shadow-sky-200 lg:flex justify-center gap-[100px] lg:mt-10">
             <div>
-              <div className="w-[95%]">
-                <h1 className="font-semibold text-2xl mt-5 mb-5">
+              <div className="lg:w-[70%]">
+                <h1 className="font-semibold text-2xl mt-5 mb-5 lg:mt-0">
                   Lets's Connect
                 </h1>
                 <p>
@@ -59,7 +60,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <form className="mt-15 flex flex-col border-zinc-400 gap-3 ">
+            <form className="mt-15 flex flex-col border-zinc-400 gap-3 sm:w-[50%] md:[50%] lg:w-[50%] lg:mt-0 xl:w-[30%] 2xl:w-[20%] ">
               <label htmlFor="">
                 Name <span className="text-sky-300">*</span>
               </label>
@@ -93,16 +94,12 @@ export default function Contact() {
                 rows="3"
                 className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1"
               ></textarea>
-              <div className="bg-[#02BDEA] p-3 text-white font-semibold flex justify-center rounded-full w-[50%] mt-10 cursor-pointer active:bg-[#50cbea]">
+              <div className="bg-[#02BDEA] p-3 text-white font-semibold gap-3 flex justify-center rounded-full w-[50%] mt-10 cursor-pointer active:bg-[#50cbea]">
                 Submit
+                <BsSend className="text-[24px] bg-sky-300 rounded-full p-1"/>
               </div>
             </form>
           </div>
-        </div>
-      </div>
-      <div className="bg-black p-10 w-full mt-10">
-        <div className="bg-zinc-50 w-fit rounded-full text-3xl text-zinc-500 p-1 absolute right-4 bottom-4 shadow-2xl fixed">
-          <IoIosArrowRoundUp />
         </div>
       </div>
     </section>
