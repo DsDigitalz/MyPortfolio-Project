@@ -3,6 +3,7 @@ import portImage from "./public/portImage.png";
 // import banner from "./public/Banner.png";
 import homehaven from "./public/homehaven.png";
 import banner from "./public/banner.png";
+import dashboard from "./public/dashboard.png";
 import page from "./public/homehaven.png";
 import { FaStreetView } from "react-icons/fa6";
 
@@ -62,7 +63,7 @@ export default function Portfolio() {
           <div className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
             <div className="w-full flex flex-col items-center gap-2 leading-7">
               <div>
-                <img src={homehaven} alt="" className="rounded-t-2xl w-full" />
+                <img src={dashboard} alt="" className="rounded-t-2xl w-full" />
               </div>
               <div className="flex flex-col gap-2 items-center p-3">
                 <p className="text-zinc-500">UI/UX DESIGN</p>
