@@ -30,15 +30,17 @@ export default function About() {
             <h1 className=" font-semibold mt-10 text-[18px] w-[282px]  text-center sm:text-[18px] sm:w-[450px] md:text-[20px] lg:w-[700px] lg:text-[30px] xl:w-[900px] xl:text-[32px] 2xl:w-[900px] 2xl:text-[34px] ">
               My Skills
             </h1>
-            <div className="flex gap-3">
-              <p className="bg-sky-50 rounded-lg py-1 px-2">HTML</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-2">CSS</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-2">Javascript</p>
+            <div className=" flex flex-col justify-center gap-3 text-center md:grid md:grid-cols-2 lg:grid-cols-4">
+              <p className="bg-sky-50 rounded-lg py-1 px-4">HTML</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4">CSS</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4">Javascript</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4">Tailwind</p>
             </div>
-            <div className="flex gap-3">
-              <p className="bg-sky-50 rounded-lg py-1 px-2">React</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-2">Figma</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-2">Adobe Xd</p>
+            <div className="flex flex-col text-center gap-3 md:grid md:grid-cols-2 lg:grid-cols-4">
+              <p className="bg-sky-50 rounded-lg py-1 px-4">React.js</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4">Figma</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4">Adobe Xd</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4">Photoshop</p>
             </div>
           </div>
           <div className="flex flex-col items-center">

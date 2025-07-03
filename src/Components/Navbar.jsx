@@ -8,8 +8,8 @@ export default function Navbar() {
     setOpenNavbar((prev) => !prev);
   }
   return (
-    <header className=" px-10 scroll-smooth fixed top-0 z-50 bg-white right-0 left-0 md:flex md:justify-between">
-      <div className="flex justify-between px-5 py-3 items-center">
+    <header className=" px-5 scroll-smooth fixed top-0 z-50 bg-white right-0 left-0 md:flex md:justify-between md:px-10">
+      <div className="flex justify-between  py-3 items-center">
         <div className="font-bold text-[20px] lg:text-[24px]">
           DS<span className="text-[#02BDEA]">DIGIT</span>
           <span>ALZ</span>
@@ -32,7 +32,7 @@ export default function Navbar() {
           openNavbar ? "max-h-[500px]" : "max-h-0"
         } transition-all duration-800 ease-in md:block md:max-h-full overflow-hidden`}
       >
-        <ul className="flex flex-col p-5 gap-[55px] text-[16px] font-medium md:flex-row">
+        <ul className="flex flex-col p-5 gap-[20px] text-[16px] font-medium md:flex-row">
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
             <a href="|#home">Home</a>
           </li>
