@@ -6,7 +6,7 @@ import TopServices from "./Components/TopServices";
 import Portfolio from "./Components/Portfolio";
 import Testimonials from "./Components/Testimonials";
 import Contact from "./Components/Contact";
-import Footer from "./Components/footer";
+import Footer from "./Components/Footer";
 
 export default function App() {
   return (
