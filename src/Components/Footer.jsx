@@ -33,7 +33,7 @@ export default function Footer() {
           ©2025DSDigitalzPortfolio.All rights reserved.
         </h1>
       </div>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
     </section>
   );
 }

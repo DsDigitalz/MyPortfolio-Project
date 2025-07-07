@@ -114,7 +114,7 @@ export default function Portfolio() {
                   <a href="">
                     View
                     <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
-                  </a>  
+                  </a>
                 </button>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function Portfolio() {
               <div className="flex flex-col gap-2 items-center p-3">
                 <p className="text-zinc-500">FRONT-END WEB DEVELOPMENT</p>
                 <h1 className="font-semibold text-2xl text-[18px]">
-                  Ecommerce Website
+                  Restaurant Food Land Page
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
                   Designed a real estate ux case study highlighting user
@@ -141,8 +141,10 @@ export default function Portfolio() {
                   experience and engagement.
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
-                  View
-                  <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
+                  <a href="https://foodienet.netlify.app/" className="flex items-center gap-3">
+                    View
+                    <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
+                  </a>
                 </button>
               </div>
             </div>
@@ -161,7 +163,7 @@ export default function Portfolio() {
               <div className="flex flex-col gap-2 items-center p-3">
                 <p className="text-zinc-500">FRONT-END WEB DEVELOPMENT</p>
                 <h1 className="font-semibold text-2xl text-[18px]">
-                  Restaurant Food Landing Page
+                  Ecommerce Website
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
                   Designed a real estate ux case study highlighting user
@@ -169,8 +171,10 @@ export default function Portfolio() {
                   experience and engagement.
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
-                  View
-                  <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
+                  <a href="">
+                    View
+                    <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
+                  </a>
                 </button>
               </div>
             </div>
