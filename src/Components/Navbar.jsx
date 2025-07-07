@@ -31,7 +31,7 @@ export default function Navbar() {
         className={`flex justify-between items-center ${
           openNavbar ? "max-h-[500px]" : "max-h-0"
         } transition-all duration-300 ease-in md:block md:max-h-full overflow-hidden`}
-      >
+      > 
         <ul className="flex flex-col p-5 gap-[25px] text-[16px] font-medium md:flex-row">
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
             <a href="|#home">Home</a>

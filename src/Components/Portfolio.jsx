@@ -201,8 +201,11 @@ export default function Portfolio() {
                   experience and engagement.
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
+                 <a href="https://jadootrav.netlify.app/" className="flex items-center gap-3">
+
                   View
                   <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
+                </a>
                 </button>
               </div>
             </div>
