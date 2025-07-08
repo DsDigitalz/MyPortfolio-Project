@@ -22,7 +22,8 @@ export default function ScrollToTop() {
       top: 0,
       behavior: "smooth",
     });
-  }
+  }  
+  
 
   return (
     <div>
