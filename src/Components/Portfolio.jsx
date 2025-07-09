@@ -111,7 +111,7 @@ export default function Portfolio() {
                   experience and engagement.
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
-                  <a href=" https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?page-id=135%3A760&node-id=135-761&viewport=1261%2C587%2C0.12&t=Qn2qqzVtwL4ylQBt-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=135%3A761&show-proto-sidebar=1"className="flex items-center gap-3">
+                  <a href=" https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?page-id=135%3A760&node-id=135-761&viewport=1261%2C587%2C0.12&t=Qn2qqzVtwL4ylQBt-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=135%3A761&show-proto-side  bar=1"className="flex items-center gap-3">
                     View
                     <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
                   </a>
