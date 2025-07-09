@@ -210,6 +210,37 @@ export default function Portfolio() {
               </div>
             </div>
           </div>
+          <div className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
+            <div className="w-full flex flex-col items-center gap-2 leading-7">
+              <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
+                <div>
+                  <img
+                    src={travel}
+                    alt=""
+                    className="rounded-t-2xl w-full h-50"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 items-center p-3">
+                <p className="text-zinc-500">FRONT-END WEB DEVELOPMENT</p>
+                <h1 className="font-semibold text-2xl text-[18px]">
+                  Travel Website Landing Page
+                </h1>
+                <p className="text-center w-[85%] text-[15px]">
+                  Designed a real estate ux case study highlighting user
+                  research, wireframes, and prototypes to enhance user
+                  experience and engagement.
+                </p>
+                <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
+                 <a href="https://jadootrav.netlify.app/" className="flex items-center gap-3">
+
+                  View
+                  <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
+                </a>
+                </button>
+              </div>
+            </div>
+          </div>
           {/* <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
             <div className="w-full flex flex-col items-center gap-2 leading-7">
               <div>
