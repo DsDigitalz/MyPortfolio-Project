@@ -17,24 +17,28 @@ export default function Hero() {
   return (
     <section className="hero" id="home">
       {/* hero image */}
-      <div className="hero flex flex-col pt-50 pb-20  lg:justify-center gap-7">
+      <div className="mx-auto max-w-[1440px] pt-45 lg:px-30 flex flex-col items-center lg:pt-50 pb-20  lg:flex-row-reverse lg:justify-between lg:gap-7">
         {/* <img src={rectangle} alt="" /> */}
 
-        <div className="mx-auto lg:flex-1">
-          <img src={Danny} alt="" className="shadow-2xl shadow-white" />
-        </div>
+        {/* <div className=" w-[40%] lg:flex- "> */}
+          <img
+            src={Danny}
+            alt=""
+            className="mx-auto shadow-white w-[40%] lg:w-[40%] xl:w-[30%] border-5 border-white lg:mx-0"
+          />
+        {/* </div> */}
         {/* Hero info */}
-        <div className="hero font-semibold text-[40px] flex flex-col items-center  py-5  ">
-          <div className="flex flex-col items-center bg-white w-full lg:flex lg:flex-col lg:items-center p-2 ">
-            <div className="flex flex-col items-center ">
-              <h1 className="lg:text-[70px]">Hi, I'm</h1>
-              <h1 className="lg:text-[70px] text-[#02BDEA]">Daniel Sanu</h1>
+        <div className="mt-10 lg:mt-0  font-semibold text-[40px] flex flex-col items-center lg:items-start pb-5 lg:flex-1 lg:flex lg:flex-col    ">
+          <div className="  w-full  lg:flex- lg:text-left">
+            <div className="  lg:flex-none text-center lg:text-left ">
+              <h1 className="lg:text-[50px] ">Hi, I'm</h1>
+              <h1 className="lg:text-[50px] text-[#02BDEA]">Daniel Sanu</h1>
             </div>
           </div>
-          <p className="fade_text text-[18px] mt-3 w-70 text-center sm: lg:text-[24px] lg:w-full ">
+          <p className="fade_text text-[16px] w-[70%] mt-3 text-center lg:text-left sm: lg:text-[18px] lg:w-full ">
             UIUX DESIGNER/FRONTEND SOFTWARE DEVELOPER
           </p>
-          <p className="text-[16px] w-[325px] text-center mt-3 font-normal leading-7 lg:w-[50%]">
+          <p className="text-[16px] w-[325px] text-center mt-3 font-normal leading-7 lg:w-[70%] lg:text-left">
             As a UI/UX designer and front-end software developer, I specialize
             in creating intuitive and engaging user experiences that bridge the
             gap between aesthetics and functionality.
