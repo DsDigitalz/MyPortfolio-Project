@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import emailjs from '@emailjs/browser'
+import emailjs from "@emailjs/browser";
 
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -13,7 +13,7 @@ import { BsSend } from "react-icons/bs";
 import { convertOffsetToTimes } from "framer-motion";
 export default function Contact() {
   // Create useRef hook to get form Values
-  const form = useRef;
+  const form = useRef();
   // create a function that sends users data to emailjs and sends it back to you in your Gmail
   const sendEmail = (e) => {
     // Prevent default
@@ -32,7 +32,7 @@ export default function Contact() {
       });
 
     (error) => {
-      alert("Failed to send message, please try again", error.text  );
+      alert("Failed to send message, please try again", error.text);
     };
   };
 
@@ -87,7 +87,9 @@ export default function Contact() {
                 <a href="https://x.com/settings/profile">
                   <BsTwitterX className="cursor-pointer active:text-[#02BDEA]" />
                 </a>
-                <ImLinkedin className="cursor-pointer active:text-[#02BDEA]" />
+                <a href="https://www.linkedin.com/in/daniel-sanu-b89298374?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+                  <ImLinkedin className="cursor-pointer active:text-[#02BDEA]" />
+                </a>
                 <a href="https://www.instagram.com/danielsanu35/?hl=en">
                   <FaInstagram className="cursor-pointer active:text-[#02BDEA]" />
                 </a>
@@ -110,6 +112,7 @@ export default function Contact() {
                 name="fullName"
                 id="fullName"
                 className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1"
+                required
               />
               <label htmlFor="">
                 Email <span className="text-sky-300">*</span>
@@ -119,6 +122,7 @@ export default function Contact() {
                 name="email"
                 id="email"
                 className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1"
+                required
               />
               <label htmlFor="">Subject </label>
               <input
@@ -126,6 +130,7 @@ export default function Contact() {
                 name="subject"
                 id="subject"
                 className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1"
+                required
               />
               <label htmlFor="">Message </label>
               <textarea
@@ -133,12 +138,13 @@ export default function Contact() {
                 id=""
                 cols="30"
                 rows="3"
-                className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1"
+                className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1 resize-none"
+                required
               ></textarea>
-              <div className="bg-[#02BDEA] p-3 text-white font-semibold gap-3 flex justify-center rounded-full w-[50%] mt-10 cursor-pointer active:bg-[#50cbea]">
+              <button className="bg-[#02BDEA] p-3 text-white font-semibold gap-3 flex justify-center rounded-full w-[50%] mt-10 cursor-pointer active:bg-[#50cbea]">
                 Submit
                 <BsSend className="text-[24px] bg-sky-300 rounded-full p-1" />
-              </div>
+              </button>
             </form>
           </div>
         </div>

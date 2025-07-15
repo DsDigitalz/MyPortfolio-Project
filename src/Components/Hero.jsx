@@ -31,7 +31,7 @@ export default function Hero() {
         <img
           src="danny.png"
           alt=""
-          className="mx-auto shadow-white w-[40%] lg:w-[40%] xl:w-[30%] border-5 border-white lg:mx-0"
+          className="mx-auto shadow-2xl w-[40%] lg:w-[40%] xl:w-[30%]  lg:mx-0"
         />
         {/* </div> */}
         {/* Hero info */}
@@ -57,7 +57,9 @@ export default function Hero() {
             <a href="https://x.com/settings/profile">
               <BsTwitterX className="cursor-pointer active:text-[#02BDEA]" />
             </a>
-            <ImLinkedin className="cursor-pointer active:text-[#02BDEA]" />
+            <a href="https://www.linkedin.com/in/daniel-sanu-b89298374?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+              <ImLinkedin className="cursor-pointer active:text-[#02BDEA]" />
+            </a>
             <a href="https://www.instagram.com/danielsanu35/?hl=en">
               <FaInstagram className="cursor-pointer active:text-[#02BDEA]" />
             </a>

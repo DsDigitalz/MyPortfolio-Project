@@ -22,7 +22,7 @@
 
 .About_Container, .top_services, .portfolio {
    opacity: 1;
-  transform: translateY(90px);
+  transform: translateY(50px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
  
