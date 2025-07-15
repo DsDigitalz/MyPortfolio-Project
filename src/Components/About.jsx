@@ -1,9 +1,13 @@
 import React from "react";
 import { IoDownloadOutline } from "react-icons/io5";
+// import downloadcv from "./public/My-CV1.pdf";
 
 export default function About() {
   return (
-    <section className=" bg-zinc-50 items-center flex flex-col pt-10 pb-20 " id="about">
+    <section
+      className=" bg-zinc-50 items-center flex flex-col pt-10 pb-20 "
+      id="about"
+    >
       <div className="mt-10">
         <h1 className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center">
           About <span className="text-[#02BDEA]">Me</span>
@@ -54,13 +58,16 @@ export default function About() {
               wireframes, prototypes, and high-fidelity mockups using tools such
               as Figma and Adobe XD, translating complex ideas into intuitive
               interfaces.
-              
             </p>
           </div>
-          <button className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10 active:bg-[#50cbea] cursor-pointer flex items-center gap-2 justify-center text-white">
+          <a
+            href="My-CV1.pdf"
+            download="My-CV1.pdf"
+            className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10 active:bg-[#50cbea] cursor-pointer flex items-center gap-2 justify-center text-white"
+          >
             <p className="text-[16px] text-white font-semibold">Download CV</p>
-            <IoDownloadOutline className="text-[24px] bg-sky-300 rounded-full p-1"/>
-          </button>
+            <IoDownloadOutline className="text-[24px] bg-sky-300 rounded-full p-1" />
+          </a>
         </div>
       </div>
     </section>

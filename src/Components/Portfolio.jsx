@@ -1,13 +1,13 @@
 import React from "react";
-import portImage from "./public/portImage.png";
+// import portImage from "./public/portImage.png";
 // import banner from "./public/Banner.png";
-import homehaven from "./public/homehaven.png";
-import banner from "./public/banner.jpg";
-import dashboard from "./public/dashboard.jpg";
-import estate from "./public/estate.png";
-import food from "./public/food.png";
-import ecommerce from "./public/ecommerce.png";
-import travel from "./public/travel.png";
+// import homehaven from "./public/homehaven.png";
+// import banner from "./public/banner.jpg";
+// import dashboard from "./public/dashboard.jpg";
+// import estate from "./public/estate.png";
+// import food from "./public/food.png";
+// import ecommerce from "./public/ecommerce.png";
+// import travel from "./public/travel.png";
 import { FaStreetView } from "react-icons/fa6";
 
 export default function Portfolio() {
@@ -27,7 +27,7 @@ export default function Portfolio() {
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
                   <img
-                    src={homehaven}
+                    src="homehaven.jpg"
                     alt=""
                     className="rounded-t-2xl w-full h-[200px]"
                   />
@@ -61,7 +61,7 @@ export default function Portfolio() {
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
                   <img
-                    src={banner}
+                    src="banner.jpg"
                     alt=""
                     className="rounded-t-2xl w-[332px] h-[200px]"
                   />
@@ -94,7 +94,7 @@ export default function Portfolio() {
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
                   <img
-                    src={estate}
+                    src="estate.png"
                     alt=""
                     className="rounded-t-2xl w-full h-50"
                   />
@@ -111,7 +111,10 @@ export default function Portfolio() {
                   experience and engagement.
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
-                  <a href=" https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?page-id=135%3A760&node-id=135-761&viewport=1261%2C587%2C0.12&t=Qn2qqzVtwL4ylQBt-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=135%3A761&show-proto-side  bar=1"className="flex items-center gap-3">
+                  <a
+                    href=" https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?page-id=135%3A760&node-id=135-761&viewport=1261%2C587%2C0.12&t=Qn2qqzVtwL4ylQBt-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=135%3A761&show-proto-side  bar=1"
+                    className="flex items-center gap-3"
+                  >
                     View
                     <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
                   </a>
@@ -124,7 +127,7 @@ export default function Portfolio() {
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
                   <img
-                    src={food}
+                    src="food.png"
                     alt=""
                     className="rounded-t-2xl w-full h-50"
                   />
@@ -141,7 +144,10 @@ export default function Portfolio() {
                   experience and engagement.
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
-                  <a href="https://foodienet.netlify.app/" className="flex items-center gap-3">
+                  <a
+                    href="https://foodienet.netlify.app/"
+                    className="flex items-center gap-3"
+                  >
                     View
                     <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
                   </a>
@@ -154,7 +160,7 @@ export default function Portfolio() {
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
                   <img
-                    src={ecommerce}
+                    src="ecommerce.png"
                     alt=""
                     className="rounded-t-2xl w-full h-50"
                   />
@@ -184,7 +190,7 @@ export default function Portfolio() {
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
                   <img
-                    src={travel}
+                    src="travel.png"
                     alt=""
                     className="rounded-t-2xl w-full h-50"
                   />
@@ -201,116 +207,17 @@ export default function Portfolio() {
                   experience and engagement.
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
-                 <a href="procleaningservices.netlify.app" className="flex items-center gap-3">
-
-                  View
-                  <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
-                </a>
+                  <a
+                    href="procleaningservices.netlify.app"
+                    className="flex items-center gap-3"
+                  >
+                    View
+                    <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
+                  </a>
                 </button>
               </div>
             </div>
           </div>
-         x`x`
-          {/* <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
-            <div className="w-full flex flex-col items-center gap-2 leading-7">
-              <div>
-                <img src={banner} alt="" className="rounded-t-2xl h-[21.5vh]" />
-              </div>
-              <div className="flex flex-col gap-2 items-center p-3">
-                <p className="text-zinc-500">UI/UX DESIGN</p>
-                <h1 className="font-semibold text-2xl text-[18px] text-center">
-                  Corporate UI Design
-                </h1>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dolor provident exercitationem quae.
-                </p>
-                <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea]">
-                  View
-                </button>
-              </div>
-            </div>
-          </div> */}
-          {/* <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
-            <div className="w-full flex flex-col items-center gap-2 leading-7">
-              <div>
-                <img src={portImage} alt="" />
-              </div>
-              <div className="flex flex-col gap-2 items-center p-3">
-                <p className="text-zinc-500">UI/UX DESIGN</p>
-                <h1 className="font-semibold text-2xl text-[18px]">
-                  Real Estate App Design
-                </h1>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dolor provident exercitationem quae.
-                </p>
-                <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea]">
-                  View
-                </button>
-              </div>
-            </div>
-          </div> */}
-          {/* <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
-            <div className="w-full flex flex-col items-center gap-2 leading-7">
-              <div>
-                <img src={portImage} alt="" />
-              </div>
-              <div className="flex flex-col gap-2 items-center p-3">
-                <p className="text-zinc-500">FRONTEND WEB DEVELOPMENT</p>
-                <h1 className="font-semibold text-2xl text-[18px]">
-                  Travel Website
-                </h1>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dolor provident exercitationem quae.
-                </p>
-                <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea]">
-                  View
-                </button>
-              </div>
-            </div>
-          </div> */}
-          {/* <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
-            <div className="w-full flex flex-col items-center gap-2 leading-7">
-              <div>
-                <img src={portImage} alt="" />
-              </div>
-              <div className="flex flex-col gap-2 items-center p-3">
-                <p className="text-zinc-500">FRONTEND WEB DEVELOPMENT</p>
-                <h1 className="font-semibold text-2xl text-[18px]">
-                 Ecommerce Website
-                </h1>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dolor provident exercitationem quae.
-                </p>
-                <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea]">
-                  View
-                </button>
-              </div>
-            </div>
-          </div> */}
-          {/* <div className="mt-7 w-[332px] bg-white h-[446px] mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
-            <div className="w-full flex flex-col items-center gap-2 leading-7">
-              <div>
-                <img src={portImage} alt="" />
-              </div>
-              <div className="flex flex-col gap-2 items-center p-3">
-                <p className="text-zinc-500">FRONTEND WEB DEVELOPMENT</p>
-                <h1 className="font-semibold text-2xl text-[18px]">
-                  Blog Website
-                </h1>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dolor provident exercitationem quae.
-                </p>
-                <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea]">
-                  View
-                </button>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </section>

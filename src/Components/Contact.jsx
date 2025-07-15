@@ -13,7 +13,7 @@ export default function Contact() {
   return (
     <section
       className="w-100% pt-10  flex flex-col justify-center bg-white relative lg:flex lg:flex-1"
-      id="contact"
+      id="con"
     >
       <div className="mt-10">
         <div className="">

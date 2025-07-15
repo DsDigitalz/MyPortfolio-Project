@@ -1,6 +1,6 @@
 import React from "react";
 // import rectangle from "./public/Rectangle.png";
-import Danny from "./public/Danny.png";
+// import Danny from "./public/Danny.png";
 // // import facebook from "./public/facebook.png";
 // import x from "./public/x.png";
 // import linkedin from "./public/linkedin.png";
@@ -14,6 +14,13 @@ import { FaGithub } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
 
 export default function Hero() {
+  const handleScrollToContact = () => {
+    const contactSection = document.getElementById("con");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="hero" id="home">
       {/* hero image */}
@@ -21,11 +28,11 @@ export default function Hero() {
         {/* <img src={rectangle} alt="" /> */}
 
         {/* <div className=" w-[40%] lg:flex- "> */}
-          <img
-            src={Danny}
-            alt=""
-            className="mx-auto shadow-white w-[40%] lg:w-[40%] xl:w-[30%] border-5 border-white lg:mx-0"
-          />
+        <img
+          src="Danny.png"
+          alt=""
+          className="mx-auto shadow-white w-[40%] lg:w-[40%] xl:w-[30%] border-5 border-white lg:mx-0"
+        />
         {/* </div> */}
         {/* Hero info */}
         <div className="mt-10 lg:mt-0  font-semibold text-[40px] flex flex-col items-center lg:items-start pb-5 lg:flex-1 lg:flex lg:flex-col    ">
@@ -52,13 +59,17 @@ export default function Hero() {
             </a>
             <ImLinkedin className="cursor-pointer active:text-[#02BDEA]" />
             <a href="https://www.instagram.com/danielsanu35/?hl=en">
-            <FaInstagram className="cursor-pointer active:text-[#02BDEA]" />
+              <FaInstagram className="cursor-pointer active:text-[#02BDEA]" />
             </a>
             <a href="https://github.com/DsDigitalz">
               <FaGithub className="cursor-pointer active:text-[#02BDEA]" />
             </a>
           </div>
-          <button className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10 cursor-pointer active:bg-[#50cbea] flex items-center gap-2 justify-center text-white">
+          <button
+            onClick={handleScrollToContact}
+            className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10 cursor-pointer active:bg-[#50cbea] flex items-center gap-2 justify-center text-white"
+            id="contact"
+          >
             <p className="text-[16px] text-white font-semibold ">Contact Me</p>
             <MdArrowOutward className="text-[24px] bg-sky-300 rounded-full p-1" />
           </button>

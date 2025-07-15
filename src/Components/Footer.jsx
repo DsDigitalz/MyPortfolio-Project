@@ -24,7 +24,7 @@ export default function Footer() {
             <a href="#portfolio"> Portfolio</a>
           </li>
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
-            <a href="#contact">Contact</a>
+            <a href="#con">Contact</a>
           </li>
         </ul>
       </div>
