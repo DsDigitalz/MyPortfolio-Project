@@ -29,7 +29,7 @@ export default function Hero() {
 
         {/* <div className=" w-[40%] lg:flex- "> */}
         <img
-          src="Danny.png"
+          src="danny.png"
           alt=""
           className="mx-auto shadow-white w-[40%] lg:w-[40%] xl:w-[30%] border-5 border-white lg:mx-0"
         />
