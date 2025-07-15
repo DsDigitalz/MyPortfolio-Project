@@ -13,7 +13,7 @@ import { FaStreetView } from "react-icons/fa6";
 export default function Portfolio() {
   return (
     <section
-      className="portfolio1 w-100% pt-10 pb-20 flex flex-col items-center"
+      className="portfolio1 w-100% pt-10 pb-25 flex flex-col items-center"
       id="portfolio"
     >
       <div className="mt-10">

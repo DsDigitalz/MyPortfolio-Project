@@ -81,12 +81,12 @@ const TestimonialsSection = () => {
 
           {/* Right Arrow */}
           <button onClick={handleNext}>
-            <IoArrowForwardOutline className="bg-zinc-200 text-zinc-600 text-[45px] rounded-full p-3 absolute top-1/2 -right-7 transform -translate-y-1/2 cursor-pointer active:bg-zinc-100" />
+            <IoArrowForwardOutline className="bg-zinc-200 text-zinc-600 text-[30px] rounded-full p-2 lg:text-[45px] lg:p-3 absolute top-1/2 -right-5 transform -translate-y-1/2 cursor-pointer active:bg-zinc-100 lg:-right-11" />
           </button>
 
           {/* Left Arrow */}
           <button onClick={handlePrev}>
-            <IoArrowBack className="bg-zinc-200 text-zinc-600 text-[45px] rounded-full p-3 absolute top-1/2 -left-7 transform -translate-y-1/2 cursor-pointer active:bg-zinc-100" />
+            <IoArrowBack className="bg-zinc-200 text-zinc-600 text-[30px] rounded-full p-2 lg:text-[45px] lg:p-3 absolute top-1/2 -left-5 transform -translate-y-1/2 cursor-pointer active:bg-zinc-100 lg:-left-11" />
           </button>
         </div>
       </div>

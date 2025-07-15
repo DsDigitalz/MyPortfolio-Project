@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import emailjs from '@emailjs/browser'
 
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -9,7 +10,32 @@ import { ImLinkedin } from "react-icons/im";
 import { FaInstagram } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { BsSend } from "react-icons/bs";
+import { convertOffsetToTimes } from "framer-motion";
 export default function Contact() {
+  // Create useRef hook to get form Values
+  const form = useRef;
+  // create a function that sends users data to emailjs and sends it back to you in your Gmail
+  const sendEmail = (e) => {
+    // Prevent default
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_dohjj5e",
+        "template_c8dgvxa",
+        form.current,
+        "mh5xhlhYMsRLqLOYR"
+      )
+      .then(() => {
+        alert("Messsage sent successfully");
+        form.current.reset();
+      });
+
+    (error) => {
+      alert("Failed to send message, please try again", error.text  );
+    };
+  };
+
   return (
     <section
       className="w-100% pt-10  flex flex-col justify-center bg-white relative lg:flex lg:flex-1"
@@ -71,7 +97,11 @@ export default function Contact() {
               </div>
             </div>
 
-            <form className="mt-15 flex flex-col border-zinc-400 gap-3 sm:w-[50%] md:w-[70%] lg:w-[50%] lg:mt-0 xl:w-[30%] 2xl:w-[20%] ">
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="mt-15 flex flex-col border-zinc-400 gap-3 sm:w-[50%] md:w-[70%] lg:w-[50%] lg:mt-0 xl:w-[30%] 2xl:w-[20%] "
+            >
               <label htmlFor="">
                 Name <span className="text-sky-300">*</span>
               </label>
