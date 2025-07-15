@@ -44,14 +44,16 @@ export default function Hero() {
             gap between aesthetics and functionality.
           </p>
           <div className="flex gap-7 pt-[40px] text-xl ">
-            <a href="https://web.facebook.com/?_rdc=1&_rdr#">
+            <a href="https://www.facebook.com/daniel.sanu.16/">
               <FaFacebook className="cursor-pointer active:text-[#02BDEA]" />
             </a>
             <a href="https://x.com/settings/profile">
               <BsTwitterX className="cursor-pointer active:text-[#02BDEA]" />
             </a>
             <ImLinkedin className="cursor-pointer active:text-[#02BDEA]" />
+            <a href="https://www.instagram.com/danielsanu35/?hl=en">
             <FaInstagram className="cursor-pointer active:text-[#02BDEA]" />
+            </a>
             <a href="https://github.com/DsDigitalz">
               <FaGithub className="cursor-pointer active:text-[#02BDEA]" />
             </a>

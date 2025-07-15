@@ -54,6 +54,7 @@ export default function About() {
               wireframes, prototypes, and high-fidelity mockups using tools such
               as Figma and Adobe XD, translating complex ideas into intuitive
               interfaces.
+              
             </p>
           </div>
           <button className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10 active:bg-[#50cbea] cursor-pointer flex items-center gap-2 justify-center text-white">

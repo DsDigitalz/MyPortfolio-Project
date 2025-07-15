@@ -54,12 +54,20 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-7 pt-[40px] text-lg ">
-                <FaFacebook className="cursor-pointer active:text-[#02BDEA]" />
-                <BsTwitterX className="cursor-pointer active:text-[#02BDEA]" />
+              <div className="flex gap-7 pt-[40px] text-xl ">
+                <a href="https://www.facebook.com/daniel.sanu.16/">
+                  <FaFacebook className="cursor-pointer active:text-[#02BDEA]" />
+                </a>
+                <a href="https://x.com/settings/profile">
+                  <BsTwitterX className="cursor-pointer active:text-[#02BDEA]" />
+                </a>
                 <ImLinkedin className="cursor-pointer active:text-[#02BDEA]" />
-                <FaInstagram className="cursor-pointer active:text-[#02BDEA]" />
-                <FaGithub className="cursor-pointer active:text-[#02BDEA]" />
+                <a href="https://www.instagram.com/danielsanu35/?hl=en">
+                  <FaInstagram className="cursor-pointer active:text-[#02BDEA]" />
+                </a>
+                <a href="https://github.com/DsDigitalz">
+                  <FaGithub className="cursor-pointer active:text-[#02BDEA]" />
+                </a>
               </div>
             </div>
 
