@@ -38,8 +38,8 @@ export default function Hero() {
         <div className="mt-10 lg:mt-0  font-semibold text-[40px] flex flex-col items-center lg:items-start pb-5 lg:flex-1 lg:flex lg:flex-col    ">
           <div className="  w-full  lg:flex- lg:text-left">
             <div className="  lg:flex-none text-center lg:text-left ">
-              <h1 className="lg:text-[50px] ">Hi, I'm</h1>
-              <h1 className="lg:text-[50px] text-[#02BDEA]">Daniel Sanu</h1>
+              <h1 className="lg:text-[50px] xl:text-[60px]">Hi, I'm</h1>
+              <h1 className="lg:text-[50px] text-[#02BDEA] xl:text-[64px]">Daniel Sanu</h1>
             </div>
           </div>
           <p className="fade_text text-[16px] w-[70%] mt-3 text-center lg:text-left sm: lg:text-[18px] lg:w-full ">
@@ -54,7 +54,7 @@ export default function Hero() {
             <a href="https://www.facebook.com/daniel.sanu.16/">
               <FaFacebook className="cursor-pointer active:text-[#02BDEA]" />
             </a>
-            <a href="https://x.com/settings/profile">
+            <a href="https://x.com/daniel_san4975">
               <BsTwitterX className="cursor-pointer active:text-[#02BDEA]" />
             </a>
             <a href="https://www.linkedin.com/in/daniel-sanu-b89298374?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">

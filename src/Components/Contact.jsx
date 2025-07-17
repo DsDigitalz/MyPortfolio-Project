@@ -84,7 +84,7 @@ export default function Contact() {
                 <a href="https://www.facebook.com/daniel.sanu.16/">
                   <FaFacebook className="cursor-pointer active:text-[#02BDEA]" />
                 </a>
-                <a href="https://x.com/settings/profile">
+                <a href="https://x.com/daniel_san4975">
                   <BsTwitterX className="cursor-pointer active:text-[#02BDEA]" />
                 </a>
                 <a href="https://www.linkedin.com/in/daniel-sanu-b89298374?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">

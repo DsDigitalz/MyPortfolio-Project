@@ -127,7 +127,7 @@ export default function Portfolio() {
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
                   <img
-                    src="food.png"
+                    src="Hero.png"
                     alt=""
                     className="rounded-t-2xl w-full h-50"
                   />
@@ -136,7 +136,7 @@ export default function Portfolio() {
               <div className="flex flex-col gap-2 items-center p-3">
                 <p className="text-zinc-500">FRONT-END WEB DEVELOPMENT</p>
                 <h1 className="font-semibold text-2xl text-[18px]">
-                  Restaurant Food Land Page
+                  ProCleaning Services Landing Page
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
                   Designed a real estate ux case study highlighting user
@@ -145,7 +145,7 @@ export default function Portfolio() {
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
                   <a
-                    href="https://foodienet.netlify.app/"
+                    href="https://procleaningservices.netlify.app/"
                     className="flex items-center gap-3"
                   >
                     View
