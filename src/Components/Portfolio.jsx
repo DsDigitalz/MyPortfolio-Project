@@ -127,7 +127,7 @@ export default function Portfolio() {
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
                   <img
-                    src="Hero.png"
+                    src="Cover.png"
                     alt=""
                     className="rounded-t-2xl w-full h-50"
                   />
@@ -135,8 +135,8 @@ export default function Portfolio() {
               </div>
               <div className="flex flex-col gap-2 items-center p-3">
                 <p className="text-zinc-500">FRONT-END WEB DEVELOPMENT</p>
-                <h1 className="font-semibold text-2xl text-[18px]">
-                  ProCleaning Services Landing Page
+                <h1 className="font-semibold text-2xl text-center w-[70%] text-[18px]">
+                  ProCleaning Services Website
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
                   Designed a real estate ux case study highlighting user
@@ -169,7 +169,7 @@ export default function Portfolio() {
               <div className="flex flex-col gap-2 items-center p-3">
                 <p className="text-zinc-500">FRONT-END WEB DEVELOPMENT</p>
                 <h1 className="font-semibold text-2xl text-[18px]">
-                  Ecommerce Website
+                  Booking Website
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
                   Designed a real estate ux case study highlighting user
