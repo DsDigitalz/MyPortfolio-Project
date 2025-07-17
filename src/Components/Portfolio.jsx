@@ -156,7 +156,7 @@ export default function Portfolio() {
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
                   <img
-                    src="ecommerce.png"
+                    src="Real-Estate.png"
                     alt=""
                     className="rounded-t-2xl w-full h-50"
                   />
