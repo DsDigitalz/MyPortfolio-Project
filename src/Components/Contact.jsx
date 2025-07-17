@@ -134,8 +134,8 @@ export default function Contact() {
               />
               <label htmlFor="">Message </label>
               <textarea
-                name=""
-                id=""
+                name="message"
+                id="message"
                 cols="30"
                 rows="3"
                 className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1 resize-none"

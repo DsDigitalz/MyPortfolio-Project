@@ -73,9 +73,7 @@ export default function Portfolio() {
                   Corporate Web Design
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
-                  Designed a real estate ux case study highlighting user
-                  research, wireframes, and prototypes to enhance user
-                  experience and engagement.
+                  Designed a corporate website UI design with a focus on simplicity and professionalism, user experience, and brand identity. 
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
                   <a
@@ -198,8 +196,8 @@ export default function Portfolio() {
               </div>
               <div className="flex flex-col gap-2 items-center p-3">
                 <p className="text-zinc-500">FRONT-END WEB DEVELOPMENT</p>
-                <h1 className="font-semibold text-2xl text-[18px]">
-                  Travel Website Landing Page
+                <h1 className="font-semibold text-2xl text-[18px] text-center">
+                  Travel Website Landing Page(Desktop Screen Only)
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
                   Designed a real estate ux case study highlighting user

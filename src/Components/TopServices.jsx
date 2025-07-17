@@ -6,7 +6,7 @@ import React from "react";
 export default function TopServices() {
   return (
     <section
-      className="bg-zinc-100  pt-10 flex flex-col items-center pb-15"
+      className="bg-zinc-100  pt-10 flex flex-col items-center pb-20"
       id="services"
     >
       <div className="mt-10">
