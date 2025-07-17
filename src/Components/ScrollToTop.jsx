@@ -30,7 +30,7 @@ export default function ScrollToTop() {
       {/* {showScrollButton && ( Conditonal rendering of the button */}
       <button
         onClick={scrollToTop}
-        className={`bg-sky-400 w-fit rounded-full text-4xl text-white p-1 md:p-2 right-4 bottom-15 shadow-2xl fixed cursor-pointer active:bg-sky-200 transition duration-500 ${
+        className={`bg-sky-400 w-fit rounded-full text-3xl text-white p-1 md:p-2 right-4 bottom-15 shadow-2xl fixed cursor-pointer active:bg-sky-200 transition duration-500 ${
           showScrollButton ? "opacity-100": "opacity-0"
         }`}
       >

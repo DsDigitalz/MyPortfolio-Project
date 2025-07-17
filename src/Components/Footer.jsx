@@ -18,7 +18,7 @@ export default function Footer() {
             <a href="#about">About</a>
           </li>
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
-            <a href="#home">Services</a>
+            <a href="#services">Services</a>
           </li>
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
             <a href="#portfolio"> Portfolio</a>

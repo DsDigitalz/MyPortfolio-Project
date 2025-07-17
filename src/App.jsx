@@ -7,6 +7,7 @@ import Portfolio from "./Components/Portfolio";
 // import Testimonials from "./Components/Testimonials";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
+import ScrollToTop from "./Components/ScrollToTop";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       {/* <Testimonials /> */}
       <Contact />
       <Footer/>
+      <ScrollToTop/>
     </div>
   );
 }

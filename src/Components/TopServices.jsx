@@ -6,7 +6,7 @@ import React from "react";
 export default function TopServices() {
   return (
     <section
-      className="bg-zinc-100  pt-10 flex flex-col items-center pb-20"
+      className="bg-zinc-100  pt-10 flex flex-col items-center pb-30"
       id="services"
     >
       <div className="mt-10">
@@ -55,7 +55,7 @@ export default function TopServices() {
                 Web (Front-end) Development
               </h1>
               <p className="text-center">
-                creating responsive and interactive web applications that
+                Creating responsive and interactive web applications that
                 deliver seamless user experiences across all devices. By
                 leveraging modern technologies such as HTML, CSS, and JavaScript
                 framework (like React)

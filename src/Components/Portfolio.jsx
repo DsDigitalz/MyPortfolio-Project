@@ -13,7 +13,7 @@ import { FaStreetView } from "react-icons/fa6";
 export default function Portfolio() {
   return (
     <section
-      className="portfolio1 w-100% pt-10 pb-25 flex flex-col items-center"
+      className="portfolio1 w-100% pt-10 pb-30 flex flex-col items-center"
       id="portfolio"
     >
       <div className="mt-10">
@@ -171,7 +171,7 @@ export default function Portfolio() {
                   Designed a responsive hotel booking website with React.JS and Tailwind
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
-                  <a href="">
+                  <a href="https://hearthhub.netlify.app/" className="flex items-center gap-3">
                     View
                     <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
                   </a>
@@ -200,7 +200,7 @@ export default function Portfolio() {
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
                   <a
-                    href="procleaningservices.netlify.app"
+                    href="https://jadootrav.netlify.app/"
                     className="flex items-center gap-3"
                   >
                     View

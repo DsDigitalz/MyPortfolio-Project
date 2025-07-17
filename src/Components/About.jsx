@@ -5,7 +5,7 @@ import { IoDownloadOutline } from "react-icons/io5";
 export default function About() {
   return (
     <section
-      className=" bg-zinc-50 items-center flex flex-col pt-10 pb-20 "
+      className=" bg-zinc-50 items-center flex flex-col pt-10 pb-30 "
       id="about"
     >
       <div className="mt-10">
@@ -44,7 +44,8 @@ export default function About() {
               <p className="bg-sky-50 rounded-lg py-1 px-4">React.js</p>
               <p className="bg-sky-50 rounded-lg py-1 px-4">Figma</p>
               <p className="bg-sky-50 rounded-lg py-1 px-4">Adobe Xd</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">Photoshop</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4 ">Photoshop</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4">WordPress</p>
             </div>
           </div>
           <div className="flex flex-col items-center">
