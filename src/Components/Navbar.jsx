@@ -28,7 +28,7 @@ export default function Navbar() {
       </div>
 
       <nav
-        className={`flex justify-between items-center ${
+        className={`flex justify-between items-cente ${
           openNavbar ? "max-h-[500px]" : "max-h-0"
         } transition-all duration-300 ease-in md:block md:max-h-full overflow-hidden`}
       >
