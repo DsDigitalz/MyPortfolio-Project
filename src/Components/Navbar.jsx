@@ -31,22 +31,32 @@ export default function Navbar() {
         className={`flex justify-between items-center ${
           openNavbar ? "max-h-[500px]" : "max-h-0"
         } transition-all duration-300 ease-in md:block md:max-h-full overflow-hidden`}
-      > 
+      >
         <ul className="flex flex-col p-5 gap-[25px] text-[16px] font-medium md:flex-row">
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
-            <a href="|#home">Home</a>
+            <a href="#home" onClick={() => setOpenNavbar(false)}>
+              Home
+            </a>
           </li>
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
-            <a href="|#about">About</a>
+            <a href="#about" onClick={() => setOpenNavbar(false)}>
+              About
+            </a>
           </li>
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
-            <a href="|#services">Services</a>
+            <a href="#services" onClick={() => setOpenNavbar(false)}>
+              Services
+            </a>
           </li>
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
-            <a href="#portfolio">Projects</a>
+            <a href="#portfolio" onClick={() => setOpenNavbar(false)}>
+              Projects
+            </a>
           </li>
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
-            <a href="#con">Contact</a>
+            <a href="#con" onClick={() => setOpenNavbar(false)}>
+              Contact
+            </a>
           </li>
         </ul>
       </nav>
