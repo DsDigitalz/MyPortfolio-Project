@@ -43,7 +43,7 @@ export default function Navbar() {
             <a href="|#services">Services</a>
           </li>
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
-            <a href="#portfolio">Portfolio</a>
+            <a href="#portfolio">Projects</a>
           </li>
           <li className="cursor-pointer hover:text-sky-400  active:text-sky-500">
             <a href="#con">Contact</a>
