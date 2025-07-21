@@ -18,7 +18,7 @@ export default function Portfolio() {
     >
       <div className="mt-10">
         <h1 className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center">
-          My <span className="text-[#02BDEA]">Portfolio</span>
+          My <span className="text-[#02BDEA]">Projects</span>
         </h1>
 
         <div className="portfolio lg:grid lg:grid-cols-2 2xl:grid 2xl:grid-cols-3 gap-10">
