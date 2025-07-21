@@ -168,7 +168,7 @@ export default function Portfolio() {
                   Booking Website Landing Page
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
-                  Designed a responsive hotel booking website with React.JS and Tailwind
+                  Designed a responsive house booking website with React.JS and Tailwind
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
                   <a href="https://hearthhub.netlify.app/" className="flex items-center gap-3">

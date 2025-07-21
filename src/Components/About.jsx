@@ -22,7 +22,7 @@ export default function About() {
             Nigeria looking for exciting opportunities. Has Graphic Design
             background and likes to focus on accessibility when designing or
             developing, i am passionate and curious about solving problems and
-            giving nothing but the best.Driven by a commitment to continuous
+            giving nothing but the best. Driven by a commitment to continuous
             learning and staying updated with industry trends, I am dedicated to
             delivering high-quality work that exceeds expectations. Whether it's
             developing a dynamic web application or designing a seamless user
@@ -41,7 +41,7 @@ export default function About() {
               <p className="bg-sky-50 rounded-lg py-1 px-4">Tailwind</p>
             </div>
             <div className="flex flex-col text-center gap-3 md:grid md:grid-cols-2 lg:grid-cols-4">
-              <p className="bg-sky-50 rounded-lg py-1 px-4">React.js</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4">React.JS</p>
               <p className="bg-sky-50 rounded-lg py-1 px-4">Figma</p>
               <p className="bg-sky-50 rounded-lg py-1 px-4">Adobe Xd</p>
               <p className="bg-sky-50 rounded-lg py-1 px-4 ">Photoshop</p>
