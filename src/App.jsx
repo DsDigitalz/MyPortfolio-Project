@@ -17,7 +17,7 @@ export default function App() {
       <About />
       <TopServices />
       <Portfolio />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Contact />
       <Footer/>
       <ScrollToTop/>
