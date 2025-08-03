@@ -46,6 +46,7 @@ export default function About() {
               <p className="bg-sky-50 rounded-lg py-1 px-4">Adobe Xd</p>
               <p className="bg-sky-50 rounded-lg py-1 px-4 ">Photoshop</p>
               <p className="bg-sky-50 rounded-lg py-1 px-4">WordPress</p>
+              <p className="bg-sky-50 rounded-lg py-1 px-4">Elementor</p>
             </div>
           </div>
           <div className="flex flex-col items-center">

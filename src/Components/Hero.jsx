@@ -24,7 +24,7 @@ export default function Hero() {
   return (
     <section className="hero" id="home">
       {/* hero image */}
-      <div className="mx-auto max-w-[1440px] pt-45 lg:px-30 flex flex-col items-center lg:pt-50 pb-20  lg:flex-row-reverse lg:justify-between lg:gap-7">
+      <div className="h-screen mx-auto max-w-[1440px] pt-45 lg:px-30 flex flex-col items-center lg:pt-50 pb-20  lg:flex-row-reverse lg:justify-between lg:gap-7">
         {/* <img src={rectangle} alt="" /> */}
 
         {/* <div className=" w-[40%] lg:flex- "> */}
