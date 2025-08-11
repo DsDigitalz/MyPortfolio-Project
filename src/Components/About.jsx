@@ -1,6 +1,27 @@
 import React from "react";
 import { IoDownloadOutline } from "react-icons/io5";
+import { motion } from "framer-motion"; // Import motion
 // import downloadcv from "./public/My-CV1.pdf";
+
+// Define animation variants for the main container
+const containerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+      staggerChildren: 0.2 // Stagger the animation of child elements
+    }
+  }
+};
+
+// Define variants for child elements (e.g., text, skills)
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
 
 export default function About() {
   return (
@@ -12,13 +33,27 @@ export default function About() {
         <h1 className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center">
           About <span className="text-[#02BDEA]">Me</span>
         </h1>
-        <div className="About_Container mt-7 w-[332px] rounded-2xl bg-white flex flex-col items-center  p-10  shadow-2xl shadow-sky-200  sm:w-[500px] md:w-[670px] lg:w-[750px] xl:w-[1024px] 2xl:w-[1140px]">
-          <p className="text-[18px] w-[282px] mt-5 font-semibold text-center sm:text-[18px] sm:w-[450px] md:text-[20 px] lg:w-[700px] lg:text-[22px] xl:w-[900px] xl:text-[24px] 2xl:w-[900px] 2xl:text-[24px]  ">
-            I am a UI/UX Designer and front-end software developer based in
+        {/* Use motion.div for the main container and apply the variants */}
+        <motion.div
+          className="About_Container mt-7 w-[332px] rounded-2xl bg-white flex flex-col items-center  p-10  shadow-2xl shadow-sky-200  sm:w-[500px] md:w-[670px] lg:w-[750px] xl:w-[1024px] 2xl:w-[1140px]"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }} // Trigger animation when 20% of the component is in view
+        >
+          {/* Apply item variants to individual text paragraphs */}
+          <motion.p
+            className="text-[18px] w-[282px] mt-5 font-semibold text-center sm:text-[18px] sm:w-[450px] md:text-[20 px] lg:w-[700px] lg:text-[22px] xl:w-[900px] xl:text-[24px] 2xl:w-[900px] 2xl:text-[24px]  "
+            variants={itemVariants}
+          >
+            I am a UI/UX, Web Designer and front-end software developer based in
             Nigeria. Has a background in Graphic Design
-          </p>
-          <p className="text-center text-[16px] w-[260px] mt-5 leading-7 sm:text-[16px] sm:w-[400px] md:text-[16px] md:w-[600px] md:leading-9 lg:w-[650px] lg:text-[16px] lg:leading-10 xl:w-[900px] xl:text-[18px] xl:leading-12  2xl:w-[900px] 2xl:text-[20px]">
-            I am a UI/UX designer and front-end software developer based in
+          </motion.p>
+          <motion.p
+            className="text-center text-[16px] w-[260px] mt-5 leading-7 sm:text-[16px] sm:w-[400px] md:text-[16px] md:w-[600px] md:leading-9 lg:w-[650px] lg:text-[16px] lg:leading-10 xl:w-[900px] xl:text-[18px] xl:leading-12  2xl:w-[900px] 2xl:text-[20px]"
+            variants={itemVariants}
+          >
+            I am a UI/UX, Web designer and front-end software developer based in
             Nigeria looking for exciting opportunities. Has Graphic Design
             background and likes to focus on accessibility when designing or
             developing, i am passionate and curious about solving problems and
@@ -28,32 +63,110 @@ export default function About() {
             developing a dynamic web application or designing a seamless user
             experience, I am passionate about creating solutions that make a
             positive impact.
-          </p>
+          </motion.p>
 
           <div className="flex flex-col items-center gap-5 text-[20px]">
-            <h1 className=" font-semibold mt-10 text-[18px] w-[282px]  text-center sm:text-[18px] sm:w-[450px] md:text-[20px] lg:w-[700px] lg:text-[30px] xl:w-[900px] xl:text-[32px] 2xl:w-[900px] 2xl:text-[34px] ">
+            <motion.h1
+              className=" font-semibold mt-10 text-[18px] w-[282px]  text-center sm:text-[18px] sm:w-[450px] md:text-[20px] lg:w-[700px] lg:text-[30px] xl:w-[900px] xl:text-[32px] 2xl:w-[900px] 2xl:text-[34px] "
+              variants={itemVariants}
+            >
               My Skills
-            </h1>
-            <div className=" flex flex-col justify-center gap-3 text-center md:grid md:grid-cols-2 lg:grid-cols-4">
-              <p className="bg-sky-50 rounded-lg py-1 px-4">HTML</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">CSS</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">Javascript</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">Tailwind</p>
-            </div>
-            <div className="flex flex-col text-center gap-3 md:grid md:grid-cols-2 lg:grid-cols-4">
-              <p className="bg-sky-50 rounded-lg py-1 px-4">React.JS</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">Figma</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">Adobe Xd</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4 ">Photoshop</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">WordPress</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">Elementor</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">Git</p>
-              <p className="bg-sky-50 rounded-lg py-1 px-4">Github</p>
-            </div>
+            </motion.h1>
+            {/* Animate skill cards */}
+            <motion.div
+              className=" flex flex-col justify-center gap-3 text-center md:grid md:grid-cols-2 lg:grid-cols-4"
+              variants={containerVariants} // Staggered animation for skills grid
+            >
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                HTML5
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                CSS
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                Javascript
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                Tailwind
+              </motion.p>
+            </motion.div>
+            <motion.div
+              className="flex flex-col text-center gap-3 md:grid md:grid-cols-2 lg:grid-cols-4"
+              variants={containerVariants} // Staggered animation for skills grid
+            >
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                React.JS
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                Figma
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                Adobe Xd
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4 "
+                variants={itemVariants}
+              >
+                Photoshop
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                WordPress
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                Elementor
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                Git
+              </motion.p>
+              <motion.p
+                className="bg-sky-50 rounded-lg py-1 px-4"
+                variants={itemVariants}
+              >
+                Github
+              </motion.p>
+            </motion.div>
           </div>
           <div className="flex flex-col items-center">
-            <h1 className="text-[30px] font-semibold mt-10">My Experience</h1>
-            <p className="text-center text-[16px] w-[260px] mt-5 leading-7 sm:text-[16px] sm:w-[400px] md:text-[16px] md:w-[600px] md:leading-9 lg:w-[650px] lg:text-[16px] lg:leading-10 xl:w-[900px] xl:text-[18px] xl:leading-12  2xl:w-[900px] 2xl:text-[20px] ">
+            <motion.h1
+              className="text-[30px] font-semibold mt-10"
+              variants={itemVariants}
+            >
+              My Experience
+            </motion.h1>
+            <motion.p
+              className="text-center text-[16px] w-[260px] mt-5 leading-7 sm:text-[16px] sm:w-[400px] md:text-[16px] md:w-[600px] md:leading-9 lg:w-[650px] lg:text-[16px] lg:leading-10 xl:w-[900px] xl:text-[18px] xl:leading-12  2xl:w-[900px] 2xl:text-[20px] "
+              variants={itemVariants}
+            >
               Collaborated with cross-functional teams to design and develop
               user-friendly web applications, ensuring a seamless integration of
               UI/UX principles with front-end development. Conducted user
@@ -62,17 +175,20 @@ export default function About() {
               wireframes, prototypes, and high-fidelity mockups using tools such
               as Figma and Adobe XD, translating complex ideas into intuitive
               interfaces.
-            </p>
+            </motion.p>
           </div>
-          <a
+          <motion.a
             href="My-CV1.pdf"
             download="My-CV1.pdf"
             className="rounded-full bg-[#02BDEA] w-[180px] p-3 mt-10 active:bg-[#50cbea] cursor-pointer flex items-center gap-2 justify-center text-white"
+            variants={itemVariants}
+            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+          
           >
             <p className="text-[16px] text-white font-semibold">Download CV</p>
             <IoDownloadOutline className="text-[24px] bg-sky-300 rounded-full p-1" />
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

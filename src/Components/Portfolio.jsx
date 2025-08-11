@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion"; // Import motion
 // import portImage from "./public/portImage.png";
 // import banner from "./public/Banner.png";
 // import homehaven from "./public/homehaven.png";
@@ -10,6 +11,30 @@ import React from "react";
 // import travel from "./public/travel.png";
 import { FaStreetView } from "react-icons/fa6";
 
+// Define variants for the main container to stagger children animations
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Stagger the animation of child elements
+    },
+  },
+};
+
+// Define variants for the individual portfolio cards
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function Portfolio() {
   return (
     <section
@@ -17,12 +42,30 @@ export default function Portfolio() {
       id="portfolio"
     >
       <div className="mt-10">
-        <h1 className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center">
+        {/* Animate the main heading */}
+        <motion.h1
+          className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           My <span className="text-[#02BDEA]">Projects</span>
-        </h1>
+        </motion.h1>
 
-        <div className="portfolio lg:grid lg:grid-cols-2 2xl:grid 2xl:grid-cols-3 gap-10">
-          <div className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
+        {/* Animate the grid container and stagger its children */}
+        <motion.div
+          className="portfolio lg:grid lg:grid-cols-2 2xl:grid 2xl:grid-cols-3 gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {/* Animate each portfolio card with cardVariants */}
+          <motion.div
+            className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300"
+            variants={cardVariants}
+          >
             <div className="w-full flex flex-col items-center gap-2 leading-7">
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
@@ -54,8 +97,12 @@ export default function Portfolio() {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
+          </motion.div>
+
+          <motion.div
+            className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300"
+            variants={cardVariants}
+          >
             <div className="w-full flex flex-col items-center gap-2 leading-7">
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
@@ -86,8 +133,12 @@ export default function Portfolio() {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
+          </motion.div>
+
+          <motion.div
+            className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300"
+            variants={cardVariants}
+          >
             <div className="w-full flex flex-col items-center gap-2 leading-7">
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
@@ -104,12 +155,12 @@ export default function Portfolio() {
                   Real Estate App Design
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
-                  Designed a real estate app, providing a
-                  seamless platform for buyers, sellers, and agents.
+                  Designed a real estate app, providing a seamless platform for
+                  buyers, sellers, and agents.
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
                   <a
-                    href=" https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?page-id=135%3A760&node-id=135-761&viewport=1261%2C587%2C0.12&t=Qn2qqzVtwL4ylQBt-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=135%3A761&show-proto-side  bar=1"
+                    href=" https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?page-id=135%3A760&node-id=135-761&viewport=1261%2C587%2C0.12&t=Qn2qqzVtwL4ylQBt-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=135%3A761&show-proto-side  bar=1"
                     className="flex items-center gap-3"
                   >
                     View
@@ -118,8 +169,12 @@ export default function Portfolio() {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
+          </motion.div>
+
+          <motion.div
+            className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300"
+            variants={cardVariants}
+          >
             <div className="w-full flex flex-col items-center gap-2 leading-7">
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
@@ -141,7 +196,7 @@ export default function Portfolio() {
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
                   <a
-                    href="https://procleaningservices.netlify.app/"
+                    href="`https://procleaningservices.netlify.app/"
                     className="flex items-center gap-3"
                   >
                     View
@@ -150,8 +205,12 @@ export default function Portfolio() {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
+          </motion.div>
+
+          <motion.div
+            className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300"
+            variants={cardVariants}
+          >
             <div className="w-full flex flex-col items-center gap-2 leading-7">
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
@@ -168,18 +227,26 @@ export default function Portfolio() {
                   Booking Website Landing Page
                 </h1>
                 <p className="text-center w-[85%] text-[15px]">
-                  Designed a responsive house booking website with React.JS and Tailwind
+                  Designed a responsive house booking website with React.JS and
+                  Tailwind
                 </p>
                 <button className="bg-[#02BDEA] text-white rounded px-10 py-1.5 cursor-pointer active:bg-[#50cbea] flex items-center gap-3 justify-center">
-                  <a href="https://hearthhub.netlify.app/" className="flex items-center gap-3">
+                  <a
+                    href="https://hearthhub.netlify.app/"
+                    className="flex items-center gap-3"
+                  >
                     View
                     <FaStreetView className="text-[24px] bg-sky-300 rounded-full p-1" />
                   </a>
                 </button>
               </div>
             </div>
-          </div>
-          <div className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300">
+          </motion.div>
+
+          <motion.div
+            className="mt-7 w-[332px] bg-white pb-3 mx-auto flex justify-center shadow-2xl  rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300"
+            variants={cardVariants}
+          >
             <div className="w-full flex flex-col items-center gap-2 leading-7">
               <div className="shadow-2xl p-1 w-full bg-zinc-100 rounded-t-2xl">
                 <div>
@@ -209,8 +276,8 @@ export default function Portfolio() {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
