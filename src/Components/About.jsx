@@ -47,7 +47,7 @@ export default function About() {
       </motion.h1>
 
       <motion.div
-        className={`w-full max-w-[1140px] mt-7 rounded-2xl flex flex-col items-center p-8 md:p-10 ${
+        className={`w-full max-w-[1140px]  rounded-2xl flex flex-col items-center p-8 md:p-10 ${
           isDarkMode ? "bg-zinc-900 shadow-zinc-700" : "bg-white shadow-sky-200"
         } shadow-2xl`}
         variants={containerVariants}
