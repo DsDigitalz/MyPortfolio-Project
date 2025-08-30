@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { IoIosArrowRoundUp } from "react-icons/io";
+import { useTheme } from "./ThemeContext"; // Import the useTheme hook
 
 export default function ScrollToTop() {
+  const { isDarkMode } = useTheme();
   const [showScrollButton, setShowScrollButton] = useState(true);
+
   function toggleScrollButton() {
     if (window.scrollY > 300) {
       setShowScrollButton(true);
@@ -22,19 +25,23 @@ export default function ScrollToTop() {
       top: 0,
       behavior: "smooth",
     });
-  }  
-  
+  }
 
   return (
     <div>
-      {/* {showScrollButton && ( Conditonal rendering of the button */}
       <button
         onClick={scrollToTop}
-        className={`bg-sky-400 w-fit rounded-full text-3xl text-white p-1 md:p-2 right-4 bottom-15 shadow-2xl fixed cursor-pointer active:bg-sky-200 transition duration-500 ${
-          showScrollButton ? "opacity-100": "opacity-0"
+        className={`w-fit rounded-full text-3xl text-white p-1 md:p-2 right-4 bottom-15 shadow-2xl fixed cursor-pointer transition duration-500 ${
+          showScrollButton ? "opacity-100" : "opacity-0"
+        } ${
+          isDarkMode
+            ? "bg-[#D3AF37] active:bg-amber-300"
+            : "bg-sky-400 active:bg-sky-200"
         }`}
       >
-        <IoIosArrowRoundUp />
+        <IoIosArrowRoundUp
+          className={isDarkMode ? "text-black" : "text-white"}
+        />
       </button>
     </div>
   );

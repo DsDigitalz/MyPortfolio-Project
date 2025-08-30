@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion"; // Import motion
+import { motion } from "framer-motion";
+import { useTheme } from "./ThemeContext"; // Import the useTheme hook
 
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -13,7 +14,9 @@ import { FaGithub } from "react-icons/fa";
 import { BsSend } from "react-icons/bs";
 
 export default function Contact() {
+  const { isDarkMode } = useTheme();
   const form = useRef();
+
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -55,31 +58,39 @@ export default function Contact() {
 
   return (
     <section
-      className="w-100% pt-10  flex flex-col justify-center bg-white relative lg:flex lg:flex-1"
+      className={`w-100% pt-10 flex flex-col justify-center relative lg:flex lg:flex-1 ${
+        isDarkMode ? "bg-zinc-900" : "bg-white"
+      }`}
       id="con"
     >
       <div className="mt-10">
-        <div className="">
-          {/* Animated heading */}
+        <div>
           <motion.h1
-            className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center"
+            className={`text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${
+              isDarkMode ? "text-white" : "text-black"
+            }`}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            Contact <span className="text-sky-300">Me</span>
+            Contact{" "}
+            <span className={isDarkMode ? "text-[#FFD700]" : "text-sky-300"}>
+              Me
+            </span>
           </motion.h1>
 
-          {/* Animate the main content container */}
           <motion.div
-            className=" bg-white shadow-2xl p-10 lg:px-30 shadow-sky-200 lg:flex lg:justify-center gap-[100px] lg:mt-10"
+            className={`p-10 lg:px-30 lg:flex lg:justify-center gap-[100px] lg:mt-10 ${
+              isDarkMode
+                ? "bg-zinc-900 text-white shadow-zinc-700"
+                : "bg-white text-black shadow-sky-200"
+            } shadow-2xl`}
             variants={contentVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            {/* Animate the left side (contact info) */}
             <motion.div
               className="lg:w-[50%] xl:w-[50%] 2xl:w-[40%] "
               variants={itemVariants}
@@ -121,75 +132,159 @@ export default function Contact() {
                 variants={itemVariants}
               >
                 <a href="https://www.facebook.com/daniel.sanu.16/">
-                  <FaFacebook className="cursor-pointer active:text-[#02BDEA]" />
+                  <FaFacebook
+                    className={`cursor-pointer ${
+                      isDarkMode
+                        ? "active:text-[#FFD700]"
+                        : "active:text-[#02BDEA]"
+                    }`}
+                  />
                 </a>
                 <a href="https://x.com/daniel_san4975">
-                  <BsTwitterX className="cursor-pointer active:text-[#02BDEA]" />
+                  <BsTwitterX
+                    className={`cursor-pointer ${
+                      isDarkMode
+                        ? "active:text-[#FFD700]"
+                        : "active:text-[#02BDEA]"
+                    }`}
+                  />
                 </a>
                 <a href="https://www.linkedin.com/in/daniel-sanu-b89298374?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-                  <ImLinkedin className="cursor-pointer active:text-[#02BDEA]" />
+                  <ImLinkedin
+                    className={`cursor-pointer ${
+                      isDarkMode
+                        ? "active:text-[#FFD700]"
+                        : "active:text-[#02BDEA]"
+                    }`}
+                  />
                 </a>
                 <a href="https://www.instagram.com/danielsanu35/?hl=en">
-                  <FaInstagram className="cursor-pointer active:text-[#02BDEA]" />
+                  <FaInstagram
+                    className={`cursor-pointer ${
+                      isDarkMode
+                        ? "active:text-[#FFD700]"
+                        : "active:text-[#02BDEA]"
+                    }`}
+                  />
                 </a>
                 <a href="https://github.com/DsDigitalz">
-                  <FaGithub className="cursor-pointer active:text-[#02BDEA]" />
+                  <FaGithub
+                    className={`cursor-pointer ${
+                      isDarkMode
+                        ? "active:text-[#FFD700]"
+                        : "active:text-[#02BDEA]"
+                    }`}
+                  />
                 </a>
               </motion.div>
             </motion.div>
 
-            {/* Animate the form on the right side */}
             <motion.form
               ref={form}
               onSubmit={sendEmail}
               className="mt-15 flex flex-col border-zinc-400 gap-3 sm:w-[50%] md:w-[70%] lg:w-[50%] lg:mt-0 xl:w-[30%] 2xl:w-[20%] "
               variants={itemVariants}
             >
-              <label htmlFor="">
-                Name <span className="text-sky-300">*</span>
+              <label
+                htmlFor=""
+                className={`${isDarkMode ? "text-gray-300" : "text-black"}`}
+              >
+                Name{" "}
+                <span
+                  className={isDarkMode ? "text-[#FFD700]" : "text-sky-300"}
+                >
+                  *
+                </span>
               </label>
               <input
                 type="text"
                 name="fullName"
                 id="fullName"
-                className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1"
+                className={`border-b rounded px-3 py-1 ${
+                  isDarkMode
+                    ? "bg-zinc-900 text-white border-zinc-500"
+                    : "bg-white text-black border-zinc-300"
+                } outline-sky-200`}
                 required
               />
-              <label htmlFor="">
-                Email <span className="text-sky-300">*</span>
+              <label
+                htmlFor=""
+                className={`${isDarkMode ? "text-gray-300" : "text-black"}`}
+              >
+                Email{" "}
+                <span
+                  className={isDarkMode ? "text-[#FFD700]" : "text-sky-300"}
+                >
+                  *
+                </span>
               </label>
               <input
                 type="email"
                 name="email"
                 id="email"
-                className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1"
+                className={`border-b rounded px-3 py-1 ${
+                  isDarkMode
+                    ? "bg-zinc-900 text-white border-zinc-500"
+                    : "bg-white text-black border-zinc-300"
+                } outline-sky-200`}
                 required
               />
-              <label htmlFor="">Subject </label>
+              <label
+                htmlFor=""
+                className={`${isDarkMode ? "text-gray-300" : "text-black"}`}
+              >
+                Subject
+              </label>
               <input
                 type="text"
                 name="subject"
                 id="subject"
-                className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1"
+                className={`border-b rounded px-3 py-1 ${
+                  isDarkMode
+                    ? "bg-zinc-900 text-white border-zinc-500"
+                    : "bg-white text-black border-zinc-300"
+                } outline-sky-200`}
                 required
               />
-              <label htmlFor="">Message </label>
+              <label
+                htmlFor=""
+                className={`${isDarkMode ? "text-gray-300" : "text-black"}`}
+              >
+                Message
+              </label>
               <textarea
                 name="message"
                 id="message"
                 cols="30"
                 rows="3"
-                className="border-b rounded border-zinc-300 outline-sky-200 px-3 py-1 resize-none"
+                className={`border-b rounded px-3 py-1 resize-none ${
+                  isDarkMode
+                    ? "bg-zinc-900 text-white border-zinc-500"
+                    : "bg-white text-black border-zinc-300"
+                } outline-sky-200`}
                 required
               ></textarea>
               <motion.button
-                className="bg-[#02BDEA] p-3 text-white font-semibold gap-3 flex justify-center rounded-full w-[50%] mt-10 cursor-pointer active:bg-[#50cbea]"
+                className={`p-3 text-white font-semibold gap-3 flex justify-center rounded-full w-[50%] mt-10 cursor-pointer ${
+                  isDarkMode
+                    ? "bg-[#D3AF37] active:bg-yellow-500"
+                    : "bg-[#02BDEA] active:bg-[#FFD700]"
+                }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
               >
-                Submit
-                <BsSend className="text-[24px] bg-sky-300 rounded-full p-1" />
+                {" "}
+                <p className={isDarkMode ? "text-black" : "text-white"}>
+                  Submit
+                </p>
+                {" "}
+                <BsSend
+                  className={`text-[24px] rounded-full p-1 ${
+                    isDarkMode ? "bg-[#D3AF37] text-black" : "bg-sky-300"
+                  }`}
+                />
+              {" "}
               </motion.button>
             </motion.form>
           </motion.div>

@@ -2,8 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import { IoIosArrowRoundUp } from "react-icons/io";
 import ScrollToTop from "./ScrollToTop";
+import { useTheme } from "./ThemeContext"; // Import the useTheme hook
 
 export default function Footer() {
+  const { isDarkMode } = useTheme();
+
   // Create a ref for the element you want to track
   const ref = useRef(null);
   // useInView hook to detect if the element is visible
@@ -38,26 +41,59 @@ export default function Footer() {
           className="font-bold text-[20px] lg:text-[24px] text-white"
           variants={fadeInVariants}
         >
-          DS<span className="text-[#02BDEA]">DIGIT</span>
+          DS
+          <span className={isDarkMode ? "text-[#D3AF37]" : "text-[#02BDEA]"}>
+            DIGIT
+          </span>
           <span className="text-white">ALZ</span>
         </motion.div>
         <motion.ul
           className="text-zinc-300 text-[12px] flex items-center gap-5 lg:flex lg:flex-row"
           variants={fadeInVariants}
         >
-          <li className="cursor-pointer hover:text-sky-400 active:text-sky-500">
+          <li
+            className={`cursor-pointer ${
+              isDarkMode
+                ? "hover:text-amber-400 active:text-amber-500"
+                : "hover:text-sky-400 active:text-sky-500"
+            }`}
+          >
             <a href="#home">Home</a>
           </li>
-          <li className="cursor-pointer hover:text-sky-400 active:text-sky-500">
+          <li
+            className={`cursor-pointer ${
+              isDarkMode
+                ? "hover:text-amber-400 active:text-amber-500"
+                : "hover:text-sky-400 active:text-sky-500"
+            }`}
+          >
             <a href="#about">About</a>
           </li>
-          <li className="cursor-pointer hover:text-sky-400 active:text-sky-500">
+          <li
+            className={`cursor-pointer ${
+              isDarkMode
+                ? "hover:text-amber-400 active:text-amber-500"
+                : "hover:text-sky-400 active:text-sky-500"
+            }`}
+          >
             <a href="#services">Services</a>
           </li>
-          <li className="cursor-pointer hover:text-sky-400 active:text-sky-500">
+          <li
+            className={`cursor-pointer ${
+              isDarkMode
+                ? "hover:text-amber-400 active:text-amber-500"
+                : "hover:text-sky-400 active:text-sky-500"
+            }`}
+          >
             <a href="#portfolio">Portfolio</a>
           </li>
-          <li className="cursor-pointer hover:text-sky-400 active:text-sky-500">
+          <li
+            className={`cursor-pointer ${
+              isDarkMode
+                ? "hover:text-amber-400 active:text-amber-500"
+                : "hover:text-sky-400 active:text-sky-500"
+            }`}
+          >
             <a href="#con">Contact</a>
           </li>
         </motion.ul>

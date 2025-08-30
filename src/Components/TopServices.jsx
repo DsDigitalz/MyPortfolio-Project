@@ -1,8 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion"; // Import motion
-// import web from "./public/web.png";
-// import mobile from "./public/mobile.png";
-// import code from "./public/code.png";
+import { motion } from "framer-motion";
+import { useTheme } from "./ThemeContext"; // Import the useTheme hook
 
 // Define animation variants for the main container
 const containerVariants = {
@@ -29,26 +27,33 @@ const cardVariants = {
 };
 
 export default function TopServices() {
+  const { isDarkMode } = useTheme();
+
   return (
     <section
-      className="bg-zinc-100  pt-10 flex flex-col items-center pb-30"
+      className={`pt-10 flex flex-col items-center pb-30 ${
+        isDarkMode ? "bg-zinc-900" : "bg-zinc-100"
+      }`}
       id="services"
     >
       <div className="mt-10">
-        {/* Animate the main heading */}
         <motion.h1
-          className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center"
+          className={`text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${
+            isDarkMode ? "text-white" : "text-black"
+          }`}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Top <span className="text-[#02BDEA]">Services</span>
+          Top{" "}
+          <span className={isDarkMode ? "text-[#FFD700]" : "text-[#02BDEA]"}>
+            Services
+          </span>
         </motion.h1>
 
-        {/* Animate the grid container and stagger its children */}
         <motion.div
-          className="top_services lg:grid lg:grid-cols-2 2xl:grid 2xl:grid-cols-3 gap-10 mt-7"
+          className="top_services grid lg:grid lg:grid-cols-2 2xl:grid 2xl:grid-cols-3 gap-10 mt-7"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -56,7 +61,11 @@ export default function TopServices() {
         >
           {/* Animate each service card */}
           <motion.div
-            className="w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300"
+            className={`w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
+              isDarkMode
+                ? "bg-zinc-900 text-white border border-zinc-600 hover:shadow-zinc-700"
+                : "bg-white text-black hover:shadow-sky-200"
+            }`}
             variants={cardVariants}
           >
             <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
@@ -74,9 +83,13 @@ export default function TopServices() {
               </p>
             </div>
           </motion.div>
-          
+
           <motion.div
-            className="w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300"
+            className={`w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
+              isDarkMode
+                ? "bg-zinc-900  border border-zinc-600 text-white hover:shadow-zinc-700"
+                : "bg-white text-black hover:shadow-sky-200"
+            }`}
             variants={cardVariants}
           >
             <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
@@ -96,7 +109,11 @@ export default function TopServices() {
           </motion.div>
 
           <motion.div
-            className="w-[332px] bg-white h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:shadow-sky-200 hover:scale-103 hover:transition-all duration-300"
+            className={`w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
+              isDarkMode
+                ? "bg-zinc-900 text-white border border-zinc-600 hover:shadow-zinc-700"
+                : "bg-white text-black hover:shadow-sky-200"
+            }`}
             variants={cardVariants}
           >
             <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
@@ -114,7 +131,6 @@ export default function TopServices() {
               </p>
             </div>
           </motion.div>
-          {/* ... (The commented-out code is omitted) ... */}
         </motion.div>
       </div>
     </section>

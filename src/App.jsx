@@ -8,19 +8,22 @@ import Portfolio from "./Components/Portfolio";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
+import { ThemeProvider } from "./Components/ThemeContext";
 
 export default function App() {
   return (
     <div>
-      <Navbar />
-      <Hero />
-      <About />
-      <TopServices />
-      <Portfolio />
-      {/* <Testimonials /> */}
-      <Contact />
-      <Footer/>
-      <ScrollToTop/>
+      <ThemeProvider>
+        <Navbar />
+        <Hero />
+        <About />
+        <TopServices />
+        <Portfolio />
+        {/* <Testimonials /> */}
+        <Contact />
+        <Footer />
+        <ScrollToTop />
+      </ThemeProvider>
     </div>
   );
 }
