@@ -28,7 +28,7 @@ export default function About() {
 
   return (
     <section
-      className={`flex flex-col items-center pt-10 pb-20 px-4 ${
+      className={`flex flex-col items-center pt-20 pb-20 px-4 ${
         isDarkMode ? "bg-slate-950 text-white" : "bg-white text-black"
       }`}
       id="about"
