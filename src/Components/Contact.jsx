@@ -268,7 +268,7 @@ export default function Contact() {
                 className={`p-3 text-white font-semibold gap-3 flex justify-center rounded-full w-[50%] mt-10 cursor-pointer ${
                   isDarkMode
                     ? "bg-[#D3AF37] active:bg-yellow-500"
-                    : "bg-[#02BDEA] active:bg-[#FFD700]"
+                    : "bg-[#02BDEA] active:bg-[#059fc6]"
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

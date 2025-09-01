@@ -156,9 +156,9 @@ export default function About() {
         </div>
 
         <motion.a
-          href="My-CV1.pdf"
-          download="My-CV1.pdf"
-          className={`rounded-full w-[180px] p-3 mt-10 active:bg-yellow-500 cursor-pointer flex items-center gap-2 justify-center text-white ${
+          href="My-CV.pdf"
+          download="My-CV.pdf"
+          className={`rounded-full w-[180px] p-3 mt-10 active:bg-[#059fc6] cursor-pointer flex items-center gap-2 justify-center text-white ${
             isDarkMode ? "bg-[#D3AF37] text-black" : "bg-[#02BDEA]"
           }`}
           variants={itemVariants}

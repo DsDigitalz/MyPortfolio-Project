@@ -107,7 +107,7 @@ export default function Hero() {
             <a href="https://x.com/daniel_san4975">
               <BsTwitterX
                 className={`cursor-pointer ${
-                  isDarkMode ? "active:text-[#FFD700]" : "active:text-[#FFD700]"
+                  isDarkMode ? "active:text-[#FFD700]" : "active:text-[#02BDEA]"
                 }`}
               />
             </a>
@@ -135,7 +135,7 @@ export default function Hero() {
           </motion.div>
           <motion.button
             onClick={handleScrollToContact}
-            className={`rounded-full w-[180px] p-3 mt-10 cursor-pointer active:bg-yellow-500 flex items-center gap-2 justify-center text-white ${
+            className={`rounded-full w-[180px] p-3 mt-10 cursor-pointer active:bg-[#059fc6] flex items-center gap-2 justify-center text-white ${
               isDarkMode ? "bg-[#D3AF37] text-black" : "bg-[#02BDEA]"
             }`}
             id="contact"
