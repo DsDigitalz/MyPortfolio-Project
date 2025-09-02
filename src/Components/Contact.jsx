@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
-import { useTheme } from "./ThemeContext"; // Import the useTheme hook
+import { useTheme } from "./ThemeContext";
 
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -97,7 +97,7 @@ export default function Contact() {
             >
               <div className="lg:w-[70%]">
                 <h1 className="font-semibold text-2xl mt-5 mb-5 lg:mt-0">
-                  Lets's Connect
+                  Let's Connect
                 </h1>
                 <p>
                   Have a project in mind or want to discuss potential
@@ -267,8 +267,8 @@ export default function Contact() {
               <motion.button
                 className={`p-3 text-white font-semibold gap-3 flex justify-center rounded-full w-[50%] mt-10 cursor-pointer ${
                   isDarkMode
-                    ? "bg-[#D3AF37] active:bg-yellow-500"
-                    : "bg-[#02BDEA] active:bg-[#059fc6]"
+                    ? "bg-[#D3AF37] text-black active:bg-[#FFD700]"
+                    : "bg-[#02BDEA] text-white active:bg-[#059fc6]"
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -277,14 +277,12 @@ export default function Contact() {
                 {" "}
                 <p className={isDarkMode ? "text-black" : "text-white"}>
                   Submit
-                </p>
-                {" "}
+                </p>{" "}
                 <BsSend
                   className={`text-[24px] rounded-full p-1 ${
                     isDarkMode ? "bg-[#D3AF37] text-black" : "bg-sky-300"
                   }`}
-                />
-              {" "}
+                />{" "}
               </motion.button>
             </motion.form>
           </motion.div>

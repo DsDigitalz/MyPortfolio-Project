@@ -1,11 +1,11 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { FaFacebook } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { ImLinkedin } from "react-icons/im";
 import { FaInstagram } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
-import { motion } from "framer-motion";
 import { useTheme } from "./ThemeContext";
 
 export default function Hero() {
@@ -34,7 +34,7 @@ export default function Hero() {
         <motion.img
           src="danny.png"
           alt=""
-          className="mx-auto shadow-2xl  w-[45%] md:w-[35%] lg:w-[40%] xl:w-[30%] lg:mx-0"
+          className="mx-auto shadow-2xl w-[45%] md:w-[35%] lg:w-[40%] xl:w-[30%] lg:mx-0"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -75,7 +75,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
           >
-            UIUX/WEB DESIGNER/FRONTEND SOFTWARE DEVELOPER
+            UI/UX/WEB DESIGNER/FRONTEND SOFTWARE DEVELOPER
           </motion.p>
           <motion.p
             className={`text-[16px] text-center mt-3 font-normal leading-7 max-w-sm lg:max-w-none lg:w-[70%] lg:text-left ${
@@ -135,8 +135,10 @@ export default function Hero() {
           </motion.div>
           <motion.button
             onClick={handleScrollToContact}
-            className={`rounded-full w-[180px] p-3 mt-10 cursor-pointer active:bg-[#059fc6] flex items-center gap-2 justify-center text-white ${
-              isDarkMode ? "bg-[#D3AF37] text-black" : "bg-[#02BDEA]"
+            className={`rounded-full w-[180px] p-3 mt-10 cursor-pointer flex items-center gap-2 justify-center text-white ${
+              isDarkMode
+                ? "bg-[#D3AF37] text-black active:bg-[#FFD700]"
+                : "bg-[#02BDEA] active:bg-[#50cbea]"
             }`}
             id="contact"
             whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
