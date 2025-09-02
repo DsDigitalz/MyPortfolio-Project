@@ -34,7 +34,7 @@ export default function Navbar() {
   const line2Variants = {
     // Middle line
     closed: { opacity: 1 },
-    open: { opacity: 1,  },
+    open: { opacity: 1 },
   };
 
   const line3Variants = {
@@ -45,7 +45,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`px-5 scroll-smooth fixed top-0 z-50 right-0 left-0 md:flex md:justify-between md:px-10 ${
+      className={`px-5 scroll-smooth fixed top-0 z-50 right-0 left-0 items-center md:flex md:justify-between md:px-10 ${
         isDarkMode ? "bg-zinc-900 text-white" : "bg-white text-black"
       }`}
     >
@@ -56,11 +56,21 @@ export default function Navbar() {
           initial="hidden"
           animate="visible"
         >
-          DS
-          <span className={isDarkMode ? goldTextClass : blueTextClass}>
-            DIGIT
-          </span>
-          <span>ALZ</span>
+          {/* Conditional rendering for the logo */}
+          <div className="w-30 lg:w-40">
+            <motion.img
+              src={
+                isDarkMode
+                  ? "/public/DsDigitalz_2_logo-fotor-2025090202619-removebg-preview.png"
+                  : "/public/DsDigitalz_logo-removebg-preview.png"
+              }
+              alt="DsDigitalz Logo"
+              className="w-full"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            />
+          </div>
         </motion.div>
         <div className="flex justify-between items-center p-5"></div>
         <motion.button
