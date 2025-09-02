@@ -31,14 +31,14 @@ export default function TopServices() {
 
   return (
     <section
-      className={`pt-10 flex flex-col items-center pb-30 ${
+      className={`pt-10 lg:pt-20 flex flex-col items-center pb-30 ${
         isDarkMode ? "bg-zinc-900" : "bg-zinc-100"
       }`}
       id="services"
     >
-      <div className="mt-10">
+      <div className="">
         <motion.h1
-          className={`text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${
+          className={`lg:mb-7 text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${
             isDarkMode ? "text-white" : "text-black"
           }`}
           initial={{ opacity: 0, y: -20 }}
@@ -53,7 +53,7 @@ export default function TopServices() {
         </motion.h1>
 
         <motion.div
-          className="top_services grid lg:grid lg:grid-cols-2 2xl:grid 2xl:grid-cols-3 gap-10 mt-7"
+          className="top_services grid lg:grid lg:grid-cols-2 2xl:grid 2xl:grid-cols-3 gap-10 "
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

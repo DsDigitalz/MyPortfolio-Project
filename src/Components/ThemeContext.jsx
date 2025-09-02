@@ -1,11 +1,27 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 
-// Create a new Context
 const ThemeContext = createContext();
 
-// Create a Provider component to wrap your app
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // 1. Initialize state from localStorage
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    try {
+      const storedTheme = window.localStorage.getItem("theme");
+      return storedTheme === "dark" ? true : false;
+    } catch (error) {
+      console.error("Failed to access localStorage:", error);
+      return false; // Default to light mode on error
+    }
+  });
+
+  // 2. Save theme to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      window.localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    } catch (error) {
+      console.error("Failed to save theme to localStorage:", error);
+    }
+  }, [isDarkMode]);
 
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
@@ -18,7 +34,6 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the theme context
 export const useTheme = () => {
   return useContext(ThemeContext);
 };

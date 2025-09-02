@@ -28,7 +28,7 @@ export default function About() {
 
   return (
     <section
-      className={`flex flex-col items-center pt-20 pb-20 px-4 ${
+      className={` flex flex-col items-center pt-10 lg:pt-20 pb-20 px-4 ${
         isDarkMode ? "bg-slate-950 text-white" : "bg-zinc-50 text-black"
       }`}
       id="about"
@@ -47,7 +47,7 @@ export default function About() {
       </motion.h1>
 
       <motion.div
-        className={`w-full max-w-[1140px]  rounded-2xl flex flex-col items-center p-8 md:p-10 ${
+        className={` w-full max-w-[1140px]  rounded-2xl flex flex-col items-center p-8 md:p-10 ${
           isDarkMode ? "bg-zinc-900 shadow-zinc-700" : "bg-white shadow-sky-200"
         } shadow-2xl`}
         variants={containerVariants}
@@ -108,11 +108,11 @@ export default function About() {
               "React.JS",
               "Figma",
               "Adobe Xd",
+              "Framer",
               "Photoshop",
               "WordPress",
               "Elementor",
-              "Git",
-              "Github",
+              "Git/Github",
             ].map((skill, index) => (
               <motion.p
                 key={index}

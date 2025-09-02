@@ -32,14 +32,14 @@ export default function Portfolio() {
 
   return (
     <section
-      className={`portfolio1 w-100% pt-10 pb-30 flex flex-col items-center ${
+      className={`portfolio1 w-100% pt-10 lg:pt-20  pb-30 flex flex-col items-center ${
         isDarkMode
           ? "bg-gradient-to-l from-slate-800 via-gray-900 to-black text-white"
           : "bg-gradient-to-l from-purple-100 via-teal-50 to-white text-black"
       }`}
       id="portfolio"
     >
-      <div className="mt-10">
+      <div>
         <motion.h1
           className={`text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${
             isDarkMode ? "text-white" : "text-black"
@@ -63,7 +63,7 @@ export default function Portfolio() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div
-            className={`mt-7 w-[332px] pb-3 mx-auto flex justify-center shadow-2xl rounded-2xl hover:scale-103 hover:transition-all duration-300 ${
+            className={`lg:mt-7 w-[332px] pb-3 mx-auto flex justify-center shadow-2xl rounded-2xl hover:scale-103 hover:transition-all duration-300 ${
               isDarkMode
                 ? "bg-zinc-900 hover:shadow-zinc-700"
                 : "bg-white hover:shadow-sky-200"

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { IoSunnyOutline } from "react-icons/io5";
 import { WiMoonAltWaningGibbous6 } from "react-icons/wi";
-import { useTheme } from "./ThemeContext"; // Import the useTheme hook
+import { useTheme } from "./ThemeContext";
 
 export default function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
-  const { isDarkMode, toggleTheme } = useTheme(); // Use the theme state and toggle function
+  const { isDarkMode, toggleTheme } = useTheme();
 
   function toggleNavbar() {
     setOpenNavbar((prev) => !prev);
@@ -23,6 +23,25 @@ export default function Navbar() {
   const goldActiveClass = "active:text-amber-400";
   const blueHoverClass = "hover:text-sky-400";
   const blueActiveClass = "active:text-sky-500";
+
+  // Framer Motion variants for the hamburger lines
+  const line1Variants = {
+    // Top line
+    closed: { rotate: 0, y: 0 },
+    open: { rotate: -30, y: 1 },
+  };
+
+  const line2Variants = {
+    // Middle line
+    closed: { opacity: 1 },
+    open: { opacity: 1,  },
+  };
+
+  const line3Variants = {
+    // Bottom line
+    closed: { rotate: 0, y: 0 },
+    open: { rotate: 30, y: -1 },
+  };
 
   return (
     <header
@@ -51,21 +70,27 @@ export default function Navbar() {
           onClick={toggleNavbar}
           className="flex flex-col gap-1 justify-center relative md:hidden"
         >
-          <div
-            className={`rounded px-4 py-0.5 ${
+          <motion.div
+            variants={line1Variants}
+            animate={openNavbar ? "open" : "closed"}
+            className={`rounded px-3 py-[1.5px] ${
               isDarkMode ? "bg-white" : "bg-black"
             }`}
-          ></div>
-          <div
-            className={`rounded px-4 py-0.5 ${
+          ></motion.div>
+          <motion.div
+            variants={line2Variants}
+            animate={openNavbar ? "open" : "closed"}
+            className={`rounded px-3 py-[1.5px] ${
               isDarkMode ? "bg-white" : "bg-black"
             }`}
-          ></div>
-          <div
-            className={`rounded px-4 py-0.5 ${
+          ></motion.div>
+          <motion.div
+            variants={line3Variants}
+            animate={openNavbar ? "open" : "closed"}
+            className={`rounded px-3 py-[1.5px] ${
               isDarkMode ? "bg-white" : "bg-black"
             }`}
-          ></div>
+          ></motion.div>
         </motion.button>
       </div>
       <motion.nav
