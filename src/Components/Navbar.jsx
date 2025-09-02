@@ -56,20 +56,18 @@ export default function Navbar() {
           initial="hidden"
           animate="visible"
         >
-          {/* Conditional rendering for the logo */}
-          <div className="w-30 lg:w-40">
+          <div className="w-8 lg:w-15 flex items-center font-medium italic gap-1 lg:gap-2">
             <motion.img
-              src={
-                isDarkMode
-                  ? "/public/DsDigitalz_2_logo-fotor-2025090202619-removebg-preview.png"
-                  : "/public/DsDigitalz_logo-removebg-preview.png"
-              }
-              alt=""
-              className="w-full"
+              src="/arcticons--digitalsignage (1).svg"
+              alt="DsDigitalz Logo"
+              className={`w-full ${isDarkMode ? "filter invert" : ""}`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             />
+            <div>
+              <h1 className="text-[16px] lg:text-2xl">DsDigitalz</h1>
+            </div>
           </div>
         </motion.div>
         <div className="flex justify-between items-center p-5"></div>
