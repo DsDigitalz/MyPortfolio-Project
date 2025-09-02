@@ -64,7 +64,7 @@ export default function Navbar() {
                   ? "/public/DsDigitalz_2_logo-fotor-2025090202619-removebg-preview.png"
                   : "/public/DsDigitalz_logo-removebg-preview.png"
               }
-              alt="DsDigitalz Logo"
+              alt=""
               className="w-full"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
