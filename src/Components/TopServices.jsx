@@ -1,6 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "./ThemeContext"; // Import the useTheme hook
+import { useTheme } from "./ThemeContext";
+import { CgWebsite } from "react-icons/cg";
+import { MdOutlineAppSettingsAlt } from "react-icons/md";
+import { IoCodeSlash } from "react-icons/io5";
 
 // Define animation variants for the main container
 const containerVariants = {
@@ -26,6 +29,28 @@ const cardVariants = {
   },
 };
 
+// Array of card data
+const cards = [
+  {
+    icon: CgWebsite,
+    title: "Responsive Web Design",
+    description:
+      "Ensuring that designs are adaptable across various devices and screen sizes for a consistent user experience. Crafting aesthetically pleasing interfaces that align with brand identity and enhance user engagement.",
+  },
+  {
+    icon: MdOutlineAppSettingsAlt,
+    title: "Mobile App Design",
+    description:
+      "Ensuring the app is optimized for various screen sizes and orientations, providing a seamless experience across devices. Crafting visually appealing interfaces that align with brand identity and enhance user engagement",
+  },
+  {
+    icon: IoCodeSlash,
+    title: "Web (Front-end) Development",
+    description:
+      "Creating responsive and interactive web applications that deliver seamless user experiences across all devices. By leveraging modern technologies such as HTML, CSS, and JavaScript framework (like React)",
+  },
+];
+
 export default function TopServices() {
   const { isDarkMode } = useTheme();
 
@@ -36,7 +61,7 @@ export default function TopServices() {
       }`}
       id="services"
     >
-      <div className="">
+      <div>
         <motion.h1
           className={`lg:mb-7 text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${
             isDarkMode ? "text-white" : "text-black"
@@ -59,83 +84,39 @@ export default function TopServices() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* Animate each service card */}
-          <motion.div
-            className={`w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
-              isDarkMode
-                ? "bg-zinc-900 text-white border border-zinc-600 hover:shadow-zinc-700"
-                : "bg-white text-black hover:shadow-sky-200"
-            }`}
-            variants={cardVariants}
-          >
-            <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
-              <div>
-                <img src="web.png" alt="" />
-              </div>
-              <h1 className="font-semibold text-2xl text-center">
-                Responsive Web Design
-              </h1>
-              <p className="text-center">
-                Ensuring that designs are adaptable across various devices and
-                screen sizes for a consistent user experience. Crafting
-                aesthetically pleasing interfaces that align with brand identity
-                and enhance user engagement.
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className={`w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
-              isDarkMode
-                ? "bg-zinc-900  border border-zinc-600 text-white hover:shadow-zinc-700"
-                : "bg-white text-black hover:shadow-sky-200"
-            }`}
-            variants={cardVariants}
-          >
-            <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
-              <div>
-                <img src="mobile.png" alt="" />
-              </div>
-              <h1 className="font-semibold text-2xl text-center">
-                Mobile App Design
-              </h1>
-              <p className="text-center">
-                Ensuring the app is optimized for various screen sizes and
-                orientations, providing a seamless experience across devices.
-                Crafting visually appealing interfaces that align with brand
-                identity and enhance user engagement
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className={`w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
-              isDarkMode
-                ? "bg-zinc-900 text-white border border-zinc-600 hover:shadow-zinc-700"
-                : "bg-white text-black hover:shadow-sky-200"
-            }`}
-            variants={cardVariants}
-          >
-            <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
-              <div>
-                <img src="code.png" alt="" />
-              </div>
-              <h1 className="font-semibold text-2xl text-center">
-                Web (Front-end) Development
-              </h1>
-              <p className="text-center">
-                Creating responsive and interactive web applications that
-                deliver seamless user experiences across all devices. By
-                leveraging modern technologies such as HTML, CSS, and JavaScript
-                framework (like React)
-              </p>
-            </div>
-          </motion.div>
+          {/* Map through the cards array and render each card */}
+          {cards.map((card, index) => {
+            const IconComponent = card.icon;
+            return (
+              <motion.div
+                key={index}
+                className={`w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
+                  isDarkMode
+                    ? "bg-zinc-900 text-white border border-zinc-600 hover:shadow-zinc-700"
+                    : "bg-white text-black hover:shadow-sky-200"
+                }`}
+                variants={cardVariants}
+              >
+                <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
+                  <div>
+                    <IconComponent
+                      className={`text-4xl p-2 rounded-full ${
+                        isDarkMode
+                          ? "text-[#FFD700] bg-[#ffd9002e]"
+                          : "text-[#02BDEA] bg-[#b1e8f77e]"
+                      }`}
+                    />
+                  </div>
+                  <h1 className="font-semibold text-2xl text-center">
+                    {card.title}
+                  </h1>
+                  <p className="text-center">{card.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
   );
 }
-
-
-                  
