@@ -108,7 +108,7 @@ export default function Portfolio() {
           {portfolioData.map((project, index) => (
             <motion.div
               key={index}
-              className={`lg:mt-7 w-[332px] pb-3 mx-auto flex justify-center shadow-2xl rounded-2xl hover:scale-103 hover:transition-all duration-300 ${
+              className={`mt-7 w-[332px] pb-3 mx-auto flex justify-center shadow-2xl rounded-2xl hover:scale-103 hover:transition-all duration-300 ${
                 isDarkMode
                   ? "bg-zinc-900 hover:shadow-zinc-700"
                   : "bg-white hover:shadow-sky-200"

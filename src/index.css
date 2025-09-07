@@ -20,7 +20,7 @@
   /* background: linear-gradient(90deg, #f8ddfb, #fff, #f3fdfb, #e6fbf6); */
 /* } */
 
-.About_Container,
+/* .About_Container,
 .top_services,
 .portfolio {
   opacity: 1;
@@ -33,7 +33,7 @@
 .portfolio:hover {
   opacity: 1;
   transform: translateY(0);
-}
+} */
 
 .fade_text {
   animation: colorFade 10s ease-in-out infinite;

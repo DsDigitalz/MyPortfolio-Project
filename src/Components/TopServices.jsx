@@ -63,7 +63,7 @@ export default function TopServices() {
     >
       <div>
         <motion.h1
-          className={`lg:mb-7 text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${
+          className={`mb-7 text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${
             isDarkMode ? "text-white" : "text-black"
           }`}
           initial={{ opacity: 0, y: -20 }}
@@ -72,7 +72,7 @@ export default function TopServices() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           Top{" "}
-          <span className={isDarkMode ? "text-[#FFD700]" : "text-[#02BDEA]"}>
+          <span className={isDarkMode ? "text-[#FFD700]" : "text-[#02BDEA]" } >
             Services
           </span>
         </motion.h1>
@@ -90,7 +90,7 @@ export default function TopServices() {
             return (
               <motion.div
                 key={index}
-                className={`w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
+                className={` w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
                   isDarkMode
                     ? "bg-zinc-900 text-white border border-zinc-600 hover:shadow-zinc-700"
                     : "bg-white text-black hover:shadow-sky-200"
