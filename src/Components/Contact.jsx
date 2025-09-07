@@ -63,7 +63,7 @@ export default function Contact() {
       }`}
       id="con"
     >
-      <div className="mt-10">
+      <div className="mt-5">
         <div>
           <motion.h1
             className={`text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${

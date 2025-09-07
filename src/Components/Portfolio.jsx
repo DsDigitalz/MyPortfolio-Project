@@ -75,7 +75,7 @@ export default function Portfolio() {
 
   return (
     <section
-      className={`portfolio1 w-100% pt-10 lg:pt-20  pb-30 flex flex-col items-center ${
+      className={`portfolio1 w-100% pt-10 lg:pt-20  pb-20 flex flex-col items-center ${
         isDarkMode
           ? "bg-gradient-to-l from-slate-800 via-gray-900 to-black text-white"
           : "bg-gradient-to-l from-purple-100 via-teal-50 to-white text-black"

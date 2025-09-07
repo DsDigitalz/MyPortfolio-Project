@@ -56,7 +56,7 @@ export default function TopServices() {
 
   return (
     <section
-      className={`pt-10 lg:pt-20 flex flex-col items-center pb-30 ${
+      className={`pt-10 lg:pt-20 flex flex-col items-center pb-20 ${
         isDarkMode ? "bg-zinc-900" : "bg-zinc-100"
       }`}
       id="services"
