@@ -130,7 +130,7 @@ export default function Portfolio() {
                   </div>
                 </div>
                 <div
-                  className={`flex flex-col gap-2 items-center p-3 ${
+                  className={`flex flex-col gap-2 items-center text-center p-3 ${
                     isDarkMode ? "text-white" : "text-black"
                   }`}
                 >
