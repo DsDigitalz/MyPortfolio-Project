@@ -62,11 +62,11 @@ const portfolioData = [
     link: "https://procleaningservices.netlify.app/",
   },
   {
-    imgSrc: "travel.png",
+    imgSrc: "moviestrap.png",
     category: "FRONT-END WEB DEVELOPMENT",
-    title: "Travel Website Landing Page(Desktop Screen Only)",
-    description: "Designed a travel website with HTML and CSS",
-    link: "https://jadootrav.netlify.app/",
+    title: "Moviestrap Landing Page",
+    description: "Designed a travel website with HTML, CSS and Bootstrap",
+    link: "https://moviestrap.netlify.app/",
   },
 ];
 
