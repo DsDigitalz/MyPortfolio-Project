@@ -68,6 +68,14 @@ const portfolioData = [
     description: "Designed a travel website with HTML, CSS and Bootstrap",
     link: "https://moviestrap.netlify.app/",
   },
+  {
+    imgSrc: "techimg.png",
+    category: "FRONT-END WEB DEVELOPMENT",
+    title: "Event Website Page",
+    description:
+      "Designed a travel website with React, TailwindCSS and Framer Motion",
+    link: "https://monkevent.netlify.app/",
+  },
 ];
 
 export default function Portfolio() {
