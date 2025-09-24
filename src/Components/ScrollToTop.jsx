@@ -4,7 +4,7 @@ import { useTheme } from "./ThemeContext"; // Import the useTheme hook
 
 export default function ScrollToTop() {
   const { isDarkMode } = useTheme();
-  const [showScrollButton, setShowScrollButton] = useState(true);
+  const [showScrollButton, setShowScrollButton] = useState(false); // Changed to false
 
   function toggleScrollButton() {
     if (window.scrollY > 300) {
