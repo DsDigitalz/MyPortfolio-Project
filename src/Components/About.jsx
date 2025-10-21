@@ -89,7 +89,7 @@ export default function About() {
             }`}
             variants={itemVariants}
           >
-            My Skills
+            Skills & Certifications
           </motion.h1>
           <motion.div
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-center"
@@ -123,10 +123,32 @@ export default function About() {
                 }`}
                 variants={itemVariants}
               >
-                {skill}
+                x{skill}
               </motion.p>
             ))}
           </motion.div>
+           <motion.a
+          href="My-CV.pdf"
+          download="My-CV.pdf"
+          className={`rounded-full w-[180px] p-3 mt-5 active:bg-[#059fc6] cursor-pointer flex items-center gap-2 justify-center text-white ${
+            isDarkMode ? "bg-[#D3AF37] text-black" : "bg-[#02BDEA]"
+          }`}
+          variants={itemVariants}
+          whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+        >
+          <p
+            className={`text-base font-semibold ${
+              isDarkMode ? "text-black" : "text-white"
+            }`}
+          >
+            View Certificates
+          </p>
+          {/* <IoDownloadOutline
+            className={`text-2xl rounded-full p-1 ${
+              isDarkMode ? "bg-[#D3AF37] text-black" : "bg-sky-300"
+            }`}
+          /> */}
+        </motion.a>
         </div>
 
         <div className="flex flex-col items-center mt-10 w-full">

@@ -149,7 +149,7 @@ export default function Contact() {
                     }`}
                   />
                 </a>
-                <a href="https://www.linkedin.com/in/daniel-sanu-b89298374?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+                <a href="https://www.linkedin.com/in/dsdigitalz/">
                   <ImLinkedin
                     className={`cursor-pointer ${
                       isDarkMode

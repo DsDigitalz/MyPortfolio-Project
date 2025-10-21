@@ -30,11 +30,11 @@ export default function Hero() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="mx-auto max-w-[1440px] pt-35 lg:pt-50 pb-20 px-4 flex flex-col items-center lg:flex-row-reverse lg:justify-between lg:gap-7 lg:px-40">
+      <div className="mx-auto max-w-[1440px] pt-35 lg:pt-50 pb-20 px-4 flex flex-col items-center lg:flex-row-reverse lg:justify-between lg:gap-7 lg:px-40 h-full lg:h-screen ">
         <motion.img
-          src="danny.png"
+          src="heroimg.png"
           alt=""
-          className="mx-auto shadow-2xl w-[45%] md:w-[35%] lg:w-[40%] xl:w-[30%] lg:mx-0"
+          className="mx-auto shadow-2xl w-[45%] md:w-[35%] lg:w-[50%] xl:w-[30%] lg:mx-0"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -111,7 +111,7 @@ export default function Hero() {
                 }`}
               />
             </a>
-            <a href="https://www.linkedin.com/in/daniel-sanu-b89298374?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+            <a href="https://www.linkedin.com/in/dsdigitalz/">
               <ImLinkedin
                 className={`cursor-pointer ${
                   isDarkMode ? "active:text-[#FFD700]" : "active:text-[#02BDEA]"

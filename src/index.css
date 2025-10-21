@@ -1,5 +1,6 @@
 @import "tailwindcss";
-:root {
+
+body {
   font-family: Josefin Sans;
 }
 
@@ -17,7 +18,7 @@
 }
 
 /* .portfolio1 { */
-  /* background: linear-gradient(90deg, #f8ddfb, #fff, #f3fdfb, #e6fbf6); */
+/* background: linear-gradient(90deg, #f8ddfb, #fff, #f3fdfb, #e6fbf6); */
 /* } */
 
 /* .About_Container,
