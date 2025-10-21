@@ -1,12 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaFacebook } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { ImLinkedin } from "react-icons/im";
-import { FaInstagram } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
-import { useTheme } from "./ThemeContext";
+import { useTheme } from "./ThemeContext"; // Assuming this hook provides isDarkMode
 
 export default function Hero() {
   const { isDarkMode } = useTheme();
@@ -18,32 +16,78 @@ export default function Hero() {
     }
   };
 
+  // Determine the correct image source based on the theme
+  const heroImageSrc = isDarkMode ? "heroimg.png" : "heroimg3.png";
+
+  // Framer Motion variants for the scroll effect (slide-in and fade-in)
+  const containerVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, x: 50, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: { duration: 0.8, delay: 0.2, ease: "easeOut" },
+    },
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, delay: 0.4, ease: "easeOut" },
+    },
+  };
+
+  // Sub-component for a single Motion Image with animation
+  const MotionHeroImage = ({ src, className }) => (
+    <motion.img
+      key={src} // Key is essential to force a re-render and re-animate when the source changes
+      src={src}
+      alt="Hero Image"
+      className={className}
+      variants={imageVariants}
+      initial="hidden"
+      whileInView="visible" // Animate on scroll (when in view)
+      viewport={{ once: true, amount: 0.3 }} // Once in view, trigger animation
+    />
+  );
+
   return (
-    <motion.section
+    <motion.main // Changed to <main> for better semantic structure
       className={`hero ${
         isDarkMode
           ? "bg-gradient-to-l from-slate-800 via-gray-900 to-black text-white"
           : "bg-gradient-to-l from-purple-100 via-teal-50 to-white text-black"
       }`}
       id="home"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible" // Animate the section itself on scroll
+      viewport={{ once: true, amount: 0.1 }}
     >
       <div className="mx-auto max-w-[1440px] pt-35 lg:pt-50 pb-20 px-4 flex flex-col items-center lg:flex-row-reverse lg:justify-between lg:gap-7 lg:px-40 h-full lg:h-screen ">
-        <motion.img
-          src="heroimg.png"
-          alt=""
+        {/* Conditional Image Rendering */}
+        <MotionHeroImage
+          src={heroImageSrc}
           className="mx-auto shadow-2xl w-[45%] md:w-[35%] lg:w-[50%] xl:w-[30%] lg:mx-0"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
         />
+
         <motion.div
           className="mt-10 lg:mt-0 font-semibold text-[40px] flex flex-col items-center lg:items-start pb-5 lg:flex-1 lg:flex lg:flex-col"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          variants={contentVariants}
+          initial="hidden"
+          whileInView="visible" // Animate content on scroll
+          viewport={{ once: true, amount: 0.2 }}
         >
           <div className="w-full text-center lg:text-left">
             <motion.h1
@@ -51,7 +95,8 @@ export default function Hero() {
                 isDarkMode ? "text-white" : "text-black"
               }`}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               Hi, I'm
@@ -61,7 +106,8 @@ export default function Hero() {
                 isDarkMode ? "text-[#D3AF37]" : "text-[#02BDEA]"
               }`}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               Daniel Sanu
@@ -72,7 +118,8 @@ export default function Hero() {
               isDarkMode ? "text-gray-300" : "text-gray-700"
             }`}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 1.0 }}
           >
             UI/UX/WEB DESIGNER/FRONTEND SOFTWARE DEVELOPER
@@ -82,7 +129,8 @@ export default function Hero() {
               isDarkMode ? "text-gray-400" : "text-gray-600"
             }`}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
             As a UI/UX, Web designer and front-end software developer, I
@@ -94,16 +142,10 @@ export default function Hero() {
               isDarkMode ? "text-white" : "text-black"
             }`}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 1.4 }}
           >
-            <a href="https://www.facebook.com/daniel.sanu.16/">
-              <FaFacebook
-                className={`cursor-pointer ${
-                  isDarkMode ? "active:text-[#fdc705]" : "active:text-[#02BDEA]"
-                }`}
-              />
-            </a>
             <a href="https://x.com/daniel_san4975">
               <BsTwitterX
                 className={`cursor-pointer ${
@@ -113,13 +155,6 @@ export default function Hero() {
             </a>
             <a href="https://www.linkedin.com/in/dsdigitalz/">
               <ImLinkedin
-                className={`cursor-pointer ${
-                  isDarkMode ? "active:text-[#FFD700]" : "active:text-[#02BDEA]"
-                }`}
-              />
-            </a>
-            <a href="https://www.instagram.com/danielsanu35/?hl=en">
-              <FaInstagram
                 className={`cursor-pointer ${
                   isDarkMode ? "active:text-[#FFD700]" : "active:text-[#02BDEA]"
                 }`}
@@ -143,7 +178,8 @@ export default function Hero() {
             id="contact"
             whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 1.6 }}
           >
             <p
@@ -161,6 +197,6 @@ export default function Hero() {
           </motion.button>
         </motion.div>
       </div>
-    </motion.section>
+    </motion.main>
   );
 }

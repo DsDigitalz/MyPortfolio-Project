@@ -6,10 +6,10 @@ import { useTheme } from "./ThemeContext";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
-import { FaFacebook } from "react-icons/fa";
+// import { FaFacebook } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { ImLinkedin } from "react-icons/im";
-import { FaInstagram } from "react-icons/fa6";
+// import { FaInstagram } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { BsSend } from "react-icons/bs";
 
@@ -131,7 +131,7 @@ export default function Contact() {
                 className="flex gap-7 pt-[40px] text-xl"
                 variants={itemVariants}
               >
-                <a href="https://www.facebook.com/daniel.sanu.16/">
+                {/* <a href="https://www.facebook.com/daniel.sanu.16/">
                   <FaFacebook
                     className={`cursor-pointer ${
                       isDarkMode
@@ -139,7 +139,7 @@ export default function Contact() {
                         : "active:text-[#02BDEA]"
                     }`}
                   />
-                </a>
+                </a> */}
                 <a href="https://x.com/daniel_san4975">
                   <BsTwitterX
                     className={`cursor-pointer ${
@@ -158,15 +158,15 @@ export default function Contact() {
                     }`}
                   />
                 </a>
-                <a href="https://www.instagram.com/danielsanu35/?hl=en">
-                  <FaInstagram
+                {/* <a href="https://www.instagram.com/danielsanu35/?hl=en">
+                  {/* <FaInstagram
                     className={`cursor-pointer ${
                       isDarkMode
                         ? "active:text-[#FFD700]"
                         : "active:text-[#02BDEA]"
                     }`}
                   />
-                </a>
+                </a> */} 
                 <a href="https://github.com/DsDigitalz">
                   <FaGithub
                     className={`cursor-pointer ${
