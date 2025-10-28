@@ -106,6 +106,8 @@ export default function About() {
               "Bootstrap",
               "TailwindCSS",
               "React.JS",
+              "Next.JS",
+              "Vue.JS",
               "Figma",
               "Adobe Xd",
               "Framer",
@@ -123,32 +125,32 @@ export default function About() {
                 }`}
                 variants={itemVariants}
               >
-                x{skill}
+                {skill}
               </motion.p>
             ))}
           </motion.div>
-           <motion.a
-          href="My-CV.pdf"
-          download="My-CV.pdf"
+          {/* <motion.a
+          href="My_CV.pdf"
+          download="My_CV.pdf"
           className={`rounded-full w-[180px] p-3 mt-5 active:bg-[#059fc6] cursor-pointer flex items-center gap-2 justify-center text-white ${
             isDarkMode ? "bg-[#D3AF37] text-black" : "bg-[#02BDEA]"
           }`}
           variants={itemVariants}
           whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-        >
-          <p
+        > */}
+          {/* <p
             className={`text-base font-semibold ${
               isDarkMode ? "text-black" : "text-white"
             }`}
           >
             View Certificates
-          </p>
+          </p> */}
           {/* <IoDownloadOutline
             className={`text-2xl rounded-full p-1 ${
               isDarkMode ? "bg-[#D3AF37] text-black" : "bg-sky-300"
             }`}
           /> */}
-        </motion.a>
+          {/* </motion.a> */}
         </div>
 
         <div className="flex flex-col items-center mt-10 w-full">
@@ -178,10 +180,12 @@ export default function About() {
         </div>
 
         <motion.a
-          href="My-CV.pdf"
-          download="My-CV.pdf"
+          href="My_CV.pdf"
+          download="My_CV.pdf"
           className={`rounded-full w-[180px] p-3 mt-10 active:bg-[#059fc6] cursor-pointer flex items-center gap-2 justify-center text-white ${
-            isDarkMode ? "bg-[#D3AF37] text-black" : "bg-[#02BDEA]"
+            isDarkMode
+              ? "bg-[#D3AF37] text-black active:bg-[#FFD700]"
+              : "bg-[#02BDEA] active:bg-[#50cbea]"
           }`}
           variants={itemVariants}
           whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
