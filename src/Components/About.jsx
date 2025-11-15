@@ -89,7 +89,7 @@ export default function About() {
             }`}
             variants={itemVariants}
           >
-            Skills & Certifications
+            My Skills
           </motion.h1>
           <motion.div
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-center"
@@ -168,20 +168,19 @@ export default function About() {
             }`}
             variants={itemVariants}
           >
-            Collaborated with cross-functional teams to design and develop
-            user-friendly web applications, ensuring a seamless integration of
-            UI/UX principles with front-end development. Conducted user research
-            and usability testing to gather insights, which informed design
-            decisions and improved overall user satisfaction. Created
-            wireframes, prototypes, and high-fidelity mockups using tools such
-            as Figma and Adobe XD, translating complex ideas into intuitive
-            interfaces.
+            Designed and developed user-centered web applications by integrating
+            UI/UX principles with front-end technologies. Conducted user
+            research and usability testing to inform design decisions, improving
+            overall user satisfaction. Created wireframes, interactive
+            prototypes, and high-fidelity mockups using Figma and Adobe XD,
+            translating complex concepts into intuitive, visually engaging
+            interfaces that enhanced usability and engagement.
           </motion.p>
         </div>
 
         <motion.a
-          href="My_CV.pdf"
-          download="My_CV.pdf"
+          href="Dan_CV(1).pdf"
+          download="Dan_CV(1).pdf"
           className={`rounded-full w-[180px] p-3 mt-10 active:bg-[#059fc6] cursor-pointer flex items-center gap-2 justify-center text-white ${
             isDarkMode
               ? "bg-[#D3AF37] text-black active:bg-[#FFD700]"

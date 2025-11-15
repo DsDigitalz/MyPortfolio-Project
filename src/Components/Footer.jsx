@@ -17,7 +17,11 @@ export default function Footer() {
   // Define the animation variants
   const fadeInVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   // Use useEffect to trigger the animation when the element is in view
@@ -32,14 +36,13 @@ export default function Footer() {
       className="bg-black p-10 w-full mt-10"
       id="footer"
       ref={ref} // Attach the ref to the element
-      variants={fadeInVariants}
-      initial="hidden"
-      animate={controls}
     >
       <div className="flex flex-col justify-center gap-10 items-center lg:flex-row lg:justify-between lg:px-20 lg:py-10">
         <motion.div
           className="font-bold text-[20px] lg:text-[24px] text-white"
           variants={fadeInVariants}
+          initial="hidden"
+          animate={controls}
         >
           DS
           <span className={isDarkMode ? "text-[#D3AF37]" : "text-[#02BDEA]"}>
