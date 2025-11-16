@@ -14,14 +14,14 @@ const portfolioData = [
       "Designed a real estate UX case study highlighting user research, wireframes, and prototypes",
     link: "https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?node-id=420-1261",
   },
-  {
-    imgSrc: "banner.jpg",
-    category: "UI/UX DESIGN",
-    title: "Corporate Web Design",
-    description:
-      "Designed a corporate website UI design with a focus on simplicity and professionalism",
-    link: "https://www.figma.com/proto/ea3BmYTbhJQPRs5TX0zBOl/Corporate-Website?node-id=239-296",
-  },
+  // {
+  //   imgSrc: "banner.jpg",
+  //   category: "UI/UX DESIGN",
+  //   title: "Corporate Web Design",
+  //   description:
+  //     "Designed a corporate website UI design with a focus on simplicity and professionalism",
+  //   link: "https://www.figma.com/proto/ea3BmYTbhJQPRs5TX0zBOl/Corporate-Website?node-id=239-296",
+  // },
   {
     imgSrc: "estate.png",
     category: "UI/UX DESIGN",
