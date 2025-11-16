@@ -10,9 +10,9 @@ const containerVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.3,
       ease: "easeOut",
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
     },
   },
 };

@@ -31,6 +31,22 @@ const portfolioData = [
     link: "https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?page-id=135%3A760&node-id=135-761",
   },
   {
+    imgSrc: "audiophile.png",
+    category: "FRONT-END WEB DEVELOPMENT",
+    title: "Audiophile Ecommerce Website",
+    description:
+      "Built a fully functional Audiophile e-commerce web app using Next.js and TailwindCSS",
+    link: "https://audicommerce.netlify.app/",
+  },
+  {
+    imgSrc: "ticketrax.png",
+    category: "FRONT-END WEB DEVELOPMENT",
+    title: "Ticket Management Web Application",
+    description:
+      "A full-featured ticket management system built with VueJS and TailwindCSS",
+    link: "https://ticketrax-vue.netlify.app/",
+  },
+  {
     imgSrc: "Cover.png",
     category: "FRONT-END WEB DEVELOPMENT",
     title: "ProCleaning Services Website",
@@ -42,7 +58,7 @@ const portfolioData = [
     imgSrc: "moviestrap.png",
     category: "FRONT-END WEB DEVELOPMENT",
     title: "Moviestrap Landing Page",
-    description: "Designed a travel website with HTML, CSS and Bootstrap",
+    description: "Developed a travel website with HTML, CSS and Bootstrap",
     link: "https://moviestrap.netlify.app/",
   },
   {
@@ -113,7 +129,7 @@ export default function Portfolio() {
         {/* Left arrow */}
         <button
           onClick={scrollLeft}
-          className="absolute left-0 z-10 h-10 w-10 bg-gray-500/50 hover:bg-gray-600/70 rounded-full flex items-center justify-center text-white"
+          className="absolute left-0 z-10 h-10 w-10 bg-gray-500/70 hover:bg-gray-600/70 rounded-full flex items-center justify-center text-white"
         >
           &#8249;
         </button>
@@ -121,7 +137,7 @@ export default function Portfolio() {
         {/* Slider */}
         <div
           ref={sliderRef}
-          className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-2 py-4 w-full"
+          className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory px-2 py-4 w-full"
         >
           {portfolioData.map((project, index) => {
             const isActive = activeIndex === index;
@@ -178,7 +194,7 @@ export default function Portfolio() {
         {/* Right arrow */}
         <button
           onClick={scrollRight}
-          className="absolute right-0 z-10 h-10 w-10 bg-gray-500/50 hover:bg-gray-600/70 rounded-full flex items-center justify-center text-white"
+          className="absolute right-0 z-10 h-10 w-10 bg-gray-500/70 hover:bg-gray-600/70 rounded-full flex items-center justify-center text-white"
         >
           &#8250;
         </button>

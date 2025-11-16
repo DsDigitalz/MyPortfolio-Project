@@ -26,12 +26,11 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, // each child animates 0.1s after previous
+        staggerChildren: 0.1,
       },
     },
   };
 
-  // Common child variant
   const childVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -41,7 +40,6 @@ export default function Hero() {
     },
   };
 
-  // Motion image variant
   const imageVariants = {
     hidden: { opacity: 0, x: 50, scale: 0.8 },
     visible: {
@@ -62,20 +60,21 @@ export default function Hero() {
       }`}
       variants={containerVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+      animate="visible"
     >
       <div className="mx-auto max-w-[1440px] pt-35 lg:pt-50 pb-20 px-4 flex flex-col items-center lg:flex-row-reverse lg:justify-between lg:gap-7 lg:px-40 h-full lg:h-screen">
         {/* Hero Image */}
         <motion.img
-          key={heroImageSrc}
+          key={isDarkMode ? "dark" : "light"} // forces remount when mode changes
           src={heroImageSrc}
           alt="Hero Image"
           className="mx-auto shadow-2xl w-[45%] md:w-[35%] lg:w-[50%] xl:w-[30%] lg:mx-0"
           variants={imageVariants}
+          initial="hidden"
+          animate="visible"
         />
 
-        {/* Hero Text and Buttons */}
+        {/* Hero Text */}
         <motion.div
           className="mt-10 lg:mt-0 font-semibold text-[40px] flex flex-col items-center lg:items-start pb-5 lg:flex-1 lg:flex lg:flex-col"
           variants={containerVariants}
