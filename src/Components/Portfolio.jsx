@@ -155,15 +155,15 @@ export default function Portfolio() {
                 <motion.div
                   className={`absolute inset-0 flex flex-col items-center justify-center p-4 text-center rounded-2xl transition-opacity duration-300 ${
                     isDarkMode
-                      ? "bg-black/70 text-white"
-                      : "bg-white/80 text-black"
+                      ? "bg-black/90 text-white"
+                      : "bg-white/100 text-black"
                   } ${isActive ? "opacity-100" : "opacity-0"}`}
                   variants={overlayVariants}
                   initial="hidden"
                   animate={isActive ? "visible" : "hidden"}
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 >
-                  <p className="text-zinc-300">{project.category}</p>
+                  <p className="text-zinc-400">{project.category}</p>
                   <h1 className="font-semibold text-lg">{project.title}</h1>
                   <p className="text-[14px] mt-2">{project.description}</p>
                   <a
