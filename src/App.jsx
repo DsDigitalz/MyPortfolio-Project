@@ -8,6 +8,7 @@ import Portfolio from "./Components/Portfolio";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
+import WhatsAppButton from "./Components/WhatsAppButton";
 import { ThemeProvider } from "./Components/ThemeContext";
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
         <Contact />
         <Footer />
         <ScrollToTop />
+        <WhatsAppButton />
       </ThemeProvider>
     </div>
   );
