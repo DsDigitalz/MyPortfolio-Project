@@ -6,8 +6,8 @@ const WhatsAppButton = () => {
       <a
         href="https://wa.me/2349137846680"
         className=" fixed  
-        bottom-5 right-5 
-        w-14 h-14 
+        bottom-5 right-4 md:bottom-5 md:right-5 
+        w-12 h-12 md:w-14 md:h-14 
         bg-[#25D366] 
         rounded-full 
         flex items-center justify-center 
