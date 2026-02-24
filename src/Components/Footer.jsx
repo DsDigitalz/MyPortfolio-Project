@@ -1,115 +1,93 @@
-import React, { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
-import { IoIosArrowRoundUp } from "react-icons/io";
-import ScrollToTop from "./ScrollToTop";
-import { useTheme } from "./ThemeContext"; // Import the useTheme hook
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { useTheme } from "./ThemeContext";
 
 export default function Footer() {
   const { isDarkMode } = useTheme();
 
-  // Create a ref for the element you want to track
-  const ref = useRef(null);
-  // useInView hook to detect if the element is visible
-  const isInView = useInView(ref, { once: true });
-  // useAnimation hook to control the animation
-  const controls = useAnimation();
-
-  // Define the animation variants
-  const fadeInVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
+  // Animation Variant for Scroll Reveal
+  const scrollReveal = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
     },
+    viewport: { once: true },
   };
 
-  // Use useEffect to trigger the animation when the element is in view
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
-  }, [isInView, controls]);
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Contact", href: "#con" },
+  ];
 
   return (
-    <motion.section
-      className="bg-black p-10 w-full mt-10"
+    <footer
       id="footer"
-      ref={ref} // Attach the ref to the element
+      className={`w-full py-12 px-6 transition-colors duration-500 ${
+        isDarkMode
+          ? "bg-[#050505] border-t border-white/5"
+          : "bg-slate-900 text-white"
+      }`}
     >
-      <div className="flex flex-col justify-center gap-10 items-center lg:flex-row lg:justify-between lg:px-20 lg:py-10">
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
+        {/* Top Section: Logo and Navigation */}
+        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8 pb-10">
+          {/* Logo */}
+          <motion.div
+            className="text-2xl font-black tracking-tighter"
+            {...scrollReveal}
+          >
+            <span className="text-white">DS</span>
+            <span className={isDarkMode ? "text-yellow-500" : "text-sky-400"}>
+              DIGIT
+            </span>
+            <span className="text-white">ALZ</span>
+          </motion.div>
+
+          {/* Navigation Links */}
+          <nav>
+            <motion.ul
+              className="flex flex-wrap justify-center gap-6 md:gap-10"
+              {...scrollReveal}
+            >
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className={`text-sm font-medium transition-colors duration-300 ${
+                      isDarkMode
+                        ? "text-gray-400 hover:text-yellow-500"
+                        : "text-slate-300 hover:text-sky-400"
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </motion.ul>
+          </nav>
+        </div>
+
+        {/* Divider and Copyright */}
         <motion.div
-          className="font-bold text-[20px] lg:text-[24px] text-white"
-          variants={fadeInVariants}
-          initial="hidden"
-          animate={controls}
+          className={`w-full pt-8 border-t text-center ${
+            isDarkMode ? "border-white/5" : "border-white/10"
+          }`}
+          {...scrollReveal}
         >
-          DS
-          <span className={isDarkMode ? "text-[#D3AF37]" : "text-[#02BDEA]"}>
-            DIGIT
-          </span>
-          <span className="text-white">ALZ</span>
+          <p className="text-xs md:text-sm text-gray-500 tracking-wide">
+            © {new Date().getFullYear()}{" "}
+            <span className="font-bold">DSDigitalz</span>. All rights reserved.
+            Crafted with passion.
+          </p>
         </motion.div>
-        <motion.ul
-          className="text-zinc-300 text-[12px] flex items-center gap-5 lg:flex lg:flex-row"
-          variants={fadeInVariants}
-        >
-          <li
-            className={`cursor-pointer ${
-              isDarkMode
-                ? "hover:text-amber-400 active:text-amber-500"
-                : "hover:text-sky-400 active:text-sky-500"
-            }`}
-          >
-            <a href="#home">Home</a>
-          </li>
-          <li
-            className={`cursor-pointer ${
-              isDarkMode
-                ? "hover:text-amber-400 active:text-amber-500"
-                : "hover:text-sky-400 active:text-sky-500"
-            }`}
-          >
-            <a href="#about">About</a>
-          </li>
-          <li
-            className={`cursor-pointer ${
-              isDarkMode
-                ? "hover:text-amber-400 active:text-amber-500"
-                : "hover:text-sky-400 active:text-sky-500"
-            }`}
-          >
-            <a href="#services">Services</a>
-          </li>
-          <li
-            className={`cursor-pointer ${
-              isDarkMode
-                ? "hover:text-amber-400 active:text-amber-500"
-                : "hover:text-sky-400 active:text-sky-500"
-            }`}
-          >
-            <a href="#portfolio">Portfolio</a>
-          </li>
-          <li
-            className={`cursor-pointer ${
-              isDarkMode
-                ? "hover:text-amber-400 active:text-amber-500"
-                : "hover:text-sky-400 active:text-sky-500"
-            }`}
-          >
-            <a href="#con">Contact</a>
-          </li>
-        </motion.ul>
       </div>
-      <motion.div
-        className="text-center mt-10 border-t-1 pt-5 text-zinc-400 w-[85%] sm:w-[50%] lg:w-[85%] xl:w-[90%] mx-auto md"
-        variants={fadeInVariants}
-      >
-        <h1 className="text-zinc-400 text-[12px] md:text-[14px] lg:text-[14px]">
-          ©2025DSDigitalzPortfolio.All rights reserved.
-        </h1>
-      </motion.div>
-      {/* <ScrollToTop /> */}
-    </motion.section>
+    </footer>
   );
 }

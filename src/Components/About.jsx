@@ -1,208 +1,179 @@
+"use client";
+
 import React from "react";
 import { IoDownloadOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
-import { useTheme } from "./ThemeContext"; // Import the useTheme hook
-
-// Define animation variants for the main container
-const containerVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-// Define variants for child elements (e.g., text, skills)
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+import { useTheme } from "./ThemeContext";
+import {
+  HiCode,
+  HiChip,
+  // HiLibrary,
+  // HiDatabase,
+  // HiTerminal,
+  HiSparkles,
+} from "react-icons/hi";
 
 export default function About() {
-  const { isDarkMode } = useTheme(); // Access the dark mode state
+  const { isDarkMode } = useTheme();
+
+  // Animation variants: Fade + Slide Up for scroll effect
+  const scrollReveal = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+    viewport: { once: true, amount: 0.1 },
+  };
+
+  // is tailwind a frontend framework?
+  // ye
+  const skillCategories = [
+    {
+      title: "Basic",
+      icon: <HiCode />,
+      skills: ["Figma", "Html", "Css", "Javascript", "Typescript"],
+    },
+    {
+      title: "Framework/Library",
+      icon: <HiChip />,
+      skills: ["React.js", "Vue.js", "Next.js", "Bootstrap", "TailwindCSS"],
+    },
+    // { title: "Library", icon: <HiLibrary />, skills: ["jQuery", "React.js"] },
+    // {
+    //   title: "Backend",
+    //   icon: <HiTerminal />,
+    //   skills: ["Node.js", "Express.js"],
+    // },
+    // { title: "Database", icon: <HiDatabase />, skills: ["MySQL", "MongoDB"] },
+    {
+      title: "Extra",
+      icon: <HiSparkles />,
+      skills: ["Git", "Github", "Adobe XD", "Wordpress", "Photoshop"],
+    },
+  ];
 
   return (
     <section
-      className={` flex flex-col items-center pt-10 lg:pt-20 pb-20 px-4 ${
-        isDarkMode ? "bg-slate-950 text-white" : "bg-zinc-50 text-black"
-      }`}
       id="about"
+      className={`py-20 px-6 transition-colors duration-500 ${
+        isDarkMode ? "bg-[#050505] text-white" : "bg-slate-50 text-slate-900"
+      }`}
     >
-      <motion.h1
-        className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center mb-10"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        About{" "}
-        <span className={isDarkMode ? "text-[#D3AF37]" : "text-[#02BDEA]"}>
-          Me
-        </span>
-      </motion.h1>
-
-      <motion.div
-        className={` w-full max-w-[1140px]  rounded-2xl flex flex-col items-center p-8 md:p-10 ${
-          isDarkMode ? "bg-zinc-900 shadow-zinc-700" : "bg-white shadow-sky-200"
-        } shadow-2xl`}
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <motion.p
-          className={`text-lg font-semibold text-center mt-5 w-full max-w-2xl ${
-            isDarkMode ? "text-gray-300" : "text-black"
-          }`}
-          variants={itemVariants}
-        >
-          I am a UI/UX, Web Designer and front-end software developer based in
-          Nigeria. Has a background in Graphic Design
-        </motion.p>
-        <motion.p
-          className={`text-base text-center mt-5 leading-7 w-full max-w-3xl ${
-            isDarkMode ? "text-gray-400" : "text-black"
-          }`}
-          variants={itemVariants}
-        >
-          I am a UI/UX, Web designer and front-end software developer based in
-          Nigeria looking for exciting opportunities. Has Graphic Design
-          background and likes to focus on accessibility when designing or
-          developing, i am passionate and curious about solving problems and
-          giving nothing but the best. Driven by a commitment to continuous
-          learning and staying updated with industry trends, I am dedicated to
-          delivering high-quality work that exceeds expectations. Whether it's
-          developing a dynamic web application or designing a seamless user
-          experience, I am passionate about creating solutions that make a
-          positive impact.
-        </motion.p>
-
-        <div className="flex flex-col items-center gap-5 mt-10 w-full">
-          <motion.h1
-            className={`font-semibold text-2xl md:text-3xl lg:text-4xl text-center ${
-              isDarkMode ? "text-white" : "text-black"
-            }`}
-            variants={itemVariants}
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section */}
+        <header className="text-center mb-16">
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold"
+            {...scrollReveal}
           >
-            My Skills
-          </motion.h1>
+            About{" "}
+            <span className={isDarkMode ? "text-yellow-500" : "text-sky-500"}>
+              Me
+            </span>
+          </motion.h2>
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-center"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {[
-              "HTML5",
-              "CSS",
-              "Javascript",
-              "Typescript",
-              "Bootstrap",
-              "TailwindCSS",
-              "React.JS",
-              "Next.JS",
-              "Vue.JS",
-              "Figma",
-              "Adobe Xd",
-              "Framer",
-              "Photoshop",
-              "WordPress",
-              "Elementor",
-              "Git/Github",
-            ].map((skill, index) => (
-              <motion.p
-                key={index}
-                className={`rounded-lg py-1 px-4 ${
-                  isDarkMode
-                    ? "bg-zinc-800 text-gray-300"
-                    : "bg-sky-50 text-black"
-                }`}
-                variants={itemVariants}
-              >
-                {skill}
-              </motion.p>
-            ))}
-          </motion.div>
-          {/* <motion.a
-          href="My_CV.pdf"
-          download="My_CV.pdf"
-          className={`rounded-full w-[180px] p-3 mt-5 active:bg-[#059fc6] cursor-pointer flex items-center gap-2 justify-center text-white ${
-            isDarkMode ? "bg-[#D3AF37] text-black" : "bg-[#02BDEA]"
-          }`}
-          variants={itemVariants}
-          whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-        > */}
-          {/* <p
-            className={`text-base font-semibold ${
-              isDarkMode ? "text-black" : "text-white"
-            }`}
-          >
-            View Certificates
-          </p> */}
-          {/* <IoDownloadOutline
-            className={`text-2xl rounded-full p-1 ${
-              isDarkMode ? "bg-[#D3AF37] text-black" : "bg-sky-300"
-            }`}
-          /> */}
-          {/* </motion.a> */}
-        </div>
+            className={`h-1.5 w-20 mx-auto mt-4 rounded-full ${isDarkMode ? "bg-yellow-500" : "bg-sky-500"}`}
+            initial={{ width: 0 }}
+            whileInView={{ width: 80 }}
+            transition={{ duration: 1 }}
+          />
+        </header>
 
-        <div className="flex flex-col items-center mt-10 w-full">
-          <motion.h1
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-center ${
-              isDarkMode ? "text-white" : "text-black"
-            }`}
-            variants={itemVariants}
-          >
-            My Experience
-          </motion.h1>
+        {/* Biography Article */}
+        <article className="max-w-4xl mx-auto text-center mb-20 space-y-6">
           <motion.p
-            className={`text-base text-center mt-5 leading-7 w-full max-w-3xl ${
-              isDarkMode ? "text-gray-400" : "text-black"
-            }`}
-            variants={itemVariants}
+            className={`text-lg md:text-xl font-medium ${isDarkMode ? "text-gray-300" : "text-slate-700"}`}
+            {...scrollReveal}
           >
-            Designed and developed user-centered web applications by integrating
-            UI/UX principles with front-end technologies. Conducted user
-            research and usability testing to inform design decisions, improving
-            overall user satisfaction. Created wireframes, interactive
-            prototypes, and high-fidelity mockups using Figma and Adobe XD,
-            translating complex concepts into intuitive, visually engaging
-            interfaces that enhanced usability and engagement.
+            I am a Product Designer and Front-end Engineer based in Nigeria with
+            a background in Graphic Design.
           </motion.p>
+          <motion.p
+            className={`text-base leading-relaxed ${isDarkMode ? "text-gray-400" : "text-slate-600"}`}
+            {...scrollReveal}
+          >
+            I focus on accessibility, solving complex problems, and delivering
+            high-quality digital solutions. Whether it's a dynamic web
+            application or a seamless user experience, I am dedicated to
+            creating impactful work through continuous learning and industry
+            trends.
+          </motion.p>
+        </article>
+
+        {/* Skills Grid - Integrated from Image Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skillCategories.map((cat, idx) => (
+            <motion.article
+              key={idx}
+              {...scrollReveal}
+              whileHover={{ y: -10 }}
+              className={`relative p-8 rounded-2xl border transition-all duration-300 ${
+                isDarkMode
+                  ? "bg-zinc-900/50 border-white/10 hover:border-yellow-500/50 shadow-2xl shadow-black"
+                  : "bg-white border-slate-200 hover:border-sky-500/50 shadow-xl shadow-slate-200"
+              }`}
+            >
+              <div
+                className={`text-3xl mb-4 ${isDarkMode ? "text-yellow-500" : "text-sky-500"}`}
+              >
+                {cat.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-6 border-b pb-2 border-current/10">
+                {cat.title}
+              </h3>
+              <ul className="space-y-3">
+                {cat.skills.map((skill, sIdx) => (
+                  <li
+                    key={sIdx}
+                    className={`flex items-center gap-3 text-sm md:text-base ${isDarkMode ? "text-gray-400" : "text-slate-600"}`}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${isDarkMode ? "bg-yellow-500" : "bg-sky-500"}`}
+                    />
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
+          ))}
         </div>
 
-        <motion.a
-          href="Dan_CV(1).pdf"
-          download="Dan_CV(1).pdf"
-          className={`rounded-full w-[180px] p-3 mt-10 active:bg-[#059fc6] cursor-pointer flex items-center gap-2 justify-center text-white ${
-            isDarkMode
-              ? "bg-[#D3AF37] text-black active:bg-[#FFD700]"
-              : "bg-[#02BDEA] active:bg-[#50cbea]"
-          }`}
-          variants={itemVariants}
-          whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-        >
-          <p
-            className={`text-base font-semibold ${
-              isDarkMode ? "text-black" : "text-white"
+        {/* Experience & Download Footer */}
+        <div className="mt-20 flex flex-col items-center gap-10">
+          <motion.div className="max-w-3xl text-center" {...scrollReveal}>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              My Experience
+            </h3>
+            <p
+              className={`leading-relaxed ${isDarkMode ? "text-gray-400" : "text-slate-600"}`}
+            >
+              "As a Frontend Engineer and Product Designer, I bridge the gap
+              between complex logic and intuitive UX. From architecting the app
+              flow with modern tools like Figma to engineering high-performance
+              interfaces with libraries like React, I transform high-fidelity
+              Figma prototypes into scalable, user-centered applications that
+              drive engagement."
+            </p>
+          </motion.div>
+
+          <motion.a
+            href="Dan_CV.pdf"
+            download="Dan-CV.pdf"
+            className={`group flex items-center gap-3 px-10 py-4 rounded-full font-bold transition-all shadow-lg ${
+              isDarkMode
+                ? "bg-yellow-500 text-black hover:bg-yellow-400"
+                : "bg-sky-500 text-white hover:bg-sky-600"
             }`}
+            {...scrollReveal}
+            whileHover={{ scale: 1.05 }}
           >
             Download CV
-          </p>
-          <IoDownloadOutline
-            className={`text-2xl rounded-full p-1 ${
-              isDarkMode ? "bg-[#D3AF37] text-black" : "bg-sky-300"
-            }`}
-          />
-        </motion.a>
-      </motion.div>
+            <IoDownloadOutline className="text-2xl group-hover:translate-y-1 transition-transform" />
+          </motion.a>
+        </div>
+      </div>
     </section>
   );
 }

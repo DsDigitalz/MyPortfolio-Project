@@ -5,31 +5,6 @@ import { CgWebsite } from "react-icons/cg";
 import { MdOutlineAppSettingsAlt } from "react-icons/md";
 import { IoCodeSlash } from "react-icons/io5";
 
-// Define animation variants for the main container
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2, // Stagger the animation of child elements
-    },
-  },
-};
-
-// Define variants for the individual service cards
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
-
-// Array of card data
 const cards = [
   {
     icon: CgWebsite,
@@ -47,75 +22,113 @@ const cards = [
     icon: IoCodeSlash,
     title: "Web (Front-end) Development",
     description:
-      "Creating responsive and interactive web applications that deliver seamless user experiences across all devices. By leveraging modern technologies such as HTML, CSS, and JavaScript framework (like React)",
+      "Creating responsive and interactive web applications that deliver seamless user experiences across all devices. By leveraging modern technologies such as HTML, CSS, and JavaScript libraries like React.",
   },
 ];
 
 export default function TopServices() {
   const { isDarkMode } = useTheme();
 
+  // Scroll animation: Combined Fade + Slide Up
+  const scrollReveal = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+    viewport: { once: true, amount: 0.2 },
+  };
+
   return (
     <section
-      className={`pt-10 lg:pt-20 flex flex-col items-center pb-20 ${
-        isDarkMode ? "bg-zinc-900" : "bg-zinc-100"
-      }`}
       id="services"
+      className={`py-20 px-6 transition-colors duration-500 ${
+        isDarkMode ? "bg-[#0a0a0a]" : "bg-slate-50"
+      }`}
     >
-      <div>
-        <motion.h1
-          className={`mb-7 text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center ${
-            isDarkMode ? "text-white" : "text-black"
-          }`}
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          Top{" "}
-          <span className={isDarkMode ? "text-[#FFD700]" : "text-[#02BDEA]" } >
-            Services
-          </span>
-        </motion.h1>
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <header className="text-center mb-16">
+          <motion.h2
+            className={`text-4xl md:text-5xl font-bold ${isDarkMode ? "text-white" : "text-slate-900"}`}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Top{" "}
+            <span className={isDarkMode ? "text-yellow-500" : "text-sky-500"}>
+              Services
+            </span>
+          </motion.h2>
+          <motion.div
+            className={`h-1.5 w-24 mx-auto mt-4 rounded-full ${isDarkMode ? "bg-yellow-500" : "bg-sky-500"}`}
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            transition={{ duration: 1 }}
+          />
+        </header>
 
-        <motion.div
-          className="top_services grid lg:grid lg:grid-cols-2 2xl:grid 2xl:grid-cols-3 gap-10 "
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {/* Map through the cards array and render each card */}
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12">
           {cards.map((card, index) => {
             const IconComponent = card.icon;
             return (
-              <motion.div
+              <motion.article
                 key={index}
-                className={` w-[332px] h-[446px] mx-auto flex justify-center py-10 rounded-2xl hover:shadow-2xl hover:scale-103 hover:transition-all duration-300 ${
+                {...scrollReveal}
+                whileHover={{ y: -12 }}
+                className={`relative group p-10 rounded-3xl border transition-all duration-500 flex flex-col items-center text-center ${
                   isDarkMode
-                    ? "bg-zinc-900 text-white border border-zinc-600 hover:shadow-zinc-700"
-                    : "bg-white text-black hover:shadow-sky-200"
+                    ? "bg-zinc-900/50 border-white/5 hover:border-yellow-500/30 hover:shadow-[0_20px_50px_rgba(234,179,8,0.1)]"
+                    : "bg-white border-slate-200 hover:border-sky-500/30 hover:shadow-[0_20px_50px_rgba(2,189,234,0.1)]"
                 }`}
-                variants={cardVariants}
               >
-                <div className="w-[270px] flex flex-col items-center gap-5 leading-7">
-                  <div>
-                    <IconComponent
-                      className={`text-4xl p-2 rounded-full ${
-                        isDarkMode
-                          ? "text-[#FFD700] bg-[#ffd9002e]"
-                          : "text-[#02BDEA] bg-[#b1e8f77e]"
-                      }`}
-                    />
+                {/* Decorative Background Glow */}
+                <div
+                  className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl blur-3xl ${
+                    isDarkMode ? "bg-yellow-500" : "bg-sky-400"
+                  }`}
+                />
+
+                {/* Icon Container */}
+                <div className="relative z-10 mb-8">
+                  <div
+                    className={`p-5 rounded-2xl transform transition-transform duration-500 group-hover:rotate-12 ${
+                      isDarkMode
+                        ? "bg-yellow-500/10 text-yellow-500"
+                        : "bg-sky-50 text-sky-500"
+                    }`}
+                  >
+                    <IconComponent className="text-5xl" />
                   </div>
-                  <h1 className="font-semibold text-2xl text-center">
-                    {card.title}
-                  </h1>
-                  <p className="text-center">{card.description}</p>
                 </div>
-              </motion.div>
+
+                {/* Content */}
+                <div className="relative z-10 space-y-4">
+                  <h3
+                    className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-slate-900"}`}
+                  >
+                    {card.title}
+                  </h3>
+                  <p
+                    className={`text-base leading-relaxed ${isDarkMode ? "text-gray-400" : "text-slate-600"}`}
+                  >
+                    {card.description}
+                  </p>
+                </div>
+
+                {/* Bottom Border Accent */}
+                <div
+                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 transition-all duration-500 group-hover:w-1/2 rounded-full ${
+                    isDarkMode ? "bg-yellow-500" : "bg-sky-500"
+                  }`}
+                />
+              </motion.article>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

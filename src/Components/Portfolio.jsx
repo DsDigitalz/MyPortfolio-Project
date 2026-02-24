@@ -2,34 +2,28 @@
 
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { FaStreetView } from "react-icons/fa6";
+import { FaStreetView, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { useTheme } from "./ThemeContext";
 
 const portfolioData = [
   {
-    imgSrc: "homehaven.png",
+    imgSrc: "skileman.png",
     category: "UI/UX DESIGN",
-    title: "UX Case Study",
+    title: "Skileman App",
     description:
-      "Designed a real estate UX case study highlighting user research, wireframes, and prototypes",
-    link: "https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?node-id=420-1261",
+      "Designed an end-to-end UX/UI design, translating the 'Moving Train' vision Jobbing platform into a high-fidelity interactive prototype using figma",
+    link: "https://www.figma.com/design/Mjqf7qt1jZphxZQhDZRs12/Skileman-App?node-id=0-1&m=dev&t=YQyfjBP4Y5wMIB0X-1",
   },
-  // {
-  //   imgSrc: "banner.jpg",
-  //   category: "UI/UX DESIGN",
-  //   title: "Corporate Web Design",
-  //   description:
-  //     "Designed a corporate website UI design with a focus on simplicity and professionalism",
-  //   link: "https://www.figma.com/proto/ea3BmYTbhJQPRs5TX0zBOl/Corporate-Website?node-id=239-296",
-  // },
+
   {
-    imgSrc: "estate.png",
-    category: "UI/UX DESIGN",
-    title: "Real Estate App Design",
+    imgSrc: "AI.png",
+    category: "FRONT-END WEB DEVELOPMENT",
+    title: "AI FAQ/Lead Capture Bot",
     description:
-      "Designed a real estate app, providing a seamless platform for buyers, sellers, and agents.",
-    link: "https://www.figma.com/proto/EFRlnaxtR3hojBTzLvN5X7/UIUX-case-study?page-id=135%3A760&node-id=135-761",
+      "Developed a high-performance, multi-tenant AI SaaS and embeddable chat widget focused on dynamic personalization and fluid user experience using React, TailwindCSS, and Framer Motion.",
+    link: "https://helplyai.vercel.app/",
   },
+
   {
     imgSrc: "audiophile.png",
     category: "FRONT-END WEB DEVELOPMENT",
@@ -49,22 +43,16 @@ const portfolioData = [
   {
     imgSrc: "Cover.png",
     category: "FRONT-END WEB DEVELOPMENT",
-    title: "ProCleaning Services Website",
+    title: "ProCleaning Services Landing Page",
     description:
       "Developed a responsive front-end cleaning services website with React.JS and Tailwind",
     link: "https://procleaningservices.netlify.app/",
   },
-  {
-    imgSrc: "moviestrap.png",
-    category: "FRONT-END WEB DEVELOPMENT",
-    title: "Moviestrap Landing Page",
-    description: "Developed a travel website with HTML, CSS and Bootstrap",
-    link: "https://moviestrap.netlify.app/",
-  },
+
   {
     imgSrc: "techimg.png",
     category: "FRONT-END WEB DEVELOPMENT",
-    title: "Event Website Page",
+    title: "Event Landing Page",
     description:
       "Designed a travel website with React, TailwindCSS and Framer Motion",
     link: "https://monkevent.netlify.app/",
@@ -74,130 +62,153 @@ const portfolioData = [
 export default function Portfolio() {
   const { isDarkMode } = useTheme();
   const sliderRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  const scrollLeft = () => {
+  const scroll = (direction) => {
     if (sliderRef.current) {
-      const card = sliderRef.current.querySelector(".card");
-      const cardWidth = card.offsetWidth + 16; // 16px gap
-      sliderRef.current.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      const scrollAmount = direction === "left" ? -400 : 400;
+      sliderRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
-  const scrollRight = () => {
-    if (sliderRef.current) {
-      const card = sliderRef.current.querySelector(".card");
-      const cardWidth = card.offsetWidth + 16;
-      sliderRef.current.scrollBy({ left: cardWidth, behavior: "smooth" });
-    }
-  };
-
-  const handleCardClick = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
-  const overlayVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
+  // Animation Variant: Slide + Fade In
+  const scrollReveal = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+    viewport: { once: true, amount: 0.1 },
   };
 
   return (
     <section
-      className={`portfolio1 w-full pt-10 lg:pt-20 pb-20 flex flex-col items-center ${
-        isDarkMode
-          ? "bg-gradient-to-l from-slate-800 via-gray-900 to-black text-white"
-          : "bg-gradient-to-l from-purple-100 via-teal-50 to-white text-black"
-      }`}
       id="portfolio"
+      className={`relative w-full py-20 transition-colors duration-500 overflow-hidden ${
+        isDarkMode ? "bg-[#0a0a0a] text-white" : "bg-slate-50 text-slate-900"
+      }`}
     >
-      <motion.h1
-        className={`text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center mb-8 ${
-          isDarkMode ? "text-white" : "text-black"
-        }`}
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        My{" "}
-        <span className={isDarkMode ? "text-[#FFD700]" : "text-[#02BDEA]"}>
-          Projects
-        </span>
-      </motion.h1>
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <header className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <motion.div {...scrollReveal}>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Featured{" "}
+              <span className={isDarkMode ? "text-yellow-500" : "text-sky-500"}>
+                Projects
+              </span>
+            </h2>
+            <p
+              className={`mt-4 max-w-lg ${
+                isDarkMode ? "text-gray-400" : "text-slate-600"
+              }`}
+            >
+              A curated selection of my digital craftsmanship across UI/UX
+              design and modern web development.
+            </p>
+          </motion.div>
 
-      <div className="relative w-full max-w-[1140px] mx-auto flex items-center">
-        {/* Left arrow */}
-        <button
-          onClick={scrollLeft}
-          className="absolute left-0 z-10 h-10 w-10 bg-gray-500/70 hover:bg-gray-600/70 rounded-full flex items-center justify-center text-white"
-        >
-          &#8249;
-        </button>
+          {/* Navigation Controls */}
+          <div className="flex gap-4">
+            <button
+              onClick={() => scroll("left")}
+              className={`p-4 rounded-full border transition-all ${
+                isDarkMode
+                  ? "border-white/10 hover:bg-white/5"
+                  : "border-slate-200 hover:bg-slate-100"
+              }`}
+              aria-label="Scroll Left"
+            >
+              <FaChevronLeft />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className={`p-4 rounded-full border transition-all ${
+                isDarkMode
+                  ? "border-white/10 hover:bg-white/5"
+                  : "border-slate-200 hover:bg-slate-100"
+              }`}
+              aria-label="Scroll Right"
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        </header>
 
-        {/* Slider */}
-        <div
+        {/* Project Slider */}
+        <motion.div
           ref={sliderRef}
-          className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory px-2 py-4 w-full"
+          className="flex gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory py-4"
+          {...scrollReveal}
         >
-          {portfolioData.map((project, index) => {
-            const isActive = activeIndex === index;
-            return (
+          {portfolioData.map((project, index) => (
+            <article
+              key={index}
+              className="group relative flex-shrink-0 w-[300px] md:w-[450px] aspect-[4/3] rounded-3xl overflow-hidden snap-center cursor-pointer shadow-xl transition-all duration-500"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <figure className="w-full h-full">
+                <img
+                  src={project.imgSrc}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </figure>
+
+              {/* Sophisticated Overlay */}
               <div
-                key={index}
-                className={`card relative h-70 min-w-[260px] sm:min-w-[280px]   rounded-2xl shadow-2xl overflow-hidden hover:scale-105 transition-transform duration-300 ${
+                className={`absolute inset-0 flex flex-col justify-end p-8 transition-all duration-500 bg-gradient-to-t ${
                   isDarkMode
-                    ? "bg-zinc-900 hover:shadow-zinc-700"
-                    : "bg-white hover:shadow-sky-200"
+                    ? "from-black via-black/70 to-transparent"
+                    : "from-white via-white/90 to-white/50 "
+                } ${
+                  hoveredIndex === index
+                    ? "opacity-100"
+                    : "opacity-0 md:opacity-0 lg:group-hover:opacity-100"
                 }`}
-                onClick={() => handleCardClick(index)}
               >
-                {/* Overlay */}
-                <motion.div
-                  className={`absolute inset-0 flex flex-col items-center justify-center p-4 text-center rounded-2xl transition-opacity duration-300 ${
-                    isDarkMode
-                      ? "bg-black/90 text-white"
-                      : "bg-white/100 text-black"
-                  } ${isActive ? "opacity-100" : "opacity-0"}`}
-                  variants={overlayVariants}
-                  initial="hidden"
-                  animate={isActive ? "visible" : "hidden"}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                >
-                  <p className="text-zinc-400">{project.category}</p>
-                  <h1 className="font-semibold text-lg">{project.title}</h1>
-                  <p className="text-[14px] mt-2">{project.description}</p>
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <span
+                    className={`text-xs font-bold tracking-widest uppercase mb-2 block ${
+                      isDarkMode ? "text-yellow-500" : "text-sky-600"
+                    }`}
+                  >
+                    {project.category}
+                  </span>
+                  <h3
+                    className={`text-2xl font-bold mb-3 ${
+                      isDarkMode ? "text-white" : "text-slate-900"
+                    }`}
+                  >
+                    {project.title}
+                  </h3>
+                  <p
+                    className={`text-sm mb-6 line-clamp-4 ${
+                      isDarkMode ? "text-gray-300" : "text-slate-700"
+                    }`}
+                  >
+                    {project.description}
+                  </p>
+
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`mt-3 rounded px-6 py-1.5 flex items-center gap-2 justify-center ${
+                    className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all ${
                       isDarkMode
-                        ? "bg-[#D3AF37] text-black hover:bg-yellow-400"
-                        : "bg-[#02BDEA] text-white hover:bg-sky-400"
+                        ? "bg-yellow-500 text-black hover:bg-yellow-400"
+                        : "bg-sky-500 text-white hover:bg-sky-600"
                     }`}
                   >
-                    View <FaStreetView className="text-[20px]" />
+                    Explore Project <FaStreetView className="text-lg" />
                   </a>
-                </motion.div>
-
-                {/* Image */}
-                <img
-                  src={project.imgSrc}
-                  alt={project.title}
-                  className="rounded-2xl w-full h-full object-cover"
-                />
+                </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Right arrow */}
-        <button
-          onClick={scrollRight}
-          className="absolute right-0 z-10 h-10 w-10 bg-gray-500/70 hover:bg-gray-600/70 rounded-full flex items-center justify-center text-white"
-        >
-          &#8250;
-        </button>
+            </article>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
