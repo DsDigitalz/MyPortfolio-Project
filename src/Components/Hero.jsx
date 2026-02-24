@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BsTwitterX } from "react-icons/bs";
+// import { BsTwitterX } from "react-icons/bs";
 import { ImLinkedin } from "react-icons/im";
 import { FaGithub } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
@@ -215,10 +215,10 @@ export default function Hero() {
 
               <nav className="flex items-center gap-6">
                 {[
-                  {
-                    icon: <BsTwitterX />,
-                    link: "https://x.com/daniel_san4975",
-                  },
+                  // {
+                  //   icon: <BsTwitterX />,
+                  //   link: "https://x.com/daniel_san4975",
+                  // },
                   {
                     icon: <ImLinkedin />,
                     link: "https://www.linkedin.com/in/dsdigitalz/",

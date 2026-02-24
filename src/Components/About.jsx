@@ -159,8 +159,8 @@ export default function About() {
           </motion.div>
 
           <motion.a
-            href="Dan_CV.pdf"
-            download="Dan-CV.pdf"
+            href="Sanu_Daniel_CV.pdf"
+            download="Sanu_Daniel_CV.pdf"
             className={`group flex items-center gap-3 px-10 py-4 rounded-full font-bold transition-all shadow-lg ${
               isDarkMode
                 ? "bg-yellow-500 text-black hover:bg-yellow-400"

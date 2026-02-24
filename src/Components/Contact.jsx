@@ -8,7 +8,7 @@ import { useTheme } from "./ThemeContext";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt, FaGithub } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
-import { BsTwitterX, BsSend } from "react-icons/bs";
+import { BsSend } from "react-icons/bs";
 import { ImLinkedin } from "react-icons/im";
 
 export default function Contact() {
@@ -157,7 +157,7 @@ export default function Contact() {
             {/* Social Links */}
             <nav className="flex gap-5 pt-6">
               {[
-                { icon: <BsTwitterX />, link: "https://x.com/daniel_san4975" },
+                // { icon: <BsTwitterX />, link: "https://x.com/daniel_san4975" },
                 {
                   icon: <ImLinkedin />,
                   link: "https://www.linkedin.com/in/dsdigitalz/",

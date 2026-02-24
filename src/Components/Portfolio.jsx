@@ -145,7 +145,7 @@ export default function Portfolio() {
           {portfolioData.map((project, index) => (
             <article
               key={index}
-              className="group relative flex-shrink-0 w-[300px] md:w-[450px] aspect-[4/3] rounded-3xl overflow-hidden snap-center cursor-pointer shadow-xl transition-all duration-500"
+              className="group relative flex-shrink-0 w-[300px] md:w-[450px] aspect-[3/3] sm:aspect-[4/3] rounded-3xl overflow-hidden snap-center cursor-pointer shadow-xl transition-all duration-500"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -161,8 +161,8 @@ export default function Portfolio() {
               <div
                 className={`absolute inset-0 flex flex-col justify-end p-8 transition-all duration-500 bg-gradient-to-t ${
                   isDarkMode
-                    ? "from-black via-black/70 to-transparent"
-                    : "from-white via-white/90 to-white/50 "
+                    ? "from-black via-black/80 to-black/50 "
+                    : "from-white via-white/95 to-white/90 "
                 } ${
                   hoveredIndex === index
                     ? "opacity-100"
