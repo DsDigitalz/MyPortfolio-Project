@@ -7,12 +7,20 @@ import { useTheme } from "./ThemeContext";
 
 const portfolioData = [
   {
-    imgSrc: "skileman.png",
+    imgSrc: "Dashboard2.png",
     category: "UI/UX DESIGN",
-    title: "Skileman App",
+    title: "Betternship Web App",
     description:
-      "Designed an end-to-end UX/UI design, translating the 'Moving Train' vision Jobbing platform into a high-fidelity interactive prototype using figma",
-    link: "https://www.figma.com/design/Mjqf7qt1jZphxZQhDZRs12/Skileman-App?node-id=0-1&m=dev&t=YQyfjBP4Y5wMIB0X-1",
+      "Designed contact recruiter pages, showcasing a modern design using Figma",
+    link: "https://www.figma.com/proto/zRR9fCYYANK2CAkterULb8/Betternship-recruiter-page?node-id=0-1&t=mJtTtYKW3c8y5bN0-1  ",
+  },
+  {
+    imgSrc: "Dashboard.png",
+    category: "UI/UX DESIGN",
+    title: "Healthcare Research Web App",
+    description:
+      "Designed A comprehensive 5-page, end-to-end Clinical Research Management Suite designed to streamline the lifecycle of medical studies using figma",
+    link: "https://www.figma.com/design/K4zgLwzg3BJRt56IwS7LHt/Healthcare-research-web-app?node-id=0-1&m=dev&t=v4pACFqKo5EabAHb-1",
   },
 
   {
