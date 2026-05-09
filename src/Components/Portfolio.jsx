@@ -12,7 +12,7 @@ const portfolioData = [
     title: "Betternship Web App",
     description:
       "Designed contact recruiter pages, showcasing a modern design using Figma",
-    link: "https://www.figma.com/proto/zRR9fCYYANK2CAkterULb8/Betternship-recruiter-page?node-id=0-1&t=mJtTtYKW3c8y5bN0-1  ",
+    link: "https://www.figma.com/design/zRR9fCYYANK2CAkterULb8/Betternship-recruiter-page?node-id=0-1&m=dev&t=mJtTtYKW3c8y5bN0-1  ",
   },
   {
     imgSrc: "Dashboard.png",
