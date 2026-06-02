@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "./ThemeContext";
 import { CgWebsite } from "react-icons/cg";
-import { MdOutlineAppSettingsAlt } from "react-icons/md";
+import { MdOutlineAppSettingsAlt, MdAnalytics } from "react-icons/md";
 import { IoCodeSlash } from "react-icons/io5";
 
 const cards = [
@@ -24,6 +24,12 @@ const cards = [
     description:
       "Creating responsive and interactive web applications that deliver seamless user experiences across all devices. By leveraging modern technologies such as HTML, CSS, and JavaScript libraries like React.",
   },
+  // {
+  //   icon: MdAnalytics,
+  //   title: "Data Analysis",
+  //   description:
+  //     "Transforming raw data into actionable insights through comprehensive analysis and visualization. Identifying trends and patterns to support informed decision-making and drive business growth.",
+  // },
 ];
 
 export default function TopServices() {

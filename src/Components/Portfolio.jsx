@@ -56,6 +56,14 @@ const portfolioData = [
       "Developed a responsive front-end cleaning services website with React.JS and Tailwind",
     link: "https://procleaningservices.netlify.app/",
   },
+  // {
+  //   imgSrc: "Cover.png",
+  //   category: "DATA ANALYSIS",
+  //   title: "ProCleaning Services Landing Page",
+  //   description:
+  //     "Developed a responsive front-end cleaning services website with React.JS and Tailwind",
+  //   link: "https://procleaningservices.netlify.app/",
+  // },
 
   {
     imgSrc: "techimg.png",

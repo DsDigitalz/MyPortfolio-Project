@@ -18,6 +18,7 @@ export default function Hero() {
     "Product Designer",
     "Frontend Engineer",
     "Frontend Instructor",
+    // "Data Analysis",
   ];
 
   useEffect(() => {
