@@ -33,6 +33,14 @@ const portfolioData = [
   },
 
   {
+    imgSrc: "data-dashboard.png",
+    category: "FRONT-END WEB DEVELOPMENT",
+    title: "Data Dashboard",
+    description:
+    "Integrated external APIs to create a data dashboard for AI-powered analytics",
+    link: "https://data-dashboard-henna-nu.vercel.app/",
+  },
+  {
     imgSrc: "audiophile.png",
     category: "FRONT-END WEB DEVELOPMENT",
     title: "Audiophile Ecommerce Website",
@@ -40,14 +48,14 @@ const portfolioData = [
       "Built a fully functional Audiophile e-commerce web app using Next.js and TailwindCSS",
     link: "https://audicommerce.netlify.app/",
   },
-  {
-    imgSrc: "ticketrax.png",
-    category: "FRONT-END WEB DEVELOPMENT",
-    title: "Ticket Management Web Application",
-    description:
-      "A full-featured ticket management system built with VueJS and TailwindCSS",
-    link: "https://ticketrax-vue.netlify.app/",
-  },
+  // {
+  //   imgSrc: "ticketrax.png",
+  //   category: "FRONT-END WEB DEVELOPMENT",
+  //   title: "Ticket Management Web Application",
+  //   description:
+  //     "A full-featured ticket management system built with VueJS and TailwindCSS",
+  //   link: "https://ticketrax-vue.netlify.app/",
+  // },
   {
     imgSrc: "Cover.png",
     category: "FRONT-END WEB DEVELOPMENT",

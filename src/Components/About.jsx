@@ -95,17 +95,18 @@ export default function About() {
             className={`text-lg md:text-xl font-medium ${isDarkMode ? "text-gray-300" : "text-slate-700"}`}
             {...scrollReveal}
           >
-            I am a Product Designer, Front-end Engineer and Data Analyst.
+            I am a Product(UIUX) Designer and Front-end Engineer
           </motion.p>
           <motion.p
             className={`text-base leading-relaxed ${isDarkMode ? "text-gray-400" : "text-slate-600"}`}
             {...scrollReveal}
           >
-            I am a multidisciplinary Product Designer and Frontend Engineer with
-            a strategic focus on Data Analytics. My core expertise lies in
-            designing high-fidelity, accessible interfaces and translating them
-            into clean, high-performing code. I leverage data-backed insights to
-            solve complex product challenges, ensuring that every dynamic application I build delivers a seamless user experience and measurable business value.
+            I am a multidisciplinary Product Designer and Frontend Engineer . My
+            core expertise lies in designing high-fidelity, accessible interfaces
+            and translating them into clean, high-performing code. I leverage
+            data-backed insights to solve complex product challenges, ensuring
+            that every dynamic application I build delivers a seamless user
+            experience and measurable business value.
           </motion.p>
         </article>
 
