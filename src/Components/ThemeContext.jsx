@@ -14,10 +14,22 @@ export const ThemeProvider = ({ children }) => {
     }
   });
 
-  // 2. Save theme to localStorage whenever it changes
+  // 2. Save theme to localStorage and document element whenever it changes
   useEffect(() => {
     try {
-      window.localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+      const theme = isDarkMode ? "dark" : "light";
+      window.localStorage.setItem("theme", theme);
+      if (isDarkMode) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+        document.documentElement.style.backgroundColor = "#08090a";
+        document.body.style.backgroundColor = "#08090a";
+      } else {
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.backgroundColor = "#f8f9fa";
+        document.body.style.backgroundColor = "#f8f9fa";
+      }
     } catch (error) {
       console.error("Failed to save theme to localStorage:", error);
     }

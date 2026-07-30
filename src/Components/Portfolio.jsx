@@ -2,83 +2,137 @@
 
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { FaStreetView, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { FaChevronLeft, FaChevronRight, FaArrowUpRightFromSquare, FaExpand } from "react-icons/fa6";
 import { useTheme } from "./ThemeContext";
+import ProjectModal from "./ProjectModal";
+
+// Physical, restrained animation configuration (Apple style)
+const fadeSlideAnim = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  },
+  viewport: { once: true, amount: 0.15 },
+};
 
 const portfolioData = [
   {
+    id: "betternship",
     imgSrc: "Dashboard2.png",
     category: "UI/UX DESIGN",
     title: "Betternship Web App",
     description:
-      "Designed contact recruiter pages, showcasing a modern design using Figma",
-    link: "https://www.figma.com/design/zRR9fCYYANK2CAkterULb8/Betternship-recruiter-page?node-id=0-1&m=dev&t=mJtTtYKW3c8y5bN0-1  ",
+      "Designed an intuitive web application for contract recruiters, featuring streamlined candidate workflows and recruitment dashboard analytics.",
+    link: "https://www.figma.com/design/zRR9fCYYANK2CAkterULb8/Betternship-recruiter-page",
+    mockUrl: "figma.com/@betternship-app",
+    screens: [
+      {
+        src: "Dashboard2.png",
+        title: "Recruiter Dashboard",
+        caption:
+          "Minimalist operational dashboard utilizing clear typography, high-contrast metrics, and intuitive candidate pipeline status indicators.",
+      },
+      {
+        src: "Contract Recruiter Page.png",
+        title: "Contract Recruiter Management",
+        caption:
+          "Focused recruitment layout designed to streamline contract job postings, application reviews, and client communication.",
+      },
+    ],
   },
   {
+    id: "healthcare",
     imgSrc: "Dashboard.png",
     category: "UI/UX DESIGN",
     title: "Healthcare Research Web App",
     description:
-      "Designed A comprehensive 5-page, end-to-end Clinical Research Management Suite designed to streamline the lifecycle of medical studies using figma",
-    link: "https://www.figma.com/design/K4zgLwzg3BJRt56IwS7LHt/Healthcare-research-web-app?node-id=0-1&m=dev&t=v4pACFqKo5EabAHb-1",
+      "A comprehensive Clinical Research Suite designed to monitor trials, manage study catalog data, and generate compliance reports.",
+    link: "https://www.figma.com/design/K4zgLwzg3BJRt56IwS7LHt/Healthcare-research-web-app",
+    mockUrl: "figma.com/@healthcare-suite",
+    screens: [
+      {
+        src: "Research Dashboard.png",
+        title: "Clinical Overview Dashboard",
+        caption:
+          "Central operational hub for clinical trials, tracking ongoing patient metrics, active study milestones, and compliance alerts.",
+      },
+      {
+        src: "Study Catalog.png",
+        title: "Study Catalog Directory",
+        caption:
+          "Filterable catalog enabling research leads to quickly search, categorize, and launch new trial protocols.",
+      },
+      {
+        src: "Study Detail Overview.png",
+        title: "Study Detail & Protocol View",
+        caption:
+          "Granular overview of trial parameters, investigator assignments, and patient group demographics.",
+      },
+      {
+        src: "Participant Data Grid.png",
+        title: "Participant Data Grid",
+        caption:
+          "High-density data grid with custom filters, multi-column sorting, and export capabilities for clinical researchers.",
+      },
+      {
+        src: "Report Generator.png",
+        title: "Automated Report Generator",
+        caption:
+          "Automated suite for generating regulatory compliance documents and trial summaries with visual data exports.",
+      },
+      {
+        src: "Analytics & Trends.png",
+        title: "Analytics & Outcomes Visualizer",
+        caption:
+          "Interactive trend charts and statistical breakdown of clinical study outcome metrics across participant demographics.",
+      },
+    ],
   },
-
   {
+    id: "helply",
     imgSrc: "AI.png",
-    category: "FRONT-END WEB DEVELOPMENT",
-    title: "AI FAQ/Lead Capture Bot",
+    category: "FRONTEND WEB DEVELOPMENT",
+    title: "AI FAQ & Lead Capture Bot",
     description:
-      "Developed a high-performance, multi-tenant AI SaaS and embeddable chat widget focused on dynamic personalization and fluid user experience using React, TailwindCSS, and Framer Motion.",
+      "Developed a high-performance, multi-tenant AI SaaS application and embeddable chat widget for automated support.",
     link: "https://helplyai.vercel.app/",
   },
-
   {
+    id: "data-dashboard",
     imgSrc: "data-dashboard.png",
-    category: "FRONT-END WEB DEVELOPMENT",
-    title: "Data Dashboard",
+    category: "FRONTEND WEB DEVELOPMENT",
+    title: "AI Data Dashboard",
     description:
-    "Integrated external APIs to create a data dashboard for AI-powered analytics",
+      "Integrated external analytics APIs to build a real-time data dashboard with interactive chart visualizers and metrics.",
     link: "https://data-dashboard-henna-nu.vercel.app/",
   },
   {
+    id: "audiophile",
     imgSrc: "audiophile.png",
-    category: "FRONT-END WEB DEVELOPMENT",
-    title: "Audiophile Ecommerce Website",
+    category: "FRONTEND WEB DEVELOPMENT",
+    title: "Audiophile E-Commerce Store",
     description:
-      "Built a fully functional Audiophile e-commerce web app using Next.js and TailwindCSS",
+      "Built a fully functional e-commerce web application featuring dynamic cart state, checkout flows, and responsive UI.",
     link: "https://audicommerce.netlify.app/",
   },
-  // {
-  //   imgSrc: "ticketrax.png",
-  //   category: "FRONT-END WEB DEVELOPMENT",
-  //   title: "Ticket Management Web Application",
-  //   description:
-  //     "A full-featured ticket management system built with VueJS and TailwindCSS",
-  //   link: "https://ticketrax-vue.netlify.app/",
-  // },
   {
+    id: "procleaning",
     imgSrc: "Cover.png",
-    category: "FRONT-END WEB DEVELOPMENT",
-    title: "ProCleaning Services Landing Page",
+    category: "FRONTEND WEB DEVELOPMENT",
+    title: "ProCleaning Services Platform",
     description:
-      "Developed a responsive front-end cleaning services website with React.JS and Tailwind",
+      "Developed a modern, responsive front-end website for professional cleaning services with interactive booking previews.",
     link: "https://procleaningservices.netlify.app/",
   },
-  // {
-  //   imgSrc: "Cover.png",
-  //   category: "DATA ANALYSIS",
-  //   title: "ProCleaning Services Landing Page",
-  //   description:
-  //     "Developed a responsive front-end cleaning services website with React.JS and Tailwind",
-  //   link: "https://procleaningservices.netlify.app/",
-  // },
-
   {
+    id: "monkevent",
     imgSrc: "techimg.png",
-    category: "FRONT-END WEB DEVELOPMENT",
-    title: "Event Landing Page",
+    category: "FRONTEND WEB DEVELOPMENT",
+    title: "MonkEvent Tech Platform",
     description:
-      "Designed a travel website with React, TailwindCSS and Framer Motion",
+      "Designed and developed a landing page for tech events featuring dynamic scheduling and smooth animations.",
     link: "https://monkevent.netlify.app/",
   },
 ];
@@ -86,154 +140,213 @@ const portfolioData = [
 export default function Portfolio() {
   const { isDarkMode } = useTheme();
   const sliderRef = useRef(null);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const scroll = (direction) => {
     if (sliderRef.current) {
-      const scrollAmount = direction === "left" ? -400 : 400;
+      const scrollAmount = direction === "left" ? -440 : 440;
       sliderRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
-  // Animation Variant: Slide + Fade In
-  const scrollReveal = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-    },
-    viewport: { once: true, amount: 0.1 },
+  const isUiUxProject = (project) => {
+    return (project.category || "").toUpperCase().includes("UI/UX");
+  };
+
+  const handleCardClick = (project) => {
+    if (isUiUxProject(project)) {
+      setSelectedProject(project);
+    } else if (project.link) {
+      window.open(project.link, "_blank", "noopener,noreferrer");
+    }
   };
 
   return (
-    <section
+    <motion.section
       id="portfolio"
-      className={`relative w-full py-20 transition-colors duration-500 overflow-hidden ${
-        isDarkMode ? "bg-[#0a0a0a] text-white" : "bg-slate-50 text-slate-900"
+      className={`relative w-full py-28 md:py-36 transition-colors duration-500 overflow-hidden ${
+        isDarkMode ? "bg-[#08090a] text-white" : "bg-[#f8f9fa] text-slate-900"
       }`}
+      {...fadeSlideAnim}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 z-10">
         {/* Header */}
-        <header className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <motion.div {...scrollReveal}>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Featured{" "}
-              <span className={isDarkMode ? "text-yellow-500" : "text-sky-500"}>
-                Projects
-              </span>
+        <motion.header
+          className="flex flex-col md:flex-row md:items-end justify-between mb-14 md:mb-16 gap-6"
+          {...fadeSlideAnim}
+        >
+          <div className="max-w-2xl">
+            <span
+              className={`inline-block px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 ${
+                isDarkMode
+                  ? "bg-white/10 text-gray-300"
+                  : "bg-slate-200/70 text-slate-700"
+              }`}
+            >
+              Selected Work
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight">
+             Featured Projects
             </h2>
             <p
-              className={`mt-4 max-w-lg ${
+              className={`mt-4 text-base sm:text-lg leading-relaxed ${
                 isDarkMode ? "text-gray-400" : "text-slate-600"
               }`}
             >
-              A curated selection of my digital craftsmanship across UI/UX
-              design and modern web development.
+              A curated selection of my digital craftsmanship across UI/UX design and modern web development.
             </p>
-          </motion.div>
+          </div>
 
-          {/* Navigation Controls */}
-          <div className="flex gap-4">
+          {/* Slider Navigation Buttons */}
+          <motion.nav
+            {...fadeSlideAnim}
+            className="flex gap-3 items-center"
+            aria-label="Portfolio navigation"
+          >
             <button
               onClick={() => scroll("left")}
-              className={`p-4 rounded-full border transition-all ${
+              className={`p-3.5 rounded-full transition-all duration-200 border ${
                 isDarkMode
-                  ? "border-white/10 hover:bg-white/5"
-                  : "border-slate-200 hover:bg-slate-100"
+                  ? "border-white/10 bg-white/5 hover:bg-white/15 text-white"
+                  : "border-slate-200 bg-white hover:bg-slate-100 text-slate-800 shadow-sm"
               }`}
-              aria-label="Scroll Left"
+              aria-label="Previous project"
             >
-              <FaChevronLeft />
+              <FaChevronLeft className="text-sm" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className={`p-4 rounded-full border transition-all ${
+              className={`p-3.5 rounded-full transition-all duration-200 border ${
                 isDarkMode
-                  ? "border-white/10 hover:bg-white/5"
-                  : "border-slate-200 hover:bg-slate-100"
+                  ? "border-white/10 bg-white/5 hover:bg-white/15 text-white"
+                  : "border-slate-200 bg-white hover:bg-slate-100 text-slate-800 shadow-sm"
               }`}
-              aria-label="Scroll Right"
+              aria-label="Next project"
             >
-              <FaChevronRight />
+              <FaChevronRight className="text-sm" />
             </button>
-          </div>
-        </header>
+          </motion.nav>
+        </motion.header>
+      </div>
 
-        {/* Project Slider */}
-        <motion.div
+      {/* Project Cards Slider */}
+      <div className="relative w-full">
+        {/* Soft side gradient fades */}
+        <div
+          className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 md:w-20 z-10 bg-gradient-to-r ${
+            isDarkMode ? "from-[#08090a]" : "from-[#f8f9fa]"
+          } to-transparent`}
+        />
+        <div
+          className={`pointer-events-none absolute right-0 top-0 bottom-0 w-8 md:w-20 z-10 bg-gradient-to-l ${
+            isDarkMode ? "from-[#08090a]" : "from-[#f8f9fa]"
+          } to-transparent`}
+        />
+
+        <div
           ref={sliderRef}
-          className="flex gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory py-4"
-          {...scrollReveal}
+          className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory py-4 px-6 sm:px-8 max-w-7xl mx-auto"
         >
-          {portfolioData.map((project, index) => (
-            <article
-              key={index}
-              className="group relative flex-shrink-0 w-[300px] md:w-[450px] aspect-[3/3] sm:aspect-[4/3] rounded-3xl overflow-hidden snap-center cursor-pointer shadow-xl transition-all duration-500"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <figure className="w-full h-full">
-                <img
-                  src={project.imgSrc}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </figure>
+          {portfolioData.map((project) => {
+            const uiUx = isUiUxProject(project);
 
-              {/* Sophisticated Overlay */}
-              <div
-                className={`absolute inset-0 flex flex-col justify-end p-8 transition-all duration-500 bg-gradient-to-t ${
+            return (
+              <motion.article
+                key={project.id}
+                onClick={() => handleCardClick(project)}
+                className={`group relative flex-shrink-0 w-[310px] sm:w-[400px] md:w-[440px] rounded-3xl overflow-hidden snap-center cursor-pointer transition-all duration-300 ease-out border ${
                   isDarkMode
-                    ? "from-black via-black/80 to-black/50 "
-                    : "from-white via-white/95 to-white/90 "
-                } ${
-                  hoveredIndex === index
-                    ? "opacity-100"
-                    : "opacity-0 md:opacity-0 lg:group-hover:opacity-100"
+                    ? "bg-[#111215] border-white/10 shadow-xl shadow-black/50 hover:shadow-2xl hover:shadow-black/80 hover:border-white/20"
+                    : "bg-white border-slate-200/80 shadow-lg shadow-slate-200/60 hover:shadow-xl hover:shadow-slate-300/60 hover:border-slate-300"
                 }`}
               >
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <span
-                    className={`text-xs font-bold tracking-widest uppercase mb-2 block ${
-                      isDarkMode ? "text-yellow-500" : "text-sky-600"
-                    }`}
-                  >
-                    {project.category}
-                  </span>
-                  <h3
-                    className={`text-2xl font-bold mb-3 ${
-                      isDarkMode ? "text-white" : "text-slate-900"
-                    }`}
-                  >
-                    {project.title}
-                  </h3>
-                  <p
-                    className={`text-sm mb-6 line-clamp-4 ${
-                      isDarkMode ? "text-gray-300" : "text-slate-700"
-                    }`}
-                  >
-                    {project.description}
-                  </p>
+                {/* Thumbnail Image Container */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-slate-900/5">
+                  <img
+                    src={project.imgSrc}
+                    alt={`${project.title} Preview`}
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
 
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all ${
-                      isDarkMode
-                        ? "bg-yellow-500 text-black hover:bg-yellow-400"
-                        : "bg-sky-500 text-white hover:bg-sky-600"
-                    }`}
-                  >
-                    Explore Project <FaStreetView className="text-lg" />
-                  </a>
+                  {/* Category Pill Tag */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span
+                      className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase backdrop-blur-md transition-all duration-200 ${
+                        isDarkMode
+                          ? "bg-black/60 text-gray-200 border border-white/10"
+                          : "bg-white/80 text-slate-800 border border-slate-200/60 shadow-sm"
+                      }`}
+                    >
+                      {project.category}
+                    </span>
+                  </div>
+
+                  {/* Indicator Icon (Figma modal vs External link) */}
+                  <div className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div
+                      className={`p-2.5 rounded-full backdrop-blur-md shadow-md ${
+                        isDarkMode
+                          ? "bg-black/70 text-white border border-white/10"
+                          : "bg-white/90 text-slate-900 border border-slate-200"
+                      }`}
+                    >
+                      {uiUx ? (
+                        <FaExpand className="text-xs" />
+                      ) : (
+                        <FaArrowUpRightFromSquare className="text-xs" />
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
-        </motion.div>
+
+                {/* Card Info Section */}
+                <div className="p-6 sm:p-7 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-2 group-hover:opacity-90 transition-opacity">
+                      {project.title}
+                    </h3>
+                    <p
+                      className={`text-sm leading-relaxed line-clamp-3 mb-6 ${
+                        isDarkMode ? "text-gray-400" : "text-slate-600"
+                      }`}
+                    >
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Action CTA */}
+                  <div className="flex items-center justify-between pt-2 border-t border-dashed border-slate-200 dark:border-white/10">
+                    <span
+                      className={`text-xs font-semibold tracking-tight inline-flex items-center gap-1.5 transition-colors ${
+                        isDarkMode
+                          ? "text-white group-hover:text-gray-300"
+                          : "text-slate-900 group-hover:text-slate-700"
+                      }`}
+                    >
+                      {uiUx ? "View Figma Mockups" : "Visit Live Site"}
+                    </span>
+
+                    <span
+                      className={`text-xs font-mono transition-transform duration-200 group-hover:translate-x-1 ${
+                        isDarkMode ? "text-gray-400" : "text-slate-500"
+                      }`}
+                    >
+                      {uiUx ? "Modal →" : "Live ↗"}
+                    </span>
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
+        </div>
       </div>
-    </section>
+
+      {/* Interactive UI/UX Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+    </motion.section>
   );
 }
