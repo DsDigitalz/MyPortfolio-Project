@@ -269,7 +269,17 @@ const frontendProjects = [
     description:
       "Developed a high-performance, multi-tenant AI SaaS application and embeddable chat widget for automated support.",
     link: "https://helplyai.vercel.app/",
-    tags: ["React", "TailwindCSS", "AI SaaS", "Vercel"],
+    tags: ["React", "TailwindCSS", "AI SaaS", 'Supabase', 'PostgreSQL', "Vercel"],
+  },
+  {
+    id: "ecommerce",
+    imgSrc: "savvyshopper.png",
+    category: "FRONTEND WEB DEVELOPMENT",
+    title: "Savvyshopper Ecommerce Web ",
+    description:
+      "Built an e-commerce accessories website featuring product browsing, shopping interactions, and smooth animations powered by Framer Motion.",
+    link: "https://savvyshopper.netlify.app/",
+    tags: ["React", "TailwindCSS", "Framer Motion" ],
   },
   {
     id: "data-dashboard",
@@ -398,7 +408,7 @@ export default function Portfolio() {
   const categories = [
     // { id: "all", label: "All Work", icon: FaLayerGroup },
     { id: "uiux", label: "UI/UX Design", icon: FaPalette },
-    { id: "frontend", label: "Web Dev", icon: FaCode },
+    { id: "frontend", label: "Web Development", icon: FaCode },
     // { id: "frontend", label: "Frontend Web Dev", icon: FaCode },
     // { id: "backend", label: "Backend Development", icon: FaServer },
   ];
