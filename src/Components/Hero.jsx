@@ -1,320 +1,212 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { motion } from "framer-motion";
-import { ImLinkedin } from "react-icons/im";
-import { FaGithub } from "react-icons/fa";
-import { MdArrowOutward, MdArrowDownward } from "react-icons/md";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, ArrowDown, Sparkles } from "lucide-react";
 import { useTheme } from "./ThemeContext";
+import { FaFigma, FaReact, FaNodeJs } from "react-icons/fa";
+import { SiNextdotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
 
 export default function Hero() {
   const { isDarkMode } = useTheme();
+  const shouldReduceMotion = useReducedMotion();
 
-  // --- Typewriter Logic States ---
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+  // Slideshow frames for the inline pill
+  const mockupSlides = [
+    { src: "images/skilleconomy/skilleconomy-main.jpg", alt: "Skilleconomy Platform" },
+    { src: "images/Dashboard-Home.png", alt: "Shaarix App" },
+    { src: "images/SFeed - Home page Screen.png", alt: "Skileman App" },
+    { src: "images/skilleconomy/skilleconomy-services.jpg", alt: "Service Catalogue" },
+    { src: "images/skilleconomy/skilleconomy-academy.jpg", alt: "Skills Academy" },
+    { src: "skileman/Frame 1228.png", alt: "Skileman Platform" },
+    { src: "Dashboard2.png", alt: "Betternship App" },
+    { src: "Dashboard.png", alt: "Healthcare App" },
+  ];
 
-  const roles = useMemo(
-    () => ["Product Designer", "Software Engineer", "Web Instructor"],
-    []
-  );
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    const handleType = () => {
-      const i = loopNum % roles.length;
-      const fullText = roles[i];
+    if (shouldReduceMotion) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % mockupSlides.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, [shouldReduceMotion, mockupSlides.length]);
 
-      setDisplayText(
-        isDeleting
-          ? fullText.substring(0, displayText.length - 1)
-          : fullText.substring(0, displayText.length + 1)
-      );
-
-      setTypingSpeed(isDeleting ? 70 : 150);
-
-      if (!isDeleting && displayText === fullText) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && displayText === "") {
-        setIsDeleting(false);
-        setLoopNum((prev) => prev + 1);
-        setTypingSpeed(500);
-      }
-    };
-
-    const timer = setTimeout(handleType, typingSpeed);
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, loopNum, typingSpeed, roles]);
-
-  const handleScrollToContact = () => {
-    const contactSection = document.getElementById("con");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const heroImageSrc = isDarkMode ? "heroimg.png" : "heroimg3.png";
-
-  const fadeInSlideUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-    },
-    viewport: { once: true, amount: 0.2 },
-  };
-
-  const fadeInSlideRight = {
-    initial: { opacity: 0, x: -50 },
-    whileInView: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, delay: 0.2 },
-    },
-    viewport: { once: true },
-  };
-
-  const socials = [
-    {
-      icon: <ImLinkedin />,
-      link: "https://www.linkedin.com/in/dsdigitalz/",
-      label: "LinkedIn",
-    },
-    {
-      icon: <FaGithub />,
-      link: "https://github.com/DsDigitalz",
-      label: "GitHub",
-    },
+  const tickerIcons = [
+    { icon: <FaFigma className="text-violet-400" />, name: "Figma" },
+    { icon: <FaReact className="text-cyan-400" />, name: "React" },
+    { icon: <SiNextdotjs className="text-white" />, name: "Next.js" },
+    { icon: <SiTypescript className="text-blue-400" />, name: "TypeScript" },
+    { icon: <SiTailwindcss className="text-teal-400" />, name: "Tailwind" },
+    { icon: <FaNodeJs className="text-green-400" />, name: "Node.js" },
   ];
 
   return (
     <section
       id="home"
-      className={`relative min-h-screen flex items-center overflow-hidden transition-colors duration-500 ${
-        isDarkMode ? "bg-[#08090b] text-white" : "bg-[#fbfbfd] text-slate-900"
+      className={`relative pt-36 sm:pt-44 pb-20 md:pb-28 overflow-hidden transition-colors duration-500 ${
+        isDarkMode ? "bg-black text-white" : "bg-[#fafaf9] text-black"
       }`}
     >
-      {/* Background layer: dot grid + glows */}
+      {/* Editorial delicate background grain and soft lighting */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
           className={`absolute inset-0 ${
-            isDarkMode ? "opacity-[0.06]" : "opacity-[0.4]"
-          }`}
-          style={{
-            backgroundImage: `radial-gradient(${
-              isDarkMode ? "#ffffff" : "#94a3b8"
-            } 1px, transparent 1px)`,
-            backgroundSize: "28px 28px",
-            maskImage:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
-          }}
-        />
-        <div
-          className={`absolute -top-40 -left-32 w-[32rem] h-[32rem] blur-[130px] rounded-full opacity-25 ${
-            isDarkMode ? "bg-yellow-500" : "bg-sky-400"
+            isDarkMode ? "editorial-grain opacity-40" : "editorial-grain-light opacity-50"
           }`}
         />
         <div
-          className={`absolute -bottom-32 right-0 w-[36rem] h-[36rem] blur-[160px] rounded-full opacity-[0.12] ${
-            isDarkMode ? "bg-blue-600" : "bg-purple-300"
+          className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34rem] sm:w-[50rem] h-[20rem] rounded-full blur-[140px] pointer-events-none opacity-20 ${
+            isDarkMode ? "bg-white/10" : "bg-black/5"
           }`}
         />
       </div>
 
-      <div className="container py-32 mx-auto max-w-7xl px-6 lg:px-12 z-10 w-full">
-        <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-16 lg:gap-20">
-          {/* Hero Image Section */}
-          <aside className="relative flex-1 flex justify-center lg:justify-end">
-            <motion.div className="relative group" {...fadeInSlideUp}>
-              {/* Rotating dashed ring */}
-              <motion.div
-                className={`absolute -inset-6 rounded-[2rem] border border-dashed ${
-                  isDarkMode ? "border-yellow-500/30" : "border-sky-400/40"
-                }`}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              />
-              {/* Soft glow behind image */}
-              <div
-                className={`absolute -inset-4 rounded-[1.75rem] blur-2xl opacity-30 transition-opacity duration-500 group-hover:opacity-50 ${
-                  isDarkMode ? "bg-yellow-500" : "bg-sky-400"
-                }`}
-              />
-              <div
-                className={`relative rounded-[1.75rem] p-2 ${
-                  isDarkMode
-                    ? "bg-white/5 backdrop-blur-sm border border-white/10"
-                    : "bg-white border border-slate-200 shadow-xl"
-                }`}
-              >
-                <motion.img
-                  key={isDarkMode ? "dark" : "light"}
-                  src={heroImageSrc}
-                  alt="Daniel Sanu - Professional Portfolio Image"
-                  className="relative z-10 w-60 md:w-72 lg:w-[360px] xl:w-[400px] object-cover rounded-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6 }}
-                />
-              </div>
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-8 z-10 flex flex-col items-center text-center">
+        {/* Top Status Pill: HIRE ME 👋🏽 */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-8"
+        >
+          <a
+            href="#contact"
+            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-transform hover:scale-105 border ${
+              isDarkMode
+                ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                : "bg-black text-white border-black shadow-[0_0_20px_rgba(0,0,0,0.1)]"
+            }`}
+          >
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span>HIRE ME 👋🏽</span>
+          </a>
+        </motion.div>
 
-              {/* Floating status badge */}
-              {/* <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className={`absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium shadow-lg whitespace-nowrap ${
-                  isDarkMode
-                    ? "bg-[#111214] border border-white/10 text-gray-200"
-                    : "bg-white border border-slate-200 text-slate-700"
-                }`}
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-                </span>
-                Open to freelance work  
-              </motion.div> */}
-            </motion.div>
-          </aside>
+        {/* Large Signature Animated Typography */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full max-w-5xl"
+        >
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-bold tracking-tight leading-[1.12] sm:leading-[1.1] selection:bg-white selection:text-black">
+            <span>Designing Products</span>
 
-          {/* Hero Text Content */}
-          <div className="flex-1 space-y-7 text-center lg:text-left max-w-2xl">
-            <header>
-              <motion.div {...fadeInSlideRight}>
-                <span
-                  className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-6 tracking-wider uppercase ${
-                    isDarkMode
-                      ? "bg-white/5 border border-white/10 text-yellow-500"
-                      : "bg-sky-50 border border-sky-100 text-sky-600"
-                  }`}
-                >
-                  <span
-                    className={`w-1.5 h-1.5 rounded-full ${
-                      isDarkMode ? "bg-yellow-500" : "bg-sky-500"
-                    }`}
-                  />
-                  Available for Freelance
-                </span>
-
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
-                  Hi, I'm{" "}<br/>
-                
-                  <span
-                    className={`bg-clip-text text-transparent bg-gradient-to-r ${
-                      isDarkMode
-                        ? "from-yellow-400 via-yellow-200 to-yellow-500"
-                        : "from-sky-600 via-teal-500 to-sky-600"
-                    }`}
-                  >
-                    Daniel Sanu
-                  </span>
-                </h1>
-              </motion.div> 
-
-              {/* Typewriter Effect */}
-              <motion.div
-                className="mt-6 flex items-center justify-center lg:justify-start gap-2"
-                {...fadeInSlideUp}
-              >
-                <p
-                  className={`text-lg md:text-2xl font-semibold tracking-tight flex items-center ${
-                    isDarkMode ? "text-gray-400" : "text-slate-500"
-                  }`}
-                >
-                  <span
-                    className={isDarkMode ? "text-white" : "text-slate-900"}
-                  >
-                    I'm a&nbsp;
-                  </span>
-                  <span
-                    className={
-                      isDarkMode ? "text-yellow-500" : "text-sky-500"
-                    }
-                  >
-                    {displayText}
-                  </span>
-                  <motion.span
-                    animate={{ opacity: [0, 1, 0] }}
-                    transition={{ repeat: Infinity, duration: 0.8 }}
-                    className={`inline-block ml-1 w-[3px] h-[1.1em] align-middle ${
-                      isDarkMode ? "bg-yellow-500" : "bg-sky-500"
-                    }`}
-                  />
-                </p>
-              </motion.div>
-            </header>
-
-            <motion.p
-              className={`text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 ${
-                isDarkMode ? "text-gray-400" : "text-slate-600"
+            {/* Inline Tilted Slideshow Pill */}
+            <span
+              className={`inline-flex items-center justify-center align-middle mx-2 sm:mx-3.5 my-1 w-[68px] sm:w-[96px] md:w-[124px] h-[34px] sm:h-[48px] md:h-[60px] rounded-full overflow-hidden border shadow-lg transform -rotate-2 hover:rotate-0 transition-transform duration-300 relative ${
+                isDarkMode
+                  ? "bg-zinc-900 border-white/20 shadow-black/80"
+                  : "bg-zinc-100 border-black/15 shadow-black/10"
               }`}
-              {...fadeInSlideUp}
             >
-              I design clean, easy-to-use apps and websites. I use both my
-              design skills and coding knowledge to turn hard problems into
-              simple, working digital tools.
-            </motion.p>
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentSlide}
+                  src={mockupSlides[currentSlide].src}
+                  alt={mockupSlides[currentSlide].alt}
+                  initial={{ opacity: 0, scale: 1.15 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.6 }}
+                  className="w-full h-full object-cover"
+                />
+              </AnimatePresence>
+            </span>
 
-            {/* CTA & Socials */}
-            <motion.div
-              className="flex flex-col sm:flex-row items-center gap-8 pt-2 justify-center lg:justify-start"
-              {...fadeInSlideUp}
+            <span className={isDarkMode ? "text-gray-400" : "text-gray-500"}>
+              That Users
+            </span>
+
+            {/* Inline Tilted Ticker Pill */}
+            <span
+              className={`inline-flex items-center align-middle mx-2 sm:mx-3.5 my-1 w-[72px] sm:w-[102px] md:w-[130px] h-[34px] sm:h-[48px] md:h-[60px] rounded-full overflow-hidden border shadow-lg transform rotate-2 hover:rotate-0 transition-transform duration-300 relative ${
+                isDarkMode
+                  ? "bg-zinc-900 border-white/20 shadow-black/80"
+                  : "bg-zinc-100 border-black/15 shadow-black/10"
+              }`}
             >
-              <button
-                onClick={handleScrollToContact}
-                className={`group relative overflow-hidden rounded-full px-8 py-4 font-bold text-base transition-all duration-300 ${
-                  isDarkMode
-                    ? "bg-yellow-500 text-black hover:bg-yellow-400 hover:shadow-[0_0_30px_-5px_rgba(234,179,8,0.6)]"
-                    : "bg-sky-600 text-white hover:bg-sky-700 hover:shadow-[0_0_30px_-5px_rgba(2,132,199,0.5)]"
-                }`}
-              >
-                <span className="relative z-10 flex items-center gap-3">
-                  Let's Collaborate
-                  <MdArrowOutward className="text-xl group-hover:rotate-45 transition-transform duration-300" />
-                </span>
-              </button>
-
-              <div className="flex items-center gap-4">
-                {socials.map((social, idx) => (
-                  <a
+              <div className="flex items-center gap-3 animate-marquee-left px-2">
+                {[...tickerIcons, ...tickerIcons].map((item, idx) => (
+                  <span
                     key={idx}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className={`flex items-center justify-center w-11 h-11 rounded-full text-xl transition-all duration-300 hover:-translate-y-1 ${
-                      isDarkMode
-                        ? "bg-white/5 border border-white/10 text-gray-300 hover:text-yellow-500 hover:border-yellow-500/40"
-                        : "bg-white border border-slate-200 text-slate-500 hover:text-sky-600 hover:border-sky-300 shadow-sm"
-                    }`}
+                    className="text-base sm:text-xl flex-shrink-0"
+                    title={item.name}
                   >
-                    {social.icon}
-                  </a>
+                    {item.icon}
+                  </span>
                 ))}
               </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+            </span>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className={`hidden md:flex flex-col items-center gap-2 absolute bottom-8 left-1/2 -translate-x-1/2 text-xs tracking-widest uppercase ${
-          isDarkMode ? "text-gray-500" : "text-slate-400"
-        }`}
-      >
-        Scroll
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6 }}
-        >
-          <MdArrowDownward />
+            <span className="font-editorial font-normal italic tracking-normal ml-1">
+              Love
+            </span>
+            <br className="hidden sm:inline" />
+            <span className="block sm:inline sm:mt-1 font-bold">
+              and Businesses Grow With
+            </span>
+          </h1>
         </motion.div>
-      </motion.div>
+
+        {/* Short Professional Value Proposition */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.35 }}
+          className={`mt-6 sm:mt-8 max-w-xl text-base sm:text-lg leading-relaxed ${
+            isDarkMode ? "text-gray-400" : "text-gray-600"
+          }`}
+        >
+          Helping businesses turn ambitious ideas into user-centered products that
+          are functional, scalable, and built for growth.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="mt-9 flex flex-wrap items-center justify-center gap-4"
+        >
+          <button
+            onClick={() => scrollToSection("contact")}
+            className={`group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              isDarkMode
+                ? "bg-white text-black hover:bg-gray-200 shadow-md shadow-white/5 hover:scale-[1.02]"
+                : "bg-black text-white hover:bg-gray-800 shadow-md shadow-black/10 hover:scale-[1.02]"
+            }`}
+          >
+            <span>Contact Me</span>
+            <ArrowUpRight
+              size={15}
+              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+            />
+          </button>
+
+          <button
+            onClick={() => scrollToSection("mockup-showcase")}
+            className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium transition-all duration-300 border ${
+              isDarkMode
+                ? "bg-white/[0.04] border-white/15 text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/30"
+                : "bg-black/[0.03] border-black/15 text-gray-700 hover:text-black hover:bg-black/5 hover:border-black/30"
+            }`}
+          >
+            <span>View Mockup Showcase</span>
+            <ArrowDown size={14} className="animate-bounce" />
+          </button>
+        </motion.div>
+      </div>
     </section>
   );
 }

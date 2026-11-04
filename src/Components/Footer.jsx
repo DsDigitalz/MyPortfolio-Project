@@ -1,92 +1,96 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { ArrowUp } from "lucide-react";
 import { useTheme } from "./ThemeContext";
 
 export default function Footer() {
   const { isDarkMode } = useTheme();
 
-  // Animation Variant for Scroll Reveal
-  const scrollReveal = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-    },
-    viewport: { once: true },
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const navLinks = [
     { name: "Home", href: "#home" },
+    { name: "Showcase", href: "#mockup-showcase" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Contact", href: "#con" },
+    { name: "Approach", href: "#approach" },
+    { name: "Work", href: "#work" },
+    { name: "Why Me", href: "#why-me" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
     <footer
-      id="footer"
-      className={`w-full py-12 px-6 transition-colors duration-500 ${
+      className={`py-12 sm:py-16 px-6 sm:px-12 border-t transition-colors duration-500 ${
         isDarkMode
-          ? "bg-[#050505] border-t border-white/5"
-          : "bg-slate-900 text-white"
+          ? "bg-black border-white/10 text-white"
+          : "bg-white border-black/10 text-black"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
-        {/* Top Section: Logo and Navigation */}
-        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8 pb-10">
-          {/* Logo */}
-          <motion.div
-            className="text-2xl font-black tracking-tighter"
-            {...scrollReveal}
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+        {/* Wordmark */}
+        <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+          <span className="font-bold tracking-tight text-lg">
+            Daniel Sanu
+          </span>
+          <span
+            className={`hidden sm:inline text-xs ${
+              isDarkMode ? "text-gray-600" : "text-gray-300"
+            }`}
           >
-            <span className="text-white">DS</span>
-            <span className={isDarkMode ? "text-yellow-500" : "text-sky-400"}>
-              DIGIT
-            </span>
-            <span className="text-white">ALZ</span>
-          </motion.div>
-
-          {/* Navigation Links */}
-          <nav>
-            <motion.ul
-              className="flex flex-wrap justify-center gap-6 md:gap-10"
-              {...scrollReveal}
-            >
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className={`text-sm font-medium transition-colors duration-300 ${
-                      isDarkMode
-                        ? "text-gray-400 hover:text-yellow-500"
-                        : "text-slate-300 hover:text-sky-400"
-                    }`}
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </motion.ul>
-          </nav>
+            /
+          </span>
+          <span
+            className={`text-xs ${
+              isDarkMode ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            Product Designer & Software Engineer
+          </span>
         </div>
 
-        {/* Divider and Copyright */}
-        <motion.div
-          className={`w-full pt-8 border-t text-center ${
-            isDarkMode ? "border-white/5" : "border-white/10"
-          }`}
-          {...scrollReveal}
-        >
-          <p className="text-xs md:text-sm text-gray-500 tracking-wide">
-            © {new Date().getFullYear()}{" "}
-            <span className="font-bold">DSDigitalz</span>. All rights reserved.
-            Crafted with passion.
-          </p>
-        </motion.div>
+        {/* Navigation Links */}
+        <nav className="flex flex-wrap justify-center gap-5 sm:gap-7">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={`text-xs font-medium transition-colors ${
+                isDarkMode
+                  ? "text-gray-400 hover:text-white"
+                  : "text-gray-600 hover:text-black"
+              }`}
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
+
+        {/* Back to top button */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={scrollToTop}
+            aria-label="Back to top"
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+              isDarkMode
+                ? "bg-white/5 border-white/10 hover:bg-white/15 text-gray-300 hover:text-white"
+                : "bg-black/5 border-black/10 hover:bg-black/10 text-gray-700 hover:text-black"
+            }`}
+          >
+            <span>Back to top</span>
+            <ArrowUp size={12} />
+          </button>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-inherit flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4 text-center">
+        <p>© {new Date().getFullYear()} Daniel Sanu. All rights reserved.</p>
+        <p className="font-editorial italic text-sm text-gray-400">
+          Designed with intention. Built for impact.
+        </p>
       </div>
     </footer>
   );

@@ -1,97 +1,209 @@
 // import React, { useState } from "react";
-// import { IoArrowForwardOutline, IoArrowBack } from "react-icons/io5";
 // import { motion, AnimatePresence } from "framer-motion";
+// import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
+// import { useTheme } from "./ThemeContext";
 
-// // Testimonials Data
-// const testimonials = [
-//   {
-//     text: "I am a front-end developer based in Sydney looking for exciting opportunities. Has Mechanical Engineering background. Likes to focus on accessibility when developing.",
-//     name: "James Brown",
-//   },
-//   {
-//     text: "Daniel's attention to detail is unmatched. He revamped our website and increased our conversions by 40%.",
-//     name: "Sarah Collins",
-//   },
-//   {
-//     text: "Amazing work! Clean code, great communication, and timely delivery. Highly recommended.",
-//     name: "Michael Osei",
-//   },
-// ];
-
-// const TestimonialsSection = () => {
+// export default function Testimonials() {
+//   const { isDarkMode } = useTheme();
 //   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
+//   const [direction, setDirection] = useState(0);
+
+//   const testimonials = [
+//     {
+//       quote:
+//         "Daniel's attention to detail is truly unmatched. He redesigned our entire platform interface and significantly improved our user engagement and task completion rates. His ability to seamlessly translate high-fidelity Figma components into clean, performant React code saved our engineering team weeks of rework.",
+//       author: "Sarah Collins",
+//       role: "Product Lead",
+//       company: "Betternship",
+//     },
+//     {
+//       quote:
+//         "Hiring Daniel was a fantastic decision. He brought our product vision to life with remarkable creativity, precision, and clear communication. From initial wireframing through interactive prototypes and final deployment, he demonstrated total ownership and an impeccable aesthetic.",
+//       author: "James Brown",
+//       role: "Engineering Manager",
+//       company: "TechScale Innovations",
+//     },
+//     {
+//       quote:
+//         "Clean architecture, responsive communication, and dependable delivery. Daniel has an instinctive sense for user empathy and data-dense dashboards. His design systems are modular, easy to maintain, and truly delightful to use.",
+//       author: "Michael Osei",
+//       role: "Founder & CEO",
+//       company: "SavvyCommerce",
+//     },
+//   ];
 
 //   const handleNext = () => {
 //     setDirection(1);
-//     setCurrentIndex((prevIndex) =>
-//       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-//     );
+//     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
 //   };
 
 //   const handlePrev = () => {
 //     setDirection(-1);
-//     setCurrentIndex((prevIndex) =>
-//       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+//     setCurrentIndex((prev) =>
+//       prev === 0 ? testimonials.length - 1 : prev - 1
 //     );
 //   };
 
 //   const slideVariants = {
-//     enter: (direction) => ({
-//       x: direction > 0 ? 300 : -300,
+//     enter: (dir) => ({
+//       x: dir > 0 ? 50 : -50,
 //       opacity: 0,
 //     }),
 //     center: {
 //       x: 0,
 //       opacity: 1,
+//       transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
 //     },
-//     exit: (direction) => ({
-//       x: direction < 0 ? 300 : -300,
+//     exit: (dir) => ({
+//       x: dir < 0 ? 50 : -50,
 //       opacity: 0,
+//       transition: { duration: 0.35, ease: "easeIn" },
 //     }),
 //   };
 
+//   const scrollReveal = {
+//     initial: { opacity: 0, y: 30 },
+//     whileInView: {
+//       opacity: 1,
+//       y: 0,
+//       transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+//     },
+//     viewport: { once: true, amount: 0.2 },
+//   };
+
+//   const activeTestimonial = testimonials[currentIndex];
+
 //   return (
-//     <section className="w-full pt-10 pb-20 flex flex-col items-center bg-zinc-50 overflow-hidden">
-//       <div className="mt-10">
-//         <h1 className="text-[35px] font-semibold sm:text-[40px] md:text-[45px] text-center">
-//           My <span className="text-[#02BDEA]">Testimonials</span>
-//         </h1>
-
-//         <div className="mt-10 w-full mx-auto py-3 relative h-[200px] sm:h-[180px] flex items-center justify-center">
-//           <AnimatePresence custom={direction} mode="wait">
-//             <motion.div
-//               key={currentIndex}
-//               custom={direction}
-//               variants={slideVariants}
-//               initial="enter"
-//               animate="center"
-//               exit="exit"
-//               transition={{ duration: 0.5 }}
-//               className="absolute w-full text-center"
+//     <section
+//       id="testimonials"
+//       className={`relative py-28 sm:py-36 px-6 sm:px-12 border-t transition-colors duration-500 overflow-hidden ${
+//         isDarkMode
+//           ? "bg-[#050505] border-white/5 text-white"
+//           : "bg-white border-black/5 text-black"
+//       }`}
+//     >
+//       <div className="max-w-5xl mx-auto">
+//         {/* Section Header */}
+//         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
+//           <motion.div {...scrollReveal}>
+//             <span
+//               className={`text-xs font-semibold tracking-widest uppercase block mb-3 ${
+//                 isDarkMode ? "text-gray-400" : "text-gray-500"
+//               }`}
 //             >
-//               <p className="text-center px-4">
-//                 {testimonials[currentIndex].text}
-//               </p>
-//               <p className="text-center mt-7 font-semibold">
-//                 {testimonials[currentIndex].name}
-//               </p>
-//             </motion.div>
-//           </AnimatePresence>
+//               Kind Words
+//             </span>
+//             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
+//               What Clients &{" "}
+//               <span className="font-editorial italic font-normal text-4xl sm:text-6xl">
+//                 Collaborators Say
+//               </span>
+//             </h2>
+//           </motion.div>
 
-//           {/* Right Arrow */}
-//           <button onClick={handleNext}>
-//             <IoArrowForwardOutline className="bg-zinc-200 text-zinc-600 text-[30px] rounded-full p-2 lg:text-[45px] lg:p-3 absolute top-1/2 -right-5 transform -translate-y-1/2 cursor-pointer active:bg-zinc-100 lg:-right-11" />
-//           </button>
+//           {/* Navigation Controls */}
+//           <div className="flex items-center gap-2.5">
+//             <button
+//               onClick={handlePrev}
+//               aria-label="Previous testimonial"
+//               className={`p-3 rounded-full border transition-colors ${
+//                 isDarkMode
+//                   ? "bg-white/5 border-white/10 hover:bg-white/15 text-white"
+//                   : "bg-black/5 border-black/10 hover:bg-black/10 text-black"
+//               }`}
+//             >
+//               <ArrowLeft size={16} />
+//             </button>
+//             <button
+//               onClick={handleNext}
+//               aria-label="Next testimonial"
+//               className={`p-3 rounded-full border transition-colors ${
+//                 isDarkMode
+//                   ? "bg-white/5 border-white/10 hover:bg-white/15 text-white"
+//                   : "bg-black/5 border-black/10 hover:bg-black/10 text-black"
+//               }`}
+//             >
+//               <ArrowRight size={16} />
+//             </button>
+//           </div>
+//         </div>
 
-//           {/* Left Arrow */}
-//           <button onClick={handlePrev}>
-//             <IoArrowBack className="bg-zinc-200 text-zinc-600 text-[30px] rounded-full p-2 lg:text-[45px] lg:p-3 absolute top-1/2 -left-5 transform -translate-y-1/2 cursor-pointer active:bg-zinc-100 lg:-left-11" />
-//           </button>
+//         {/* Testimonial Quote Card (Matching Reference Editorial Layout) */}
+//         <div
+//           className={`relative p-8 sm:p-14 md:p-16 rounded-3xl border transition-all duration-500 min-h-[320px] flex flex-col justify-between ${
+//             isDarkMode
+//               ? "bg-[#0c0d10] border-white/10 shadow-2xl shadow-black/80"
+//               : "bg-stone-50 border-black/10 shadow-lg shadow-black/5"
+//           }`}
+//         >
+//           {/* Subtle Quote Icon Accent */}
+//           <div className="absolute top-8 right-8 text-gray-500/20 pointer-events-none">
+//             <Quote size={56} />
+//           </div>
+
+//           <div className="relative z-10">
+//             <AnimatePresence custom={direction} mode="wait">
+//               <motion.div
+//                 key={currentIndex}
+//                 custom={direction}
+//                 variants={slideVariants}
+//                 initial="enter"
+//                 animate="center"
+//                 exit="exit"
+//               >
+//                 <p
+//                   className={`text-lg sm:text-2xl md:text-3xl leading-relaxed font-light tracking-tight ${
+//                     isDarkMode ? "text-gray-100" : "text-gray-900"
+//                   }`}
+//                 >
+//                   "{activeTestimonial.quote}"
+//                 </p>
+
+//                 <div className="mt-10 sm:mt-12 flex items-center justify-between border-t pt-6 border-inherit">
+//                   <div>
+//                     <h4 className="text-base sm:text-lg font-bold tracking-tight">
+//                       {activeTestimonial.author}
+//                     </h4>
+//                     <p
+//                       className={`text-xs sm:text-sm ${
+//                         isDarkMode ? "text-gray-400" : "text-gray-600"
+//                       }`}
+//                     >
+//                       {activeTestimonial.role} —{" "}
+//                       <span className="font-medium text-gray-400">
+//                         {activeTestimonial.company}
+//                       </span>
+//                     </p>
+//                   </div>
+
+//                   {/* Slide Indicators */}
+//                   <div className="flex gap-1.5 items-center">
+//                     {testimonials.map((_, idx) => (
+//                       <button
+//                         key={idx}
+//                         onClick={() => {
+//                           setDirection(idx > currentIndex ? 1 : -1);
+//                           setCurrentIndex(idx);
+//                         }}
+//                         aria-label={`Go to slide ${idx + 1}`}
+//                         className={`h-1.5 rounded-full transition-all duration-300 ${
+//                           idx === currentIndex
+//                             ? isDarkMode
+//                               ? "w-6 bg-white"
+//                               : "w-6 bg-black"
+//                             : isDarkMode
+//                             ? "w-2 bg-white/20"
+//                             : "w-2 bg-black/20"
+//                         }`}
+//                       />
+//                     ))}
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             </AnimatePresence>
+//           </div>
 //         </div>
 //       </div>
 //     </section>
 //   );
-// };
-
-// export default TestimonialsSection;
+// }

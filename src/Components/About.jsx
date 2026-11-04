@@ -1,11 +1,16 @@
-"use client";
-
 import React from "react";
-import { IoDownloadOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  Sparkles,
+  Layers,
+  Code2,
+  Server,
+  Briefcase,
+} from "lucide-react";
+import { FaLinkedinIn, FaGithub, FaWhatsapp } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import { useTheme } from "./ThemeContext";
-import { HiCode, HiChip, HiServer, HiSparkles } from "react-icons/hi";
-import { HiOutlineChatBubbleBottomCenterText } from "react-icons/hi2";
 
 export default function About() {
   const { isDarkMode } = useTheme();
@@ -15,203 +20,339 @@ export default function About() {
     whileInView: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
-    viewport: { once: true, amount: 0.1 },
+    viewport: { once: true, amount: 0.15 },
   };
 
- const skillCategories = [
-  {
-    title: "Basic",
-    icon: <HiCode />,
-    skills: ["Figma", "Html", "Css", "Javascript", "Typescript", "Excel", "PowerBI"],
-  },
-  {
-    title: "Framework/Library",
-    icon: <HiChip />,
-    skills: ["React.js", "Vue.js", "Next.js", "Bootstrap", "TailwindCSS"],
-  },
-  {
-    title: "Backend",
-    icon: <HiServer />,
-    skills: ["Node.js", "Express.js", "REST APIs", "MongoDB", "MySQL", "PostgreSQL"],
-  },
-  {
-    title: "Extra",
-    icon: <HiSparkles />,
-    skills: ["Git", "Github", "Adobe XD", "Wordpress", "Photoshop"],
-  },
-];
+  const experiences = [
+    {
+      role: "Lead Product Designer & Frontend Engineer",
+      company: "Skileman Platform",
+      period: "2024 → Present",
+      description:
+        "Architecting human skill infrastructure UX, Figma component libraries, and interactive React client feeds.",
+    },
+    {
+      role: "UI/UX & Web Designer",
+      company: "Betternship",
+      period: "2023 → 2024",
+      description:
+        "Designed contract recruiter dashboards, pipeline visualizers, and streamlined candidate application flows.",
+    },
+    {
+      role: "Fullstack Web Developer & Designer",
+      company: "Helply AI & Freelance",
+      period: "2022 → 2023",
+      description:
+        "Engineered multi-tenant AI customer support widget, Supabase database schemas, and animated marketing pages.",
+    },
+    {
+      role: "User Interface Designer & Instructor",
+      company: "ESSL Tech",
+      period: "2020 → 2022",
+      description:
+        "Created user-centered interfaces and instructed 100+ aspiring developers in modern web design principles.",
+    },
+    {
+      role: "UI/UX Designer",
+      company: "Freelance Practice",
+      period: "2019 → 2020",
+      description:
+        "Delivered web apps, design audits, and interactive mobile prototypes for early-stage startup founders.",
+    },
+  ];
+
+  const skillGroups = [
+    {
+      title: "UI/UX & Design Systems",
+      icon: <Layers size={14} />,
+      skills: ["Figma", "UI/UX Design", "Design Systems", "Prototyping", "User Research", "Wireframing"],
+    },
+    {
+      title: "Frontend Engineering",
+      icon: <Code2 size={14} />,
+      skills: ["React.js", "Next.js", "JavaScript (ES6+)", "TypeScript", "Tailwind CSS", "Motion"],
+    },
+    {
+      title: "Backend & Systems",
+      icon: <Server size={14} />,
+      skills: ["Node.js", "Express.js", "REST APIs", "PostgreSQL", "MongoDB", "Supabase"],
+    },
+  ];
+
+  const heroImage = isDarkMode ? "heroimg.png" : "heroimg3.png";
+
   return (
     <section
       id="about"
-      className={`relative py-24 px-6 overflow-hidden transition-colors duration-500 ${
-        isDarkMode ? "bg-[#050505] text-white" : "bg-slate-50 text-slate-900"
+      className={`relative py-28 sm:py-36 px-6 sm:px-12 border-t transition-colors duration-500 ${
+        isDarkMode
+          ? "bg-[#050505] border-white/5 text-white"
+          : "bg-white border-black/5 text-black"
       }`}
     >
-      {/* Background texture */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div
-          className={`absolute inset-0 ${isDarkMode ? "opacity-[0.05]" : "opacity-[0.35]"}`}
-          style={{
-            backgroundImage: `radial-gradient(${
-              isDarkMode ? "#ffffff" : "#94a3b8"
-            } 1px, transparent 1px)`,
-            backgroundSize: "28px 28px",
-            maskImage:
-              "radial-gradient(ellipse 70% 50% at 50% 0%, black 30%, transparent 100%)",
-          }}
-        />
-        <div
-          className={`absolute top-1/3 -right-40 w-[28rem] h-[28rem] blur-[140px] rounded-full opacity-10 ${
-            isDarkMode ? "bg-yellow-500" : "bg-sky-400"
-          }`}
-        />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto z-10">
-        {/* Header Section */}
-        <header className="text-center mb-16">
-          <motion.span
-            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-5 tracking-wider uppercase ${
-              isDarkMode
-                ? "bg-white/5 border border-white/10 text-yellow-500"
-                : "bg-sky-50 border border-sky-100 text-sky-600"
-            }`}
-            {...scrollReveal}
-          >
-            Get to know me
-          </motion.span>
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold tracking-tight"
-            {...scrollReveal}
-          >
-            About{" "}
-            <span className={isDarkMode ? "text-yellow-500" : "text-sky-500"}>
-              Me
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 sm:mb-20 gap-4 border-b pb-8 border-inherit">
+          <motion.div {...scrollReveal}>
+            <span
+              className={`text-xs font-semibold tracking-widest uppercase block mb-3 ${
+                isDarkMode ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
+              About Me
             </span>
-          </motion.h2>
-        </header>
-
-        {/* Biography Article */}
-        <article className="max-w-4xl mx-auto text-center mb-20 space-y-6">
-          <motion.p
-            className={`text-lg md:text-xl font-semibold ${
-              isDarkMode ? "text-gray-200" : "text-slate-800"
-            }`}
-            {...scrollReveal}
-          >
-            I am a Product (UI/UX) Designer and Software Engineer
-          </motion.p>
-          <motion.p
-            className={`text-base leading-relaxed max-w-3xl mx-auto ${
-              isDarkMode ? "text-gray-400" : "text-slate-600"
-            }`}
-            {...scrollReveal}
-          >
-            I am a multidisciplinary Product Designer and Software Engineer.
-            My core expertise lies in designing high-fidelity, accessible
-            interfaces and translating them into clean, high-performing code.
-            I leverage data-backed insights to solve complex product
-            challenges, ensuring that every dynamic application I build
-            delivers a seamless user experience and measurable business
-            value.
-          </motion.p>
-        </article>
-
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((cat, idx) => (
-            <motion.article
-              key={idx}
-              {...scrollReveal}
-              whileHover={{ y: -8 }}
-              className={`group relative p-8 rounded-2xl border transition-all duration-300 ${
-                isDarkMode
-                  ? "bg-white/[0.03] border-white/10 hover:border-yellow-500/40 hover:bg-white/[0.05]"
-                  : "bg-white border-slate-200 hover:border-sky-400/60 shadow-sm hover:shadow-xl hover:shadow-slate-200/70"
-              }`}
-            >
-              <div
-                className={`flex items-center justify-center w-12 h-12 rounded-xl text-2xl mb-6 transition-colors ${
-                  isDarkMode
-                    ? "bg-yellow-500/10 text-yellow-500 group-hover:bg-yellow-500/15"
-                    : "bg-sky-50 text-sky-600 group-hover:bg-sky-100"
-                }`}
-              >
-                {cat.icon}
-              </div>
-
-              <h3 className="text-lg font-bold mb-5">{cat.title}</h3>
-
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill, sIdx) => (
-                  <span
-                    key={sIdx}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                      isDarkMode
-                        ? "bg-white/5 text-gray-300 border border-white/10"
-                        : "bg-slate-100 text-slate-600 border border-slate-200"
-                    }`}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.article>
-          ))}
-        </div>
-
-        {/* Experience & Download Footer */}
-        <div className="mt-24 flex flex-col items-center gap-10">
-          <motion.div
-            className={`relative max-w-3xl text-center p-8 md:p-10 rounded-3xl border ${
-              isDarkMode
-                ? "bg-white/[0.03] border-white/10"
-                : "bg-white border-slate-200 shadow-sm"
-            }`}
-            {...scrollReveal}
-          >
-            <div
-              className={`flex items-center justify-center w-11 h-11 rounded-full text-xl mx-auto mb-5 ${
-                isDarkMode
-                  ? "bg-yellow-500/10 text-yellow-500"
-                  : "bg-sky-50 text-sky-600"
-              }`}
-            >
-              <HiOutlineChatBubbleBottomCenterText />
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              My Experience
-            </h3>
-            <p
-              className={`leading-relaxed italic ${
-                isDarkMode ? "text-gray-400" : "text-slate-600"
-              }`}
-            >
-              "As a Software Engineer and Product Designer, I bridge the gap
-              between complex logic and intuitive UX. From architecting the
-              app flow with modern tools like Figma to engineering
-              high-performance interfaces with libraries like React, I
-              transform high-fidelity Figma prototypes into scalable,
-              user-centered applications that drive engagement."
-            </p>
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
+              Designing seamless interfaces & {" "}
+              <span className="font-editorial italic font-normal text-4xl sm:text-6xl">
+                engineering solid systems
+              </span>
+            </h2>
           </motion.div>
 
-          {/* <motion.a
-            href="Sanu_Daniel_CV.pdf"
-            download="Sanu_Daniel_CV.pdf"
-            className={`group flex items-center gap-3 px-9 py-4 rounded-full font-bold transition-all ${
-              isDarkMode
-                ? "bg-yellow-500 text-black hover:bg-yellow-400 hover:shadow-[0_0_30px_-5px_rgba(234,179,8,0.6)]"
-                : "bg-sky-600 text-white hover:bg-sky-700 hover:shadow-[0_0_30px_-5px_rgba(2,132,199,0.5)]"
-            }`}
+          <motion.p
             {...scrollReveal}
-            whileHover={{ scale: 1.05 }}
+            className={`text-sm sm:text-base max-w-sm ${
+              isDarkMode ? "text-gray-400" : "text-gray-600"
+            }`}
           >
-            Download CV
-            <IoDownloadOutline className="text-2xl group-hover:translate-y-1 transition-transform" />
-          </motion.a> */}
+            Bridging high-fidelity product design with clean, scalable code.
+          </motion.p>
+        </div>
+
+        {/* Asymmetric 2-Column Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+          {/* Left Column: Designer Card & Profile */}
+          <motion.div
+            {...scrollReveal}
+            className="lg:col-span-5 flex flex-col gap-6"
+          >
+            <div
+              className={`relative rounded-3xl overflow-hidden p-3 border shadow-2xl ${
+                isDarkMode
+                  ? "bg-[#0b0c0e] border-white/10 shadow-black/80"
+                  : "bg-stone-50 border-black/10 shadow-black/5"
+              }`}
+            >
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden group">
+                <img
+                  src={heroImage}
+                  alt="Daniel Sanu - Product Designer"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-70 ${
+                    isDarkMode ? "from-black/90" : "from-black/60"
+                  }`}
+                />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-xl font-bold tracking-tight">
+                    Daniel Sanu
+                  </h3>
+                  <p className="text-xs text-gray-300">
+                    DsDigitalz — Product Designer & Software Engineer
+                  </p>
+                </div>
+              </div>
+
+              {/* Quick Social Buttons */}
+              <div className="mt-4 flex items-center justify-between px-2 pt-1 pb-1">
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://www.linkedin.com/in/dsdigitalz/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className={`p-2.5 rounded-full border transition-colors ${
+                      isDarkMode
+                        ? "bg-white/5 border-white/10 hover:bg-white/15 text-gray-300 hover:text-white"
+                        : "bg-black/5 border-black/10 hover:bg-black/10 text-gray-700 hover:text-black"
+                    }`}
+                  >
+                    <FaLinkedinIn size={14} />
+                  </a>
+                  <a
+                    href="https://github.com/DsDigitalz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className={`p-2.5 rounded-full border transition-colors ${
+                      isDarkMode
+                        ? "bg-white/5 border-white/10 hover:bg-white/15 text-gray-300 hover:text-white"
+                        : "bg-black/5 border-black/10 hover:bg-black/10 text-gray-700 hover:text-black"
+                    }`}
+                  >
+                    <FaGithub size={14} />
+                  </a>
+                  <a
+                    href="mailto:sanudaniel46@gmail.com"
+                    aria-label="Email"
+                    className={`p-2.5 rounded-full border transition-colors ${
+                      isDarkMode
+                        ? "bg-white/5 border-white/10 hover:bg-white/15 text-gray-300 hover:text-white"
+                        : "bg-black/5 border-black/10 hover:bg-black/10 text-gray-700 hover:text-black"
+                    }`}
+                  >
+                    <MdEmail size={16} />
+                  </a>
+                  <a
+                    href="https://wa.me/2349137846680"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    className={`p-2.5 rounded-full border transition-colors ${
+                      isDarkMode
+                        ? "bg-white/5 border-white/10 hover:bg-white/15 text-gray-300 hover:text-white"
+                        : "bg-black/5 border-black/10 hover:bg-black/10 text-gray-700 hover:text-black"
+                    }`}
+                  >
+                    <FaWhatsapp size={15} />
+                  </a>
+                </div>
+
+                <span
+                  className={`text-[11px] font-mono ${
+                    isDarkMode ? "text-gray-500" : "text-gray-400"
+                  }`}
+                >
+                  Lagos, NG
+                </span>
+              </div>
+            </div>
+
+          </motion.div>
+
+          {/* Right Column: Bio Narrative & Experience Timeline */}
+          <motion.div
+            {...scrollReveal}
+            className="lg:col-span-7 flex flex-col gap-10"
+          >
+            {/* Biography Article */}
+            <div className="space-y-5">
+              <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                Crafting interfaces that are easier to use, easier to build, and
+                easier to scale.
+              </h3>
+              <p
+                className={`text-base sm:text-lg leading-relaxed ${
+                  isDarkMode ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                {/* Over the past five years, I’ve worked with startups, founders,
+                and growing companies to design and build digital products
+                across multiple industries including FinTech, AI, Healthcare,
+                Foodtech, SaaS, and eCommerce. */}
+              </p>
+              <p
+                className={`text-sm sm:text-base leading-relaxed ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                As a multidisciplinary designer and software engineer, I bridge
+                the gap between complex business logic and intuitive UX. From
+                early concepts, user flow mapping, and design systems in Figma to
+                engineering high-performance interfaces in React/Nextjs, I turn hard
+                problems into simple, usable digital tools.
+              </p>
+            </div>
+
+            {/* Core Skills Categorized Pills */}
+            <div className="space-y-4">
+              {skillGroups.map((group, idx) => (
+                <div
+                  key={idx}
+                  className={`p-4 rounded-2xl border ${
+                    isDarkMode
+                      ? "bg-white/[0.02] border-white/10"
+                      : "bg-stone-50 border-black/10"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-2.5 text-xs font-semibold uppercase tracking-wider text-gray-400">
+                    {group.icon}
+                    <span>{group.title}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {group.skills.map((skill, sIdx) => (
+                      <span
+                        key={sIdx}
+                        className={`text-xs px-2.5 py-1 rounded-md border font-medium ${
+                          isDarkMode
+                            ? "bg-white/5 border-white/5 text-gray-300"
+                            : "bg-white border-black/5 text-gray-700"
+                        }`}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Experience Timeline Rows (Matching Reference) */}
+            <div className="mt-4">
+              <div className="flex items-center justify-between pb-4 border-b border-inherit mb-3">
+                <span className="text-xs font-bold uppercase tracking-widest text-gray-400 flex items-center gap-2">
+                  <Briefcase size={13} />
+                  Professional Experience
+                </span>
+                <span className="text-xs font-mono text-gray-500">
+                  Timeline
+                </span>
+              </div>
+
+              <div className="divide-y divide-inherit">
+                {experiences.map((exp, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                    className={`py-4 sm:py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 group transition-colors rounded-xl px-2.5 -mx-2.5 ${
+                      isDarkMode
+                        ? "hover:bg-white/[0.03]"
+                        : "hover:bg-black/[0.02]"
+                    }`}
+                  >
+                    <div>
+                      <h4 className="text-base sm:text-lg font-bold tracking-tight flex items-center gap-2">
+                        <span>{exp.role}</span>
+                        <ArrowUpRight
+                          size={13}
+                          className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400"
+                        />
+                      </h4>
+                      <p
+                        className={`text-sm ${
+                          isDarkMode ? "text-gray-400" : "text-gray-600"
+                        }`}
+                      >
+                        {exp.company}
+                      </p>
+                      <p
+                        className={`text-xs mt-1 max-w-md ${
+                          isDarkMode ? "text-gray-500" : "text-gray-400"
+                        }`}
+                      >
+                        {exp.description}
+                      </p>
+                    </div>
+
+                    <div className="sm:text-right shrink-0">
+                      <span
+                        className={`text-xs font-mono px-2.5 py-1 rounded-full border ${
+                          isDarkMode
+                            ? "bg-white/5 border-white/10 text-gray-400"
+                            : "bg-black/5 border-black/10 text-gray-500"
+                        }`}
+                      >
+                        {exp.period}
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -3,18 +3,18 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // 1. Initialize state from localStorage
   const [isDarkMode, setIsDarkMode] = useState(() => {
     try {
       const storedTheme = window.localStorage.getItem("theme");
-      return storedTheme === "dark" ? true : false;
+      if (storedTheme) {
+        return storedTheme === "dark";
+      }
+      return true; // Default to dark editorial aesthetic
     } catch (error) {
-      console.error("Failed to access localStorage:", error);
-      return false; // Default to light mode on error
+      return true;
     }
   });
 
-  // 2. Save theme to localStorage and document element whenever it changes
   useEffect(() => {
     try {
       const theme = isDarkMode ? "dark" : "light";
@@ -22,21 +22,21 @@ export const ThemeProvider = ({ children }) => {
       if (isDarkMode) {
         document.documentElement.classList.add("dark");
         document.documentElement.classList.remove("light");
-        document.documentElement.style.backgroundColor = "#08090a";
-        document.body.style.backgroundColor = "#08090a";
+        document.documentElement.style.backgroundColor = "#000000";
+        document.body.style.backgroundColor = "#000000";
       } else {
         document.documentElement.classList.add("light");
         document.documentElement.classList.remove("dark");
-        document.documentElement.style.backgroundColor = "#f8f9fa";
-        document.body.style.backgroundColor = "#f8f9fa";
+        document.documentElement.style.backgroundColor = "#fafaf9";
+        document.body.style.backgroundColor = "#fafaf9";
       }
     } catch (error) {
-      console.error("Failed to save theme to localStorage:", error);
+      console.error("Failed to update theme:", error);
     }
   }, [isDarkMode]);
 
   const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode);
+    setIsDarkMode((prev) => !prev);
   };
 
   return (
@@ -46,6 +46,7 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   return useContext(ThemeContext);
 };

@@ -1,173 +1,170 @@
-"use client";
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { IoSunnyOutline } from "react-icons/io5";
-import { WiMoonAltWaningGibbous6 } from "react-icons/wi";
+import { Sun, Moon, ArrowUpRight, Menu, X } from "lucide-react";
 import { useTheme } from "./ThemeContext";
 
 export default function Navbar() {
-  const [openNavbar, setOpenNavbar] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleNavbar = () => setOpenNavbar((prev) => !prev);
-
-  // Entrance Animation: Fade + Slide Down
-  const navAnimation = {
-    initial: { opacity: 0, y: -20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
+    { name: "Showcase", href: "#mockup-showcase" },
     { name: "Services", href: "#services" },
-    { name: "Projects", href: "#portfolio" },
-    { name: "Contact", href: "#con" },
+    { name: "Approach", href: "#approach" },
+    { name: "Work", href: "#work" },
+    { name: "Why Me", href: "#why-me" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-[100] transition-colors duration-500 border-b ${
-        isDarkMode
-          ? "bg-zinc-900/80 border-white/5 backdrop-blur-md text-white"
-          : "bg-white/80 border-slate-200 backdrop-blur-md text-slate-900"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex justify-between items-center">
-        {/* Logo Section */}
-        <motion.div
-          {...navAnimation}
-          className="flex items-center gap-2 group cursor-pointer"
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pt-4 pb-2 pointer-events-none">
+      <motion.nav
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className={`pointer-events-auto w-full max-w-5xl rounded-full px-5 py-2.5 sm:py-3 transition-all duration-300 flex items-center justify-between border ${
+          isDarkMode
+            ? isScrolled
+              ? "bg-[#0c0d0e]/90 backdrop-blur-xl border-white/10 shadow-2xl shadow-black/80"
+              : "bg-[#000000]/70 backdrop-blur-md border-white/10"
+            : isScrolled
+            ? "bg-white/90 backdrop-blur-xl border-black/10 shadow-lg shadow-black/5"
+            : "bg-white/75 backdrop-blur-md border-black/10"
+        }`}
+      >
+        {/* Wordmark / Brand */}
+        <a
+          href="#home"
+          className="flex items-center gap-2.5 group cursor-pointer"
         >
-          {/* <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 p-2 shadow-lg group-hover:rotate-12 transition-transform duration-300">
-            <img
-              src="/arcticons--digitalsignage (1).svg"
-              alt="Logo"
-              className={`w-full h-full filter invert`}
-            />
-          </div> */}
-          <h1 className="text-xl font-bold tracking-tight">
-            Ds
-            <span className={isDarkMode ? "text-yellow-500" : "text-sky-500"}>
-              Digitalz
-            </span>
-          </h1>
-        </motion.div>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:block">
-          <motion.ul
-            className="flex items-center gap-8"
-            initial="initial"
-            animate="animate"
-            variants={{
-              animate: { transition: { staggerChildren: 0.1 } },
-            }}
-          >
-            {navLinks.map((link) => (
-              <motion.li key={link.name} variants={navAnimation}>
-                <a
-                  href={link.href}
-                  className={`text-sm font-semibold transition-all duration-300 relative group`}
-                >
-                  {link.name}
-                  <span
-                    className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                      isDarkMode ? "bg-yellow-500" : "bg-sky-500"
-                    }`}
-                  />
-                </a>
-              </motion.li>
-            ))}
-
-            {/* Theme Toggle Desktop */}
-            <motion.button
-              variants={navAnimation}
-              onClick={toggleTheme}
-              className={`p-2.5 rounded-full transition-all ${
-                isDarkMode
-                  ? "bg-white/5 hover:bg-white/10 text-yellow-500"
-                  : "bg-slate-100 hover:bg-slate-200 text-sky-600"
-              }`}
-            >
-              {isDarkMode ? (
-                <WiMoonAltWaningGibbous6 size={20} />
-              ) : (
-                <IoSunnyOutline size={20} />
-              )}
-            </motion.button>
-          </motion.ul>
-        </nav>
-
-        {/* Mobile Controls */}
-        <div className="flex items-center gap-4 md:hidden">
-          <button onClick={toggleTheme} className="text-2xl">
-            {isDarkMode ? (
-              <WiMoonAltWaningGibbous6 className="text-yellow-500" />
-            ) : (
-              <IoSunnyOutline className="text-sky-500" />
-            )}
-          </button>
-
-          <button
-            onClick={toggleNavbar}
-            className="flex flex-col gap-1.5 w-8 items-end"
-          >
-            <motion.span
-              animate={openNavbar ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-              className={`h-0.5 w-full rounded-full ${
-                isDarkMode ? "bg-white" : "bg-black"
-              }`}
-            />
-            <motion.span
-              animate={openNavbar ? { opacity: 0 } : { opacity: 1 }}
-              className={`h-0.5 w-3/4 rounded-full ${
-                isDarkMode ? "bg-white" : "bg-black"
-              }`}
-            />
-            <motion.span
-              animate={
-                openNavbar
-                  ? { rotate: -45, y: -8, width: "100%" }
-                  : { rotate: 0, y: 0, width: "50%" }
-              }
-              className={`h-0.5 rounded-full ${
-                isDarkMode ? "bg-white" : "bg-black"
-              }`}
-            />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {openNavbar && (
-          <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className={`md:hidden overflow-hidden border-t ${
-              isDarkMode
-                ? "bg-zinc-900 border-white/5"
-                : "bg-white border-slate-100"
+          <span
+            className={`font-semibold tracking-tight text-sm sm:text-base transition-colors ${
+              isDarkMode ? "text-white group-hover:text-gray-300" : "text-black group-hover:text-gray-700"
             }`}
           >
-            <ul className="flex flex-col items-center py-10 gap-6">
+            Daniel Sanu
+          </span>
+          <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium tracking-wide uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="hidden sm:inline">Available</span>
+          </span>
+        </a>
+
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex items-center gap-1 lg:gap-2">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                isDarkMode
+                  ? "text-gray-400 hover:text-white hover:bg-white/[0.06]"
+                  : "text-gray-600 hover:text-black hover:bg-black/[0.04]"
+              }`}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+
+        {/* Action Controls */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className={`p-2 rounded-full transition-colors border ${
+              isDarkMode
+                ? "bg-white/[0.05] border-white/10 text-gray-300 hover:text-white hover:bg-white/10"
+                : "bg-black/[0.04] border-black/10 text-gray-700 hover:text-black hover:bg-black/[0.08]"
+            }`}
+          >
+            {isDarkMode ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+
+          {/* Let's Talk CTA */}
+          <a
+            href="#contact"
+            className={`hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium transition-all ${
+              isDarkMode
+                ? "bg-white text-black hover:bg-gray-200 shadow-sm"
+                : "bg-black text-white hover:bg-gray-800 shadow-sm"
+            }`}
+          >
+            <span>Get In Touch</span>
+            <ArrowUpRight size={13} />
+          </a>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            aria-label="Toggle mobile menu"
+            className={`p-2 rounded-full md:hidden transition-colors border ${
+              isDarkMode
+                ? "bg-white/[0.05] border-white/10 text-white"
+                : "bg-black/[0.04] border-black/10 text-black"
+            }`}
+          >
+            {mobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
+          </button>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Drawer Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className={`pointer-events-auto fixed top-20 left-4 right-4 rounded-3xl p-6 border shadow-2xl md:hidden z-50 ${
+              isDarkMode
+                ? "bg-[#0d0e11]/95 backdrop-blur-2xl border-white/15 text-white"
+                : "bg-white/95 backdrop-blur-2xl border-black/10 text-black"
+            }`}
+          >
+            <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    onClick={() => setOpenNavbar(false)}
-                    className="text-lg font-bold"
-                  >
-                    {link.name}
-                  </a>
-                </li>
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`px-4 py-2.5 rounded-2xl text-base font-medium transition-colors ${
+                    isDarkMode
+                      ? "hover:bg-white/10 text-gray-200"
+                      : "hover:bg-black/5 text-gray-800"
+                  }`}
+                >
+                  {link.name}
+                </a>
               ))}
-            </ul>
-          </motion.nav>
+              <div className="pt-3 border-t border-white/10 dark:border-white/10">
+                <a
+                  href="#contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`w-full flex items-center justify-center gap-2 py-3 rounded-full text-sm font-semibold transition-all ${
+                    isDarkMode
+                      ? "bg-white text-black hover:bg-gray-200"
+                      : "bg-black text-white hover:bg-gray-800"
+                  }`}
+                >
+                  <span>Get In Touch</span>
+                  <ArrowUpRight size={15} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </header>

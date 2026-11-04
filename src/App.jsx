@@ -1,10 +1,14 @@
 import React from "react";
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
+import TrustedBy from "./Components/TrustedBy";
+import Intro from "./Components/Intro";
 import About from "./Components/About";
 import TopServices from "./Components/TopServices";
-import Portfolio from "./Components/Portfolio";
+import Process from "./Components/Process";
 // import Testimonials from "./Components/Testimonials";
+import Portfolio from "./Components/Portfolio";
+import WhyWorkWithMe from "./Components/WhyWorkWithMe";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
@@ -16,17 +20,23 @@ function MainLayout() {
 
   return (
     <div
-      className={`min-h-screen w-full transition-colors duration-300 ${
-        isDarkMode ? "bg-[#08090a] text-white" : "bg-[#f8f9fa] text-slate-900"
+      className={`min-h-screen w-full transition-colors duration-500 font-sans selection:bg-white selection:text-black ${
+        isDarkMode ? "bg-black text-white" : "bg-[#fafaf9] text-black"
       }`}
     >
       <Navbar />
-      <Hero />
-      <About />
-      <TopServices />
-      <Portfolio />
-      {/* <Testimonials /> */}
-      <Contact />
+      <main>
+        <Hero />
+        <TrustedBy />
+        <Intro />
+        <About />
+        <TopServices />
+        <Process />
+        {/* <Testimonials /> */}
+        <Portfolio />
+        <WhyWorkWithMe />
+        <Contact />
+      </main>
       <Footer />
       <ScrollToTop />
       <WhatsAppButton />

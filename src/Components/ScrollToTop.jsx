@@ -1,48 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { IoIosArrowRoundUp } from "react-icons/io";
-import { useTheme } from "./ThemeContext"; // Import the useTheme hook
+import { ArrowUp } from "lucide-react";
+import { useTheme } from "./ThemeContext";
 
 export default function ScrollToTop() {
   const { isDarkMode } = useTheme();
-  const [showScrollButton, setShowScrollButton] = useState(false); // Changed to false
-
-  function toggleScrollButton() {
-    if (window.scrollY > 300) {
-      setShowScrollButton(true);
-    } else {
-      setShowScrollButton(false);
-    }
-  }
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", toggleScrollButton);
-
-    return () => window.removeEventListener("scroll", toggleScrollButton);
+    const handleScroll = () => {
+      setShowButton(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  function scrollToTop() {
-    window.scroll({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (!showButton) return null;
 
   return (
-    <div>
-      <button
-        onClick={scrollToTop}
-        className={`w-fit rounded-full text-3xl text-white p-1 md:p-3 right-5 bottom-25 shadow-2xl fixed cursor-pointer transition duration-500 ${
-          showScrollButton ? "opacity-100" : "opacity-0"
-        } ${
-          isDarkMode
-            ? "bg-[#D3AF37] active:bg-amber-300"
-            : "bg-sky-400 active:bg-sky-200"
-        }`}
-      >
-        <IoIosArrowRoundUp
-          className={isDarkMode ? "text-black" : "text-white"}
-        />
-      </button>
-    </div>
+    <button
+      onClick={scrollToTop}
+      aria-label="Scroll to top"
+      className={`fixed bottom-24 right-5 z-40 p-3 rounded-full border shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 ${
+        isDarkMode
+          ? "bg-[#111216] border-white/15 text-white hover:bg-white/10"
+          : "bg-white border-black/15 text-black hover:bg-black/5"
+      }`}
+    >
+      <ArrowUp size={16} />
+    </button>
   );
 }

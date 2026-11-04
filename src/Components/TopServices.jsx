@@ -1,167 +1,150 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Globe, Smartphone, Code2, Server } from "lucide-react";
 import { useTheme } from "./ThemeContext";
-import { CgWebsite } from "react-icons/cg";
-import { MdOutlineAppSettingsAlt } from "react-icons/md";
-import { IoCodeSlash, IoServerOutline } from "react-icons/io5";
-
-const cards = [
-  {
-    icon: CgWebsite,
-    title: "Responsive Web Design",
-    description:
-      "Ensuring that designs are adaptable across various devices and screen sizes for a consistent user experience. Crafting aesthetically pleasing interfaces that align with brand identity and enhance user engagement.",
-  },
-  {
-    icon: MdOutlineAppSettingsAlt,
-    title: "Mobile App Design",
-    description:
-      "Ensuring the app is optimized for various screen sizes and orientations, providing a seamless experience across devices. Crafting visually appealing interfaces that align with brand identity and enhance user engagement",
-  },
-  {
-    icon: IoCodeSlash,
-    title: "Web (Front-end) Development",
-    description:
-      "Creating responsive and interactive web applications that deliver seamless user experiences across all devices. By leveraging modern technologies such as HTML, CSS, and JavaScript libraries like React.",
-  },
-  {
-    icon: IoServerOutline,
-    title: "Backend Development",
-    description:
-      "Building secure, scalable server-side architecture and RESTful APIs with Node.js and Express. Designing efficient database schemas and integrations that power fast, reliable applications end to end.",
-  },
-];
 
 export default function TopServices() {
   const { isDarkMode } = useTheme();
 
   const scrollReveal = {
-    initial: { opacity: 0, y: 40 },
+    initial: { opacity: 0, y: 30 },
     whileInView: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
-    viewport: { once: true, amount: 0.2 },
+    viewport: { once: true, amount: 0.15 },
   };
+
+  const services = [
+    {
+      icon: <Globe size={20} />,
+      title: "Responsive Web Design",
+      description:
+        "Designing intuitive, accessible web interfaces that adapt gracefully across viewports. Creating aesthetically refined digital experiences that reflect brand identity and drive conversion.",
+      deliverables: ["Figma Design Files", "Responsive Breakpoints", "Interactive Prototypes"],
+    },
+    {
+      icon: <Smartphone size={20} />,
+      title: "Mobile App Design",
+      description:
+        "Crafting touch-first, ergonomic mobile user experiences for iOS and Android. Streamlining user flows, simplifying navigation, and adhering to platform design guidelines.",
+      deliverables: ["User Journey Maps", "Mobile UI Kits", "Micro-Interactions"],
+    },
+    {
+      icon: <Code2 size={20} />,
+      title: "Frontend Engineering",
+      description:
+        "Building interactive, performant client applications with React, Next.js, and Tailwind CSS. Implementing complex animations with Motion and ensuring accessible DOM structure.",
+      deliverables: ["Clean React Code", "Tailwind Component Systems", "API Integration"],
+    },
+    {
+      icon: <Server size={20} />,
+      title: "Backend & RESTful APIs",
+      description:
+        "Engineering reliable server-side architecture and RESTful APIs using Node.js and Express. Designing database schemas with PostgreSQL, MongoDB, and Supabase for high availability.",
+      deliverables: ["RESTful API Endpoints", "Database Schemas", "Swagger Documentation"],
+    },
+  ];
 
   return (
     <section
       id="services"
-      className={`relative py-24 px-6 overflow-hidden transition-colors duration-500 ${
-        isDarkMode ? "bg-[#0a0a0a]" : "bg-slate-50"
+      className={`relative py-28 sm:py-36 px-6 sm:px-12 border-t transition-colors duration-500 ${
+        isDarkMode
+          ? "bg-black border-white/5 text-white"
+          : "bg-[#fafaf9] border-black/5 text-black"
       }`}
     >
-      {/* Background texture */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div
-          className={`absolute inset-0 ${isDarkMode ? "opacity-[0.05]" : "opacity-[0.35]"}`}
-          style={{
-            backgroundImage: `radial-gradient(${
-              isDarkMode ? "#ffffff" : "#94a3b8"
-            } 1px, transparent 1px)`,
-            backgroundSize: "28px 28px",
-            maskImage:
-              "radial-gradient(ellipse 70% 50% at 50% 0%, black 30%, transparent 100%)",
-          }}
-        />
-        <div
-          className={`absolute top-0 -left-40 w-[28rem] h-[28rem] blur-[140px] rounded-full opacity-10 ${
-            isDarkMode ? "bg-yellow-500" : "bg-sky-400"
-          }`}
-        />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto z-10">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <header className="text-center mb-16">
-          <motion.span
-            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-5 tracking-wider uppercase ${
-              isDarkMode
-                ? "bg-white/5 border border-white/10 text-yellow-500"
-                : "bg-sky-50 border border-sky-100 text-sky-600"
-            }`}
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            What I Offer
-          </motion.span>
-          <motion.h2
-            className={`text-4xl md:text-5xl font-bold tracking-tight ${
-              isDarkMode ? "text-white" : "text-slate-900"
-            }`}
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Top{" "}
-            <span className={isDarkMode ? "text-yellow-500" : "text-sky-500"}>
-              Services
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 sm:mb-20 gap-4 border-b pb-8 border-inherit">
+          <motion.div {...scrollReveal}>
+            <span
+              className={`text-xs font-semibold tracking-widest uppercase block mb-3 ${
+                isDarkMode ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
+              Services & Capabilities
             </span>
-          </motion.h2>
-        </header>
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
+              Design & Technical{" "}
+              <span className="font-editorial italic font-normal text-4xl sm:text-6xl">
+                Expertise
+              </span>
+            </h2>
+          </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
-          {cards.map((card, index) => {
-            const IconComponent = card.icon;
-            return (
-              <motion.article
-                key={index}
-                {...scrollReveal}
-                whileHover={{ y: -10 }}
-                className={`relative group p-8 rounded-3xl border transition-all duration-500 flex flex-col items-center text-center ${
-                  isDarkMode
-                    ? "bg-zinc-900/50 border-white/5 hover:border-yellow-500/30 hover:shadow-[0_20px_50px_rgba(234,179,8,0.1)]"
-                    : "bg-white border-slate-200 hover:border-sky-500/30 hover:shadow-[0_20px_50px_rgba(2,189,234,0.1)]"
-                }`}
-              >
-                {/* Decorative Background Glow */}
+          <motion.p
+            {...scrollReveal}
+            className={`text-sm sm:text-base max-w-sm ${
+              isDarkMode ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            End-to-end digital product design and engineering execution.
+          </motion.p>
+        </div>
+
+        {/* Services 4-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((service, idx) => (
+            <motion.div
+              key={idx}
+              {...scrollReveal}
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.25 }}
+              className={`p-7 rounded-3xl border flex flex-col justify-between transition-all duration-300 ${
+                isDarkMode
+                  ? "bg-[#0c0d10] border-white/10 hover:border-white/25 shadow-xl shadow-black/70"
+                  : "bg-white border-black/10 hover:border-black/25 shadow-md shadow-black/5"
+              }`}
+            >
+              <div>
                 <div
-                  className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl blur-3xl ${
-                    isDarkMode ? "bg-yellow-500" : "bg-sky-400"
+                  className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 border transition-colors ${
+                    isDarkMode
+                      ? "bg-white/5 border-white/10 text-white"
+                      : "bg-black/5 border-black/10 text-black"
                   }`}
-                />
-
-                {/* Icon Container */}
-                <div className="relative z-10 mb-6">
-                  <div
-                    className={`p-4 rounded-2xl transform transition-transform duration-500 group-hover:rotate-12 ${
-                      isDarkMode
-                        ? "bg-yellow-500/10 text-yellow-500"
-                        : "bg-sky-50 text-sky-500"
-                    }`}
-                  >
-                    <IconComponent className="text-4xl" />
-                  </div>
+                >
+                  {service.icon}
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10 space-y-3">
-                  <h3
-                    className={`text-xl font-bold ${isDarkMode ? "text-white" : "text-slate-900"}`}
-                  >
-                    {card.title}
-                  </h3>
-                  <p
-                    className={`text-sm leading-relaxed ${isDarkMode ? "text-gray-400" : "text-slate-600"}`}
-                  >
-                    {card.description}
-                  </p>
-                </div>
+                <h3 className="text-xl font-bold tracking-tight mb-3">
+                  {service.title}
+                </h3>
 
-                {/* Bottom Border Accent */}
-                <div
-                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 transition-all duration-500 group-hover:w-1/2 rounded-full ${
-                    isDarkMode ? "bg-yellow-500" : "bg-sky-500"
+                <p
+                  className={`text-sm leading-relaxed mb-6 ${
+                    isDarkMode ? "text-gray-400" : "text-gray-600"
                   }`}
-                />
-              </motion.article>
-            );
-          })}
+                >
+                  {service.description}
+                </p>
+              </div>
+
+              {/* Deliverable pills */}
+              <div className="pt-4 border-t border-inherit space-y-1.5">
+                <span className="text-[10px] font-mono uppercase text-gray-500 block mb-2">
+                  Key Deliverables
+                </span>
+                <div className="flex flex-wrap gap-1">
+                  {service.deliverables.map((item, dIdx) => (
+                    <span
+                      key={dIdx}
+                      className={`text-[11px] px-2 py-0.5 rounded-md border ${
+                        isDarkMode
+                          ? "bg-white/5 border-white/5 text-gray-300"
+                          : "bg-black/5 border-black/5 text-gray-700"
+                      }`}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

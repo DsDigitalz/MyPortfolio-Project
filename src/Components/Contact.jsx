@@ -3,36 +3,44 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle2,
+  Calendar,
+} from "lucide-react";
+import { FaLinkedinIn, FaGithub, FaWhatsapp } from "react-icons/fa";
 import { useTheme } from "./ThemeContext";
-
-import { MdEmail } from "react-icons/md";
-import { FaPhoneAlt, FaGithub } from "react-icons/fa";
-import { IoLocationSharp } from "react-icons/io5";
-import { BsSend } from "react-icons/bs";
-import { ImLinkedin } from "react-icons/im";
 
 export default function Contact() {
   const { isDarkMode } = useTheme();
-  const form = useRef();
+  const formRef = useRef();
   const [isSending, setIsSending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSending(true);
+    setErrorMessage("");
 
     emailjs
       .sendForm(
         "service_dohjj5e",
         "template_c8dgvxa",
-        form.current,
+        formRef.current,
         "mh5xhlhYMsRLqLOYR"
       )
       .then(() => {
-        alert("Message sent successfully!");
-        form.current.reset();
+        setIsSuccess(true);
+        formRef.current.reset();
+        setTimeout(() => setIsSuccess(false), 6000);
       })
-      .catch((error) => {
-        alert("Failed to send message, please try again. Error: " + error.text);
+      .catch(() => {
+        setErrorMessage("Failed to send message. Please reach out via email directly.");
       })
       .finally(() => setIsSending(false));
   };
@@ -42,266 +50,344 @@ export default function Contact() {
     whileInView: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
-    viewport: { once: true, amount: 0.2 },
+    viewport: { once: true, amount: 0.15 },
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
-
-  const inputClasses = (dark) =>
-    `p-3.5 rounded-xl border transition-all outline-none ${
-      dark
-        ? "bg-white/[0.03] border-white/10 focus:border-yellow-500 focus:bg-white/[0.06] placeholder:text-gray-600"
-        : "bg-slate-50 border-slate-200 focus:border-sky-500 focus:bg-white placeholder:text-slate-400"
-    }`;
+  const inputStyles = `w-full px-4 py-3 rounded-2xl text-sm transition-all outline-none border ${
+    isDarkMode
+      ? "bg-white/[0.03] border-white/10 text-white placeholder:text-gray-500 focus:border-white/40 focus:bg-white/[0.05]"
+      : "bg-black/[0.02] border-black/10 text-black placeholder:text-gray-400 focus:border-black/40 focus:bg-white"
+  }`;
 
   return (
     <section
-      id="con"
-      className={`relative py-24 px-6 overflow-hidden transition-colors duration-500 ${
-        isDarkMode ? "bg-[#050505] text-white" : "bg-slate-50 text-slate-900"
+      id="contact"
+      className={`relative py-28 sm:py-36 px-6 sm:px-12 border-t transition-colors duration-500 overflow-hidden ${
+        isDarkMode
+          ? "bg-black border-white/5 text-white"
+          : "bg-[#fafaf9] border-black/5 text-black"
       }`}
     >
-      {/* Background texture */}
+      {/* Background radial glow */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
-          className={`absolute inset-0 ${isDarkMode ? "opacity-[0.05]" : "opacity-[0.35]"}`}
-          style={{
-            backgroundImage: `radial-gradient(${
-              isDarkMode ? "#ffffff" : "#94a3b8"
-            } 1px, transparent 1px)`,
-            backgroundSize: "28px 28px",
-            maskImage:
-              "radial-gradient(ellipse 70% 50% at 50% 0%, black 30%, transparent 100%)",
-          }}
-        />
-        <div
-          className={`absolute bottom-0 right-0 w-[28rem] h-[28rem] blur-[140px] rounded-full opacity-10 ${
-            isDarkMode ? "bg-yellow-500" : "bg-sky-400"
+          className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[45rem] h-[25rem] rounded-full blur-[180px] opacity-15 ${
+            isDarkMode ? "bg-white" : "bg-black"
           }`}
         />
       </div>
 
-      <div className="relative max-w-6xl mx-auto z-10">
-        {/* Header */}
-        <header className="text-center mb-16">
-          <motion.span
-            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-5 tracking-wider uppercase ${
-              isDarkMode
-                ? "bg-white/5 border border-white/10 text-yellow-500"
-                : "bg-sky-50 border border-sky-100 text-sky-600"
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Massive Reference Signature CTA Header */}
+        <motion.div
+          {...scrollReveal}
+          className="text-center max-w-4xl mx-auto mb-20 sm:mb-24"
+        >
+          <span
+            className={`text-xs font-semibold tracking-widest uppercase block mb-4 ${
+              isDarkMode ? "text-gray-400" : "text-gray-500"
             }`}
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
           >
             Get In Touch
-          </motion.span>
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold tracking-tight"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Contact{" "}
-            <span className={isDarkMode ? "text-yellow-500" : "text-sky-500"}>
-              Me
+          </span>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.15]">
+            Designed with intention.{" "}
+            <span className="font-editorial italic font-normal text-4xl sm:text-6xl md:text-7xl block sm:inline">
+              Built for impact.
             </span>
-          </motion.h2>
-        </header>
+          </h2>
+          <p
+            className={`mt-6 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed ${
+              isDarkMode ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            Thanks for stopping by. I hope we get the chance to build something
+            remarkable together.
+          </p>
 
-        <motion.div
-          className={`grid lg:grid-cols-2 gap-12 p-8 md:p-14 rounded-3xl border transition-all ${
-            isDarkMode
-              ? "bg-white/[0.03] border-white/10 shadow-2xl shadow-black/40"
-              : "bg-white border-slate-200 shadow-xl shadow-slate-200/70"
-          }`}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {/* Left Side: Contact Information */}
-          <motion.div variants={scrollReveal} className="space-y-8">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="mailto:sanudaniel46@gmail.com"
+              className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                isDarkMode
+                  ? "bg-white text-black hover:bg-gray-200 shadow-lg shadow-white/5 hover:scale-[1.02]"
+                  : "bg-black text-white hover:bg-gray-800 shadow-lg shadow-black/10 hover:scale-[1.02]"
+              }`}
+            >
+              <Calendar size={15} />
+              <span>Book a Free Intro Call</span>
+              <ArrowUpRight size={14} />
+            </a>
+
+            <a
+              href="https://wa.me/2349137846680"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium border transition-all duration-300 ${
+                isDarkMode
+                  ? "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/25 text-white"
+                  : "bg-black/5 border-black/10 hover:bg-black/10 hover:border-black/25 text-black"
+              }`}
+            >
+              <FaWhatsapp size={15} className="text-emerald-400" />
+              <span>Quick WhatsApp Chat</span>
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Dual Interaction Grid: Contact Information & Send Message Form */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12">
+          {/* Left Column: Direct Reachout Info */}
+          <motion.div
+            {...scrollReveal}
+            className={`lg:col-span-5 p-8 sm:p-10 rounded-3xl border flex flex-col justify-between ${
+              isDarkMode
+                ? "bg-[#0c0d10] border-white/10 shadow-xl shadow-black/70"
+                : "bg-white border-black/10 shadow-md shadow-black/5"
+            }`}
+          >
             <div>
-              <h3
-                className={`text-2xl font-bold mb-4 ${
-                  isDarkMode ? "text-yellow-500" : "text-sky-600"
-                }`}
-              >
-                Let's Connect
+              <h3 className="text-xl font-bold tracking-tight mb-2">
+                Let's start a conversation
               </h3>
               <p
-                className={`text-lg leading-relaxed ${
-                  isDarkMode ? "text-gray-400" : "text-slate-600"
+                className={`text-sm leading-relaxed mb-8 ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Have a project in mind or want to discuss potential
-                opportunities? I'd love to hear from you! Let's build
-                something amazing together.
+                Whether you have an upcoming project, need a design audit, or
+                want to explore full-time engineering contracts, I’m always open
+                to discussing high-impact opportunities.
               </p>
-            </div>
 
-            <address className="not-italic space-y-5">
-              {[
-                {
-                  icon: <MdEmail />,
-                  label: "Email",
-                  value: "sanudaniel46@gmail.com",
-                },
-                {
-                  icon: <FaPhoneAlt />,
-                  label: "Phone No",
-                  value: "+2349137846680",
-                },
-                {
-                  icon: <IoLocationSharp />,
-                  label: "Location",
-                  value: "Lagos, Nigeria",
-                },
-              ].map((info, idx) => (
-                <div
-                  key={idx}
-                  className={`flex items-center gap-4 p-3 rounded-2xl transition-colors ${
-                    isDarkMode ? "hover:bg-white/[0.04]" : "hover:bg-slate-50"
+              <div className="space-y-4">
+                <a
+                  href="mailto:sanudaniel46@gmail.com"
+                  className={`flex items-center gap-3.5 p-3 rounded-2xl border transition-colors ${
+                    isDarkMode
+                      ? "bg-white/[0.02] border-white/5 hover:border-white/20 text-gray-300 hover:text-white"
+                      : "bg-black/[0.02] border-black/5 hover:border-black/20 text-gray-700 hover:text-black"
                   }`}
                 >
                   <div
-                    className={`flex items-center justify-center w-11 h-11 rounded-xl text-lg shrink-0 ${
+                    className={`p-2.5 rounded-xl border ${
                       isDarkMode
-                        ? "bg-yellow-500/10 text-yellow-500"
-                        : "bg-sky-50 text-sky-500"
+                        ? "bg-white/5 border-white/10 text-white"
+                        : "bg-black/5 border-black/10 text-black"
                     }`}
                   >
-                    {info.icon}
+                    <Mail size={16} />
                   </div>
                   <div>
-                    <span
-                      className={`text-xs uppercase tracking-wider block ${
-                        isDarkMode ? "text-gray-500" : "text-slate-400"
-                      }`}
-                    >
-                      {info.label}
+                    <span className="text-[10px] font-mono uppercase text-gray-500 block">
+                      Email
                     </span>
-                    <span className="font-semibold text-base md:text-lg">
-                      {info.value}
+                    <span className="text-sm font-semibold">
+                      sanudaniel46@gmail.com
+                    </span>
+                  </div>
+                </a>
+
+                <a
+                  href="tel:+2349137846680"
+                  className={`flex items-center gap-3.5 p-3 rounded-2xl border transition-colors ${
+                    isDarkMode
+                      ? "bg-white/[0.02] border-white/5 hover:border-white/20 text-gray-300 hover:text-white"
+                      : "bg-black/[0.02] border-black/5 hover:border-black/20 text-gray-700 hover:text-black"
+                  }`}
+                >
+                  <div
+                    className={`p-2.5 rounded-xl border ${
+                      isDarkMode
+                        ? "bg-white/5 border-white/10 text-white"
+                        : "bg-black/5 border-black/10 text-black"
+                    }`}
+                  >
+                    <Phone size={16} />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono uppercase text-gray-500 block">
+                      Phone & WhatsApp
+                    </span>
+                    <span className="text-sm font-semibold">
+                      +234 913 784 6680
+                    </span>
+                  </div>
+                </a>
+
+                <div
+                  className={`flex items-center gap-3.5 p-3 rounded-2xl border ${
+                    isDarkMode
+                      ? "bg-white/[0.02] border-white/5 text-gray-300"
+                      : "bg-black/[0.02] border-black/5 text-gray-700"
+                  }`}
+                >
+                  <div
+                    className={`p-2.5 rounded-xl border ${
+                      isDarkMode
+                        ? "bg-white/5 border-white/10 text-white"
+                        : "bg-black/5 border-black/10 text-black"
+                    }`}
+                  >
+                    <MapPin size={16} />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono uppercase text-gray-500 block">
+                      Location
+                    </span>
+                    <span className="text-sm font-semibold">
+                      Lagos, Nigeria (UTC+1 / Remote Worldwide)
                     </span>
                   </div>
                 </div>
-              ))}
-            </address>
+              </div>
+            </div>
 
-            {/* Social Links */}
-            <nav className="flex gap-4 pt-4">
-              {[
-                {
-                  icon: <ImLinkedin />,
-                  link: "https://www.linkedin.com/in/dsdigitalz/",
-                },
-                { icon: <FaGithub />, link: "https://github.com/DsDigitalz" },
-              ].map((social, idx) => (
-                <motion.a
-                  key={idx}
-                  href={social.link}
+            {/* Social Pill Links */}
+            <div className="pt-8 border-t border-inherit mt-8">
+              <span className="text-xs font-mono uppercase text-gray-500 block mb-3">
+                Connect on Social
+              </span>
+              <div className="flex gap-2">
+                <a
+                  href="https://www.linkedin.com/in/dsdigitalz/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -4, scale: 1.05 }}
-                  className={`flex items-center justify-center w-12 h-12 rounded-full text-xl transition-all ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium border transition-colors ${
                     isDarkMode
-                      ? "bg-white/5 border border-white/10 hover:text-yellow-500 hover:border-yellow-500/40"
-                      : "bg-slate-100 border border-slate-200 hover:text-sky-500 hover:border-sky-300"
+                      ? "bg-white/5 border-white/10 hover:bg-white/10 text-gray-300 hover:text-white"
+                      : "bg-black/5 border-black/10 hover:bg-black/10 text-gray-700 hover:text-black"
                   }`}
                 >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </nav>
+                  <FaLinkedinIn size={12} />
+                  <span>LinkedIn</span>
+                </a>
+                <a
+                  href="https://github.com/DsDigitalz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium border transition-colors ${
+                    isDarkMode
+                      ? "bg-white/5 border-white/10 hover:bg-white/10 text-gray-300 hover:text-white"
+                      : "bg-black/5 border-black/10 hover:bg-black/10 text-gray-700 hover:text-black"
+                  }`}
+                >
+                  <FaGithub size={12} />
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Right Side: Contact Form */}
-          <motion.form
-            ref={form}
-            onSubmit={sendEmail}
-            variants={scrollReveal}
-            className="flex flex-col gap-5"
+          {/* Right Column: Contact Message Form */}
+          <motion.div
+            {...scrollReveal}
+            className={`lg:col-span-7 p-8 sm:p-10 rounded-3xl border ${
+              isDarkMode
+                ? "bg-[#0c0d10] border-white/10 shadow-xl shadow-black/70"
+                : "bg-white border-black/10 shadow-md shadow-black/5"
+            }`}
           >
-            <div className="grid md:grid-cols-2 gap-5">
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium">
-                  Name <span className="text-red-500">*</span>
+            <h3 className="text-xl font-bold tracking-tight mb-2">
+              Send a Direct Message
+            </h3>
+            <p
+              className={`text-sm mb-6 ${
+                isDarkMode ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              Fill out the brief below and I’ll get back to you within 24 hours.
+            </p>
+
+            <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-semibold block mb-1.5 uppercase tracking-wider text-gray-400">
+                    Your Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    required
+                    placeholder="e.g. Alex Morgan"
+                    className={inputStyles}
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold block mb-1.5 uppercase tracking-wider text-gray-400">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="alex@company.com"
+                    className={inputStyles}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold block mb-1.5 uppercase tracking-wider text-gray-400">
+                  Subject
                 </label>
                 <input
                   type="text"
-                  name="fullName"
-                  required
-                  placeholder="Your Name"
-                  className={inputClasses(isDarkMode)}
+                  name="subject"
+                  placeholder="e.g. Design System & Web App Project"
+                  className={inputStyles}
                 />
               </div>
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium">
-                  Email <span className="text-red-500">*</span>
+
+              <div>
+                <label className="text-xs font-semibold block mb-1.5 uppercase tracking-wider text-gray-400">
+                  Project Brief & Requirements *
                 </label>
-                <input
-                  type="email"
-                  name="email"
+                <textarea
+                  name="message"
                   required
-                  placeholder="email@example.com"
-                  className={inputClasses(isDarkMode)}
+                  rows={4}
+                  placeholder="Tell me about your product, timeline, and goals..."
+                  className={`resize-none ${inputStyles}`}
                 />
               </div>
-            </div>
 
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium">Subject</label>
-              <input
-                type="text"
-                name="subject"
-                placeholder="What is this regarding?"
-                className={inputClasses(isDarkMode)}
-              />
-            </div>
+              {isSuccess && (
+                <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs flex items-center gap-2">
+                  <CheckCircle2 size={16} />
+                  <span>Message sent successfully! I'll be in touch shortly.</span>
+                </div>
+              )}
 
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium">Message</label>
-              <textarea
-                name="message"
-                rows="4"
-                required
-                placeholder="Write your message here..."
-                className={`resize-none ${inputClasses(isDarkMode)}`}
-              />
-            </div>
+              {errorMessage && (
+                <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs">
+                  {errorMessage}
+                </div>
+              )}
 
-            <motion.button
-              type="submit"
-              disabled={isSending}
-              whileHover={{ scale: isSending ? 1 : 1.02 }}
-              whileTap={{ scale: isSending ? 1 : 0.98 }}
-              className={`mt-4 py-4 px-8 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all ${
-                isDarkMode
-                  ? "bg-yellow-500 text-black hover:bg-yellow-400 disabled:opacity-60"
-                  : "bg-sky-600 text-white hover:bg-sky-700 disabled:opacity-60"
-              } ${
-                isSending
-                  ? ""
-                  : isDarkMode
-                    ? "hover:shadow-[0_0_30px_-5px_rgba(234,179,8,0.6)]"
-                    : "hover:shadow-[0_0_30px_-5px_rgba(2,132,199,0.5)]"
-              }`}
-            >
-              {isSending ? "Sending..." : "Send Message"}
-              <BsSend className={`text-xl ${isSending ? "animate-pulse" : ""}`} />
-            </motion.button>
-          </motion.form>
-        </motion.div>
+              <button
+                type="submit"
+                disabled={isSending}
+                className={`w-full py-3.5 rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
+                  isDarkMode
+                    ? "bg-white text-black hover:bg-gray-200 disabled:opacity-50"
+                    : "bg-black text-white hover:bg-gray-800 disabled:opacity-50"
+                }`}
+              >
+                {isSending ? (
+                  <span>Sending Message...</span>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <Send size={14} />
+                  </>
+                )}
+              </button>
+            </form>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
