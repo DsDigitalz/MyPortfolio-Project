@@ -86,7 +86,7 @@ export default function WhyWorkWithMe() {
   return (
     <section
       id="why-me"
-      className={`relative py-28 sm:py-36 px-6 sm:px-12 border-t transition-colors duration-500 ${
+      className={`relative py-16 sm:py-20 px-6 sm:px-12 border-t transition-colors duration-500 ${
         isDarkMode
           ? "bg-[#050505] border-white/5 text-white"
           : "bg-white border-black/5 text-black"
@@ -170,4 +170,3 @@ export default function WhyWorkWithMe() {
     </section>
   );
 }
-

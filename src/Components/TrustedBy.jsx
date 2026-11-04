@@ -53,7 +53,7 @@ export default function TrustedBy() {
 
   return (
     <section
-      className={`py-12 sm:py-16 overflow-hidden border-y transition-colors duration-500 ${
+      className={`py-8 sm:py-10 overflow-hidden border-y transition-colors duration-500 ${
         isDarkMode
           ? "bg-[#050505] border-white/5 text-white"
           : "bg-white border-black/5 text-black"
@@ -103,4 +103,3 @@ export default function TrustedBy() {
     </section>
   );
 }
-

@@ -50,7 +50,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className={`relative pt-36 sm:pt-44 pb-20 md:pb-28 overflow-hidden transition-colors duration-500 ${
+      className={`relative pt-36 sm:pt-44 pb-14 md:pb-20 overflow-hidden transition-colors duration-500 ${
         isDarkMode ? "bg-black text-white" : "bg-[#fafaf9] text-black"
       }`}
     >
@@ -195,14 +195,14 @@ export default function Hero() {
           </button>
 
           <button
-            onClick={() => scrollToSection("mockup-showcase")}
+            onClick={() => scrollToSection("work")}
             className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium transition-all duration-300 border ${
               isDarkMode
                 ? "bg-white/[0.04] border-white/15 text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/30"
                 : "bg-black/[0.03] border-black/15 text-gray-700 hover:text-black hover:bg-black/5 hover:border-black/30"
             }`}
           >
-            <span>View Mockup Showcase</span>
+            <span>View Projects</span>
             <ArrowDown size={14} className="animate-bounce" />
           </button>
         </motion.div>

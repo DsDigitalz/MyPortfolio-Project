@@ -16,7 +16,7 @@ import MockupShowcase from "./MockupShowcase";
 export default function Portfolio() {
   const { isDarkMode } = useTheme();
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeCategory, setActiveCategory] = useState("frontend");
+  const [activeCategory, setActiveCategory] = useState("uiux");
 
   const scrollReveal = {
     initial: { opacity: 0, y: 30 },
@@ -213,7 +213,7 @@ export default function Portfolio() {
   return (
     <section
       id="work"
-      className={`relative py-28 sm:py-36 px-6 sm:px-12 border-t transition-colors duration-500 ${
+      className={`relative py-16 sm:py-20 px-6 sm:px-12 border-t transition-colors duration-500 ${
         isDarkMode
           ? "bg-black border-white/5 text-white"
           : "bg-[#fafaf9] border-black/5 text-black"

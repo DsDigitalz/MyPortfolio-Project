@@ -23,7 +23,7 @@ export default function Footer() {
 
   return (
     <footer
-      className={`py-12 sm:py-16 px-6 sm:px-12 border-t transition-colors duration-500 ${
+      className={`py-10 sm:py-12 px-6 sm:px-12 border-t transition-colors duration-500 ${
         isDarkMode
           ? "bg-black border-white/10 text-white"
           : "bg-white border-black/10 text-black"

@@ -20,181 +20,256 @@ import {
 } from "lucide-react";
 import MacBookFrame from "./Mockups/MacBookFrame";
 import IPhoneFrame from "./Mockups/IPhoneFrame";
+import { useTheme } from "./ThemeContext";
 
 export default function MockupShowcase() {
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode
+    ? {
+        section: "bg-gradient-to-b from-[#0b0f17] via-[#0f172a] to-[#080c14] text-slate-100 border-slate-800/80",
+        badge: "bg-slate-800/60 border-slate-700/60 text-slate-300",
+        heading: "text-white",
+        headingAccent: "text-slate-300",
+        body: "text-slate-400",
+        controls: "bg-[#111827]/80 border-slate-800",
+        activeControl: "bg-slate-100 text-slate-900",
+        inactiveControl: "bg-slate-800/40 text-slate-400 hover:text-white hover:bg-slate-800/80 border-slate-700/40",
+        activeScroll: "bg-slate-700/50 border-slate-600 text-slate-100",
+        inactiveScroll: "bg-slate-800/40 border-slate-700/50 text-slate-400 hover:text-white",
+        card: "bg-[#0e1422]/80 border-slate-800",
+        divider: "border-slate-800/80",
+        muted: "text-slate-400",
+        title: "text-white",
+        panel: "bg-slate-900/60 border-slate-800",
+        panelLabel: "text-slate-500",
+        panelText: "text-slate-300",
+        chip: "bg-slate-900/90 border-slate-800 text-slate-300",
+        action: "bg-slate-800/80 hover:bg-slate-700 text-slate-200 hover:text-white border-slate-700/60",
+        lightbox: "bg-[#0d131f] border-slate-800",
+        lightboxHeader: "bg-[#111827]/80 border-slate-800",
+        lightboxBadge: "bg-slate-800 text-slate-300 border-slate-700/50",
+        lightboxControls: "bg-slate-900 border-slate-800",
+        lightboxButton: "text-slate-400 hover:text-white hover:bg-slate-800",
+        lightboxViewport: "bg-[#090d15]",
+        lightboxLink: "bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700",
+      }
+    : {
+        section: "bg-gradient-to-b from-stone-50 via-white to-stone-100 text-slate-900 border-stone-200",
+        badge: "bg-white/80 border-slate-200 text-slate-700",
+        heading: "text-slate-950",
+        headingAccent: "text-slate-600",
+        body: "text-slate-600",
+        controls: "bg-white/85 border-slate-200",
+        activeControl: "bg-slate-900 text-white",
+        inactiveControl: "bg-slate-100 text-slate-600 hover:text-slate-950 hover:bg-slate-200 border-slate-200",
+        activeScroll: "bg-slate-200 border-slate-300 text-slate-900",
+        inactiveScroll: "bg-white border-slate-300 text-slate-600 hover:text-slate-950",
+        card: "bg-white/85 border-slate-200",
+        divider: "border-slate-200",
+        muted: "text-slate-600",
+        title: "text-slate-950",
+        panel: "bg-slate-50 border-slate-200",
+        panelLabel: "text-slate-500",
+        panelText: "text-slate-700",
+        chip: "bg-white border-slate-200 text-slate-700",
+        action: "bg-slate-100 hover:bg-slate-200 text-slate-800 hover:text-slate-950 border-slate-300",
+        lightbox: "bg-white border-slate-200",
+        lightboxHeader: "bg-slate-50 border-slate-200",
+        lightboxBadge: "bg-slate-100 text-slate-700 border-slate-200",
+        lightboxControls: "bg-slate-100 border-slate-200",
+        lightboxButton: "text-slate-600 hover:text-slate-950 hover:bg-slate-200",
+        lightboxViewport: "bg-slate-100",
+        lightboxLink: "bg-slate-100 text-slate-700 hover:text-slate-950 hover:bg-slate-200",
+      };
   // 3 Featured UI/UX Applications
   const applications = [
-    {
-      id: "skilconomy",
-      name: "Skilconomy Digital Platform",
-      client: "Skilconomy Ltd",
-      tagline: "Own Human Value. Build What's Next.",
-      subheadline:
-        "Architecting an End-to-End Digital Value Ecosystem Unifying Enterprise Services, Venture Incubation, and Next-Gen Workforce Development.",
-      category: "Enterprise SaaS & EdTech",
-      deviceType: "macbook",
-      accentColor: "from-blue-500/20 to-cyan-500/10",
-      accentBorder: "border-blue-500/30",
-      pillColor: "bg-blue-500/10 text-blue-300 border-blue-500/20",
-      description:
-        "Traditional enterprise service delivery and workforce training operate in fragmented, disconnected silos that slow organizational growth and talent readiness. Skilconomy solves this by unifying complex B2B agency retainers, live cohort-based technical training, and venture lab showcases into a single, cohesive digital platform engineered for seamless client onboarding and career advancement.",
-      highlights: [
-        "Unified Token-Driven Design System with atomic Figma tokens & fluid typography",
-        "Interactive B2B Service Marketplace with instant quote estimators & lead capture",
-        "Cohort Learning & Curriculum Hub with live scheduling & milestone tracking",
-      ],
-      techStack: [
-        "Figma",
-        "Auto-Layout 5.0",
-        "Design Tokens",
-       
-      ],
-      screens: [
-        {
-          id: "skilconomy-core",
-          title: "Core Platform Overview",
-          caption: "Main ecosystem landing page connecting technology ventures, services, and innovation labs.",
-          image: "images/Homepage.png",
-          alt: "Skilconomy Core Ecosystem Platform Mockup",
-        },
-        {
-          id: "skilconomy-services",
-          title: "Service Catalogue & B2B Suite",
-          caption: "Structured B2B marketplace with tier breakdowns, estimation calculators, and client onboarding.",
-          image: "images/Services.png",
-          alt: "Skilconomy Service Catalogue Mockup",
-        },
-        {
-          id: "skilconomy-academy",
-          title: "Skills Academy & Cohort Hub",
-          caption: "Cohort curriculum directory, interactive application flows, and modern career pathways.",
-          image: "images/Training.png",
-          alt: "Skilconomy Skills Academy Mockup",
-        },
-      ],
-    },
-    {
-      id: "skileman",
-      name: "Skileman App",
-      client: "Skileman Inc.",
-      tagline: "Human Skill Infrastructure & Smart Matching",
-      subheadline:
-        "Reimagining the Future of Work by Bridging Real-Time Skill Verification, Social Jobbing, and Escrow-Backed Commerce.",
-      category: "Mobile Social Jobbing",
-      deviceType: "iphone",
-      accentColor: "from-indigo-500/20 to-purple-500/10",
-      accentBorder: "border-indigo-500/30",
-      pillColor: "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
-      description:
-        "Conventional gig platforms isolate job fulfillment from continuous professional growth, forcing skilled talent to contend with high intermediary fees, opaque bidding, and impersonal interactions. Skileman transforms talent exchange into an interactive social ecosystem, connecting verified specialists directly with clients through real-time algorithmic matching, transparent escrow milestones, and community-driven mentorship feeds.",
-      highlights: [
-        "Social Jobbing Discovery Feed with inline video skill validation & stories",
-        "Algorithmic Smart-Matching Engine filtering by taxonomy, proximity & tiers",
-        "Milestone Escrow & Order Tracking with progress visualizers & secure releases",
-      ],
-      techStack: [
-        "Figma",
-        "Mobile UI Kit (iOS HIG)",
-        "Micro-Prototypes",
-        "User Journey Mapping",
-        // "React Native",
-      ],
-      screens: [
-        {
-          id: "skileman-feed",
-          title: "Social Jobbing Feed",
-          caption: "Dynamic activity feed featuring peer skill stories, client inquiries, and verified talent spotlights.",
-          image: "images/SFeed - Home page Screen.png",
-          alt: "Skileman Social Jobbing Feed Screen",
-        },
-        {
-          id: "skileman-matching",
-          title: "Algorithmic Smart Matching",
-          caption: "Real-time candidate recommendation engine matching verified plumbers and electricians with clients.",
-          image: "images/Matching engine(searching).png",
-          alt: "Skileman Algorithmic Matching Screen",
-        },
-        {
-          id: "skileman-booking",
-          title: "Category & Fast Booking",
-          caption: "Instant search and booking onboarding with scheduled appointments, live contracts, and project estimates.",
-          image: "images/Booking Onboarding.png",
-          alt: "Skileman Fast Booking Screen",
-        },
-        {
-          id: "skileman-choice",
-          title: "Skileman Choice (Skill Reels)",
-          caption: "Short-form video feeds showcasing authentic craft demonstrations, soundbites, and peer engagement.",
-          image: "images/Choice video.png",
-          alt: "Skileman Choice Video Screen",
-        },
-        {
-          id: "skileman-onboarding",
-          title: "Onboarding Environment",
-          caption: "Branded splash interface preparing a secure, verified digital environment for connection and growth.",
-          image: "images/Onboarding-Splash Screen.png",
-          alt: "Skileman Onboarding Splash Screen",
-        },
-      ],
-    },
-    {
-      id: "shaarix",
-      name: "Shaarix App",
-      client: "Shaarix Ecosystem",
-      tagline: "Own Human Value. Fund the Future.",
-      subheadline:
-        "Democratizing Human Value Creation and Revenue Distribution for Builders, Contributors, and Believers.",
-      category: "FinTech & Human Capital",
-      deviceType: "iphone",
-      accentColor: "from-emerald-500/20 to-teal-500/10",
-      accentBorder: "border-emerald-500/30",
-      pillColor: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
-      description:
-        "Traditional capital distribution models lock everyday builders and talent out of early equity upside and decentralized revenue opportunities. Shaarix solves this with a mobile-first human-value economy—empowering users to tokenize their contributions via unique ShareTags, track portfolio yields in real time, and earn verified revenue distributions.",
-      highlights: [
-        "Dynamic Portfolio Telemetry (Total Portfolio, HVC coins, yield tracking)",
-        "Unique ShareTag Identity Architecture for cross-ecosystem reputation",
-        "Instant Revenue Distribution & Project Unit Acquisition Flows",
-      ],
-      techStack: [
-        "Figma",
-        "Mobile UI Kit",
-        "Revenue Tracking Design System",
-        "Interactive Prototyping",
-        // "React Native",
-      ],
-      screens: [
-        {
-          id: "shaarix-dashboard",
-          title: "Portfolio & Revenue Dashboard",
-          caption: "Real-time portfolio metrics (₦250,000), asset breakdowns (RU, VU, SU, HVC), and project yields.",
-          image: "images/Dashboard-Home.png",
-          alt: "Shaarix Portfolio Dashboard Screen",
-        },
-        {
-          id: "shaarix-sharetag",
-          title: "ShareTag Identity Creation",
-          caption: "Frictionless identity setup allowing builders to claim unique @sharetag handles for ecosystem-wide attribution.",
-          image: "images/Share tag.png",
-          alt: "Shaarix ShareTag Creation Screen",
-        },
-        {
-          id: "shaarix-auth",
-          title: "Human-Value Authentication",
-          caption: "High-trust sign-in and account creation funnel framing the platform's human-value mission.",
-          image: "images/Auth Options.png",
-          alt: "Shaarix Authentication Screen",
-        },
-        {
-          id: "shaarix-splash",
-          title: "Brand Splash Experience",
-          caption: "Cinematic dark splash screen introducing the Shaarix ribbon mark and core value proposition.",
-          image: "images/Onboarding Splash.png",
-          alt: "Shaarix Brand Splash Screen",
-        },
-      ],
-    },
-  ];
+  {
+    id: "skilconomy",
+    name: "Skilconomy Digital Platform",
+    client: "Skilconomy Ltd",
+    tagline: "Building Skills. Enabling Technology. Creating Opportunities.",
+    subheadline:
+      "A Digital Ecosystem Connecting Technology Services, Practical Skills Development, and Innovation to Unlock Human Potential and Business Growth.",
+    category: "Digital Services & Skills Development",
+    deviceType: "macbook",
+    accentColor: "from-blue-500/20 to-cyan-500/10",
+    accentBorder: "border-blue-500/30",
+    pillColor: "bg-blue-500/10 text-blue-300 border-blue-500/20",
+    description:
+      "Businesses often struggle to access reliable digital solutions, while individuals face fragmented pathways to developing practical technology skills and participating in the digital economy. Skilconomy addresses these challenges through a connected digital platform that brings together business technology services, structured skills training, and innovation initiatives. It creates a foundation where organizations can solve digital challenges, individuals can build relevant capabilities, and emerging opportunities can grow within a wider ecosystem.",
+    highlights: [
+      "Digital Services Platform for discovering technology solutions and submitting business service requests",
+      "Skills Development Platform for programme discovery, cohort applications, admission, and student onboarding",
+      "Labs & Innovation Showcase introducing projects, initiatives, and the wider Skilconomy ecosystem",
+    ],
+    techStack: [
+      "Figma",
+      "Design Systems",
+      "Responsive UI/UX",
+      "User Journey Mapping",
+      "Interactive Prototyping",
+    ],
+    screens: [
+      {
+        id: "skilconomy-core",
+        title: "Skilconomy Ecosystem Homepage",
+        caption:
+          "The central digital entry point introducing Skilconomy's services, training, innovation initiatives, and wider ecosystem vision.",
+        image: "images/Homepage.png",
+        alt: "Skilconomy Digital Ecosystem Homepage",
+      },
+      {
+        id: "skilconomy-services",
+        title: "Digital Services Platform",
+        caption:
+          "A structured service discovery experience helping businesses explore technology solutions, understand service offerings, and submit enquiries.",
+        image: "images/Services.png",
+        alt: "Skilconomy Digital Services Platform",
+      },
+      {
+        id: "skilconomy-training",
+        title: "Skills Development Platform",
+        caption:
+          "A programme and cohort discovery experience supporting prospective learners through programme exploration, applications, and the admission journey.",
+        image: "images/Training.png",
+        alt: "Skilconomy Training Platform",
+      },
+    ],
+  },
+
+  {
+    id: "skileman",
+    name: "Skileman App",
+    client: "Skileman",
+    tagline: "Connecting Skills to Opportunities.",
+    subheadline:
+      "A Human-Centered Skilled Collaboration Ecosystem Connecting Skilled Professionals, Clients, Projects, and Opportunities.",
+    category: "Skilled Collaboration & Opportunity Platform",
+    deviceType: "iphone",
+    accentColor: "from-indigo-500/20 to-purple-500/10",
+    accentBorder: "border-indigo-500/30",
+    pillColor: "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
+    description:
+      "Skilled professionals often struggle to access consistent work opportunities, demonstrate their capabilities, and connect with clients who need their services. At the same time, clients face challenges identifying suitable professionals and building trust before engaging them. Skileman is envisioned as a skilled collaboration ecosystem that bridges this gap by helping professionals showcase their skills, connect with potential clients, discover opportunities, and participate in meaningful projects. It aims to transform human skills into visible, accessible, and economically valuable opportunities.",
+    highlights: [
+      "Social Jobbing Experience for discovering skilled professionals, work opportunities, and community activity",
+      "Skills Discovery & Matching Concepts designed to connect client needs with relevant professional capabilities",
+      "Professional Identity & Skill Showcase enabling skilled people to demonstrate their expertise, work, and value",
+    ],
+    techStack: [
+      "Figma",
+      "Mobile UI/UX Design",
+      "User Journey Mapping",
+      "Interactive Prototyping",
+      "Mobile Design System",
+    ],
+    screens: [
+      {
+        id: "skileman-feed",
+        title: "Social Jobbing Feed",
+        caption:
+          "A community-driven discovery experience showcasing skilled professionals, their activities, capabilities, and opportunities for collaboration.",
+        image: "images/SFeed - Home page Screen.png",
+        alt: "Skileman Social Jobbing Feed Screen",
+      },
+      {
+        id: "skileman-matching",
+        title: "Skills Discovery & Matching",
+        caption:
+          "A skills-focused discovery concept designed to help clients identify professionals whose capabilities align with their needs.",
+        image: "images/Matching engine(searching).png",
+        alt: "Skileman Skills Discovery and Matching Screen",
+      },
+      {
+        id: "skileman-booking",
+        title: "Service Discovery & Booking",
+        caption:
+          "A guided experience for exploring service categories, discovering professionals, and initiating engagement for work opportunities.",
+        image: "images/Booking Onboarding.png",
+        alt: "Skileman Service Discovery and Booking Screen",
+      },
+      {
+        id: "skileman-choice",
+        title: "Skileman Choice",
+        caption:
+          "A short-form visual showcase concept allowing skilled professionals to demonstrate their work, practical abilities, and craft.",
+        image: "images/Choice video.png",
+        alt: "Skileman Choice Skill Showcase Screen",
+      },
+      {
+        id: "skileman-onboarding",
+        title: "Onboarding Experience",
+        caption:
+          "A welcoming mobile onboarding experience introducing Skileman's vision of connecting skilled people with clients and opportunities.",
+        image: "images/Onboarding-Splash Screen.png",
+        alt: "Skileman Onboarding Screen",
+      },
+    ],
+  },
+
+  {
+    id: "shaarix",
+    name: "Shaarix Platform",
+    client: "Shaarix Ecosystem",
+    tagline: "Human Value. Shared Participation. Collective Growth.",
+    subheadline:
+      "The Human Value, Project Participation, and Revenue Distribution Platform of the Skilconomy Ecosystem.",
+    category: "Human Value & Revenue Distribution",
+    deviceType: "iphone",
+    accentColor: "from-emerald-500/20 to-teal-500/10",
+    accentBorder: "border-emerald-500/30",
+    pillColor: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
+    description:
+      "Human contributions create value across businesses, projects, and collaborative ecosystems, yet the people who contribute do not always have clear visibility into how that value is recognized, tracked, or shared. Shaarix is designed to address this through a structured human-value and project-participation framework within the Skilconomy ecosystem. It provides a way to represent participation, track revenue generated through ecosystem activities, and support transparent revenue distribution among eligible contributors. While Skileman creates opportunities for skilled professionals to deliver value, Shaarix focuses on tracking and distributing the revenue generated from qualifying ecosystem activities.",
+    highlights: [
+      "Human Value Contribution (HVC) Framework for representing and recognizing contributions within the ecosystem",
+      "Project Participation Architecture using RU, VU, and SU participation units",
+      "Revenue Tracking & Distribution Framework connecting generated ecosystem revenue with eligible participant allocations",
+    ],
+    techStack: [
+      "Figma",
+      "Mobile UI/UX Design",
+      "Human Value Design System",
+      "Revenue Tracking Interfaces",
+      "Interactive Prototyping",
+    ],
+    screens: [
+      {
+        id: "shaarix-dashboard",
+        title: "Human Value & Revenue Dashboard",
+        caption:
+          "A centralized overview of participation, human-value contributions, project units, and revenue distribution information.",
+        image: "images/Dashboard-Home.png",
+        alt: "Shaarix Human Value and Revenue Dashboard",
+      },
+      {
+        id: "shaarix-sharetag",
+        title: "ShareTag Identity",
+        caption:
+          "A unique identity concept designed to associate participants with their contributions and participation across the ecosystem.",
+        image: "images/Share tag.png",
+        alt: "Shaarix ShareTag Identity Creation Screen",
+      },
+      {
+        id: "shaarix-auth",
+        title: "Account Access & Onboarding",
+        caption:
+          "A structured account access experience introducing participants to the Shaarix human-value and project-participation environment.",
+        image: "images/Auth Options.png",
+        alt: "Shaarix Authentication and Onboarding Screen",
+      },
+      {
+        id: "shaarix-splash",
+        title: "Brand Introduction",
+        caption:
+          "A visual introduction to Shaarix and its role in recognizing human value, enabling project participation, and supporting revenue distribution.",
+        image: "images/Onboarding Splash.png",
+        alt: "Shaarix Brand Splash Screen",
+      },
+    ],
+  },
+];
+
 
   const [activeFilter, setActiveFilter] = useState("all"); // "all", "skilconomy", "skileman", "shaarix"
   const [selectedScreens, setSelectedScreens] = useState({
@@ -202,7 +277,7 @@ export default function MockupShowcase() {
     skileman: 0,
     shaarix: 0,
   });
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const [lightboxScreen, setLightboxScreen] = useState(null);
   const [zoomScale, setZoomScale] = useState(1);
 
@@ -220,7 +295,7 @@ export default function MockupShowcase() {
 
   return (
     <div
-      className="relative py-28 sm:py-36 px-4 sm:px-8 lg:px-12 overflow-hidden bg-gradient-to-b from-[#0b0f17] via-[#0f172a] to-[#080c14] text-slate-100 border-t border-slate-800/80"
+      className={`relative py-16 sm:py-20 px-4 sm:px-8 lg:px-12 overflow-hidden border-t ${theme.section}`}
     >
       {/* Studio Lighting Background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -256,19 +331,19 @@ export default function MockupShowcase() {
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-slate-800/60 border border-slate-700/60 mb-4 text-slate-300 shadow-sm backdrop-blur-md">
-            <Sparkles size={13} className="text-slate-300" />
+          <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border mb-4 shadow-sm backdrop-blur-md ${theme.badge}`}>
+            <Sparkles size={13} className={theme.muted} />
             <span>Featured Product Showcase</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
+          <h2 className={`text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight ${theme.heading}`}>
             Featured UI/UX{" "}
-            <span className="font-editorial italic font-normal text-4xl sm:text-6xl md:text-7xl text-slate-300">
+            <span className={`font-editorial italic font-normal text-4xl sm:text-6xl md:text-7xl ${theme.headingAccent}`}>
               Applications
             </span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className={`mt-4 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed ${theme.body}`}>
             Three signature digital platforms rendered flat inside realistic
             dark-framed Apple device mockups (MacBook Pro & iPhone 16 Pro) on a
             dark slate studio stage with crisp lighting.
@@ -276,15 +351,15 @@ export default function MockupShowcase() {
         </div>
 
         {/* Studio Filter Controls */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 rounded-2xl bg-[#111827]/80 backdrop-blur-xl border border-slate-800 shadow-xl mb-14">
+        <div className={`flex flex-col sm:flex-row items-center justify-between gap-4 p-3 rounded-2xl backdrop-blur-xl border shadow-xl mb-14 ${theme.controls}`}>
           {/* App Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
             <button
               onClick={() => setActiveFilter("all")}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                 activeFilter === "all"
-                  ? "bg-slate-100 text-slate-900 font-semibold shadow-md"
-                  : "bg-slate-800/40 text-slate-400 hover:text-white hover:bg-slate-800/80 border border-slate-700/40"
+                  ? `${theme.activeControl} font-semibold shadow-md`
+                  : `border ${theme.inactiveControl}`
               }`}
             >
               All Applications ({applications.length})
@@ -298,8 +373,8 @@ export default function MockupShowcase() {
                   onClick={() => setActiveFilter(app.id)}
                   className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                     isActive
-                      ? "bg-slate-100 text-slate-900 font-semibold shadow-md"
-                      : "bg-slate-800/40 text-slate-400 hover:text-white hover:bg-slate-800/80 border border-slate-700/40"
+                      ? `${theme.activeControl} font-semibold shadow-md`
+                      : `border ${theme.inactiveControl}`
                   }`}
                 >
                   {app.name}
@@ -319,8 +394,8 @@ export default function MockupShowcase() {
             }
             className={`flex items-center gap-2 px-3.5 py-2 rounded-full border text-xs font-medium transition-all ${
               isAutoScrolling
-                ? "bg-slate-700/50 border-slate-600 text-slate-100"
-                : "bg-slate-800/40 border-slate-700/50 text-slate-400 hover:text-white"
+                ? theme.activeScroll
+                : theme.inactiveScroll
             }`}
             title={isAutoScrolling ? "Pause Auto Scroll" : "Start Auto Scroll"}
           >
@@ -346,7 +421,7 @@ export default function MockupShowcase() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.6, delay: appIdx * 0.1 }}
-                className="relative rounded-3xl p-6 sm:p-10 lg:p-12 bg-[#0e1422]/80 border border-slate-800 shadow-2xl backdrop-blur-xl overflow-hidden"
+                className={`relative rounded-3xl p-6 sm:p-10 lg:p-12 border shadow-2xl backdrop-blur-xl overflow-hidden ${theme.card}`}
               >
                 {/* Subtle Ambient Backlight Glow for this card */}
                 <div
@@ -354,24 +429,24 @@ export default function MockupShowcase() {
                 />
 
                 {/* Card Header Info */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-8 border-b border-slate-800/80 mb-10">
+                <div className={`flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-8 border-b mb-10 ${theme.divider}`}>
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border ${app.pillColor}`}>
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border ${isDarkMode ? app.pillColor : "bg-slate-100 text-slate-700 border-slate-200"}`}>
                         {app.category}
                       </span>
-                      <span className="text-slate-500">•</span>
-                      <span className="text-xs font-mono text-slate-400 uppercase tracking-widest">
+                      <span className={theme.muted}>•</span>
+                      <span className={`text-xs font-mono uppercase tracking-widest ${theme.muted}`}>
                         {app.client}
                       </span>
                     </div>
 
-                    <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+                    <h3 className={`text-2xl sm:text-4xl font-bold tracking-tight ${theme.title}`}>
                       {app.name}
                     </h3>
                   </div>
 
-                  <span className="font-editorial italic text-base sm:text-xl text-slate-400">
+                  <span className={`font-editorial italic text-base sm:text-xl ${theme.muted}`}>
                     "{app.tagline}"
                   </span>
                 </div>
@@ -403,7 +478,7 @@ export default function MockupShowcase() {
 
                     {/* Screen Switcher Pills */}
                     <div className="mt-8 w-full">
-                      <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 text-center mb-3">
+                      <div className={`text-[11px] font-mono uppercase tracking-wider text-center mb-3 ${theme.panelLabel}`}>
                         Switch Active Screen ({currentScreenIdx + 1}/{app.screens.length})
                       </div>
                       <div className="flex flex-wrap items-center justify-center gap-2">
@@ -416,12 +491,18 @@ export default function MockupShowcase() {
                               className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                                 isSelected
                                   ? "bg-slate-200 text-slate-900 font-semibold shadow-sm scale-105"
-                                  : "bg-slate-900/80 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800"
+                                  : isDarkMode
+                                    ? "bg-slate-900/80 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800"
+                                    : "bg-white text-slate-600 hover:text-slate-950 hover:bg-slate-100 border border-slate-200"
                               }`}
                             >
                               <span
                                 className={`w-1.5 h-1.5 rounded-full ${
-                                  isSelected ? "bg-slate-900" : "bg-slate-500"
+                                  isSelected
+                                    ? "bg-slate-900"
+                                    : isDarkMode
+                                      ? "bg-slate-500"
+                                      : "bg-slate-300"
                                 }`}
                               />
                               <span>{screen.title}</span>
@@ -436,38 +517,38 @@ export default function MockupShowcase() {
                   <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
                     {/* Vision Subheadline */}
                     <div>
-                      <span className="text-xs font-mono uppercase tracking-widest text-slate-400 block mb-2">
+                      <span className={`text-xs font-mono uppercase tracking-widest block mb-2 ${theme.muted}`}>
                         Product Vision
                       </span>
-                      <h4 className="text-lg sm:text-xl font-bold tracking-tight text-slate-100 leading-snug">
+                      <h4 className={`text-lg sm:text-xl font-bold tracking-tight leading-snug ${theme.heading}`}>
                         {app.subheadline}
                       </h4>
                     </div>
 
                     {/* 2-Sentence Impact Description */}
-                    <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 block mb-1.5">
+                    <div className={`p-5 rounded-2xl border ${theme.panel}`}>
+                      <span className={`text-[11px] font-mono uppercase tracking-wider block mb-1.5 ${theme.panelLabel}`}>
                         Problem & Solution
                       </span>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                      <p className={`text-xs sm:text-sm leading-relaxed ${theme.panelText}`}>
                         {app.description}
                       </p>
                     </div>
 
                     {/* Key UI/UX & Architectural Highlights */}
                     <div>
-                      <span className="text-xs font-mono uppercase tracking-widest text-slate-400 block mb-3">
+                      <span className={`text-xs font-mono uppercase tracking-widest block mb-3 ${theme.muted}`}>
                         Key UI/UX Highlights
                       </span>
                       <ul className="space-y-2.5">
                         {app.highlights.map((highlight, hIdx) => (
                           <li
                             key={hIdx}
-                            className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300"
+                            className={`flex items-start gap-2.5 text-xs sm:text-sm ${theme.panelText}`}
                           >
                             <CheckCircle2
                               size={15}
-                              className="text-slate-400 shrink-0 mt-0.5"
+                              className={`${theme.muted} shrink-0 mt-0.5`}
                             />
                             <span>{highlight}</span>
                           </li>
@@ -477,14 +558,14 @@ export default function MockupShowcase() {
 
                     {/* Core Tech Stack */}
                     <div>
-                      <span className="text-xs font-mono uppercase tracking-widest text-slate-400 block mb-2.5">
+                      <span className={`text-xs font-mono uppercase tracking-widest block mb-2.5 ${theme.muted}`}>
                         Core Tech Stack & Tools
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {app.techStack.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-900/90 border border-slate-800 text-slate-300"
+                            className={`px-2.5 py-1 rounded-md text-[11px] font-mono border ${theme.chip}`}
                           >
                             {tech}
                           </span>
@@ -493,12 +574,12 @@ export default function MockupShowcase() {
                     </div>
 
                     {/* Full-Screen 4K Inspection CTA */}
-                    <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                    <div className={`pt-4 border-t flex items-center justify-between ${theme.divider}`}>
                       <div>
-                        <span className="text-xs font-semibold text-white block">
+                        <span className={`text-xs font-semibold block ${theme.title}`}>
                           {currentScreen.title}
                         </span>
-                        <span className="text-[11px] text-slate-400">
+                        <span className={`text-[11px] ${theme.muted}`}>
                           {currentScreen.caption}
                         </span>
                       </div>
@@ -508,7 +589,7 @@ export default function MockupShowcase() {
                           setZoomScale(1);
                           setLightboxScreen(currentScreen);
                         }}
-                        className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700/60 text-xs font-medium transition-all shadow-sm shrink-0"
+                        className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full border text-xs font-medium transition-all shadow-sm shrink-0 ${theme.action}`}
                       >
                         <Maximize2 size={13} />
                         <span>Inspect 4K</span>
@@ -531,52 +612,52 @@ export default function MockupShowcase() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setLightboxScreen(null)}
-              className="absolute inset-0 bg-slate-950/90 backdrop-blur-2xl"
+              className={`absolute inset-0 backdrop-blur-2xl ${isDarkMode ? "bg-slate-950/90" : "bg-slate-900/40"}`}
             />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
-              className="relative z-10 max-w-6xl max-h-[92vh] w-full bg-[#0d131f] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl flex flex-col"
+              className={`relative z-10 max-w-6xl max-h-[92vh] w-full rounded-3xl border overflow-hidden shadow-2xl flex flex-col ${theme.lightbox}`}
             >
               {/* Header / Controls */}
-              <div className="p-4 px-6 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4 bg-[#111827]/80">
+              <div className={`p-4 px-6 border-b flex flex-wrap items-center justify-between gap-4 ${theme.lightboxHeader}`}>
                 <div>
-                  <h4 className="text-sm font-bold text-white flex items-center gap-2">
+                  <h4 className={`text-sm font-bold flex items-center gap-2 ${theme.heading}`}>
                     <span>{lightboxScreen.title}</span>
-                    <span className="text-[11px] font-mono font-normal px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700/50">
+                    <span className={`text-[11px] font-mono font-normal px-2 py-0.5 rounded border ${theme.lightboxBadge}`}>
                       Unaltered Screen
                     </span>
                   </h4>
-                  <p className="text-xs text-slate-400">
+                  <p className={`text-xs ${theme.muted}`}>
                     {lightboxScreen.caption}
                   </p>
                 </div>
 
                 <div className="flex items-center gap-2">
                   {/* Zoom Controls */}
-                  <div className="flex items-center gap-1 bg-slate-900 border border-slate-800 rounded-full p-1">
+                  <div className={`flex items-center gap-1 border rounded-full p-1 ${theme.lightboxControls}`}>
                     <button
                       onClick={() => setZoomScale((prev) => Math.max(0.75, prev - 0.25))}
-                      className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                      className={`p-1.5 rounded-full transition-colors ${theme.lightboxButton}`}
                       title="Zoom Out"
                     >
                       <ZoomOut size={14} />
                     </button>
-                    <span className="text-[11px] font-mono px-2 text-slate-300">
+                    <span className={`text-[11px] font-mono px-2 ${theme.panelText}`}>
                       {Math.round(zoomScale * 100)}%
                     </span>
                     <button
                       onClick={() => setZoomScale((prev) => Math.min(2.5, prev + 0.25))}
-                      className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                      className={`p-1.5 rounded-full transition-colors ${theme.lightboxButton}`}
                       title="Zoom In"
                     >
                       <ZoomIn size={14} />
                     </button>
                     <button
                       onClick={() => setZoomScale(1)}
-                      className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                      className={`p-1.5 rounded-full transition-colors ${theme.lightboxButton}`}
                       title="Reset Zoom"
                     >
                       <RotateCcw size={13} />
@@ -588,7 +669,7 @@ export default function MockupShowcase() {
                     href={lightboxScreen.image}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+                    className={`p-2 rounded-full transition-colors ${theme.lightboxLink}`}
                     title="Open Full Image"
                   >
                     <Download size={14} />
@@ -597,7 +678,7 @@ export default function MockupShowcase() {
                   {/* Close Lightbox */}
                   <button
                     onClick={() => setLightboxScreen(null)}
-                    className="p-2 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+                    className={`p-2 rounded-full transition-colors ${theme.lightboxLink}`}
                   >
                     <X size={15} />
                   </button>
@@ -605,7 +686,7 @@ export default function MockupShowcase() {
               </div>
 
               {/* Viewport */}
-              <div className="flex-1 overflow-auto p-4 sm:p-8 bg-[#090d15] flex justify-center items-start">
+              <div className={`flex-1 overflow-auto p-4 sm:p-8 flex justify-center items-start ${theme.lightboxViewport}`}>
                 <div
                   style={{
                     transform: `scale(${zoomScale})`,

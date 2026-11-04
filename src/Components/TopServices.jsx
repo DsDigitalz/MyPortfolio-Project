@@ -50,7 +50,7 @@ export default function TopServices() {
   return (
     <section
       id="services"
-      className={`relative py-28 sm:py-36 px-6 sm:px-12 border-t transition-colors duration-500 ${
+      className={`relative py-16 sm:py-20 px-6 sm:px-12 border-t transition-colors duration-500 ${
         isDarkMode
           ? "bg-black border-white/5 text-white"
           : "bg-[#fafaf9] border-black/5 text-black"

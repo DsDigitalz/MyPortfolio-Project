@@ -31,7 +31,7 @@ export default function Intro() {
   return (
     <section
       id="intro"
-      className={`relative py-28 sm:py-36 px-6 sm:px-12 overflow-hidden transition-colors duration-500 ${
+      className={`relative py-16 sm:py-20 px-6 sm:px-12 overflow-hidden transition-colors duration-500 ${
         isDarkMode ? "bg-black text-white" : "bg-[#fafaf9] text-black"
       }`}
     >
@@ -118,4 +118,3 @@ export default function Intro() {
     </section>
   );
 }
-
