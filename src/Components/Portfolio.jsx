@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowUpRight,
-  Expand,
   Layers,
   Code2,
   Sparkles,
@@ -17,7 +16,7 @@ import MockupShowcase from "./MockupShowcase";
 export default function Portfolio() {
   const { isDarkMode } = useTheme();
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("frontend");
 
   const scrollReveal = {
     initial: { opacity: 0, y: 30 },
@@ -146,76 +145,6 @@ export default function Portfolio() {
       ],
     },
     {
-      id: "betternship",
-      imgSrc: "Dashboard2.png",
-      category: "UI/UX DESIGN",
-      type: "uiux",
-      title: "Betternship Web App",
-      client: "Recruitment SaaS",
-      description:
-        "Designed an intuitive web application for contract recruiters, featuring streamlined candidate workflows and recruitment dashboard analytics.",
-      link: "https://www.figma.com/design/zRR9fCYYANK2CAkterULb8/Betternship-recruiter-page",
-      mockUrl: "figma.com/@betternship-app",
-      tags: ["Figma", "Design System", "Prototyping", "UX Research"],
-      screens: [
-        {
-          src: "Dashboard2.png",
-          title: "Recruiter Dashboard",
-          caption: "Minimalist operational view featuring candidate pipelines and quick stats.",
-        },
-        {
-          src: "Contract Recruiter Page.png",
-          title: "Contract Management View",
-          caption: "Focused interface designed to manage client requisitions and interviews.",
-        },
-      ],
-    },
-    {
-      id: "healthcare",
-      imgSrc: "Dashboard.png",
-      category: "UI/UX DESIGN",
-      type: "uiux",
-      title: "Healthcare Research Suite",
-      client: "Clinical Trials Platform",
-      description:
-        "A comprehensive clinical research suite designed to monitor clinical trials, manage study catalogs, and generate compliance reports.",
-      link: "https://www.figma.com/design/K4zgLwzg3BJRt56IwS7LHt/Healthcare-research-web-app",
-      mockUrl: "figma.com/@healthcare-suite",
-      tags: ["Figma", "Data Grid", "Dashboard", "Clinical UX"],
-      screens: [
-        {
-          src: "Research Dashboard.png",
-          title: "Clinical Overview Hub",
-          caption: "Central dashboard tracking ongoing study milestones and compliance metrics.",
-        },
-        {
-          src: "Study Catalog.png",
-          title: "Study Catalog Directory",
-          caption: "Filterable directory enabling researchers to search and launch trials.",
-        },
-        {
-          src: "Study Detail Overview.png",
-          title: "Protocol & Parameters View",
-          caption: "Detailed demographic and investigator assignment parameters.",
-        },
-        {
-          src: "Participant Data Grid.png",
-          title: "Participant Data Grid",
-          caption: "High-density data grid with multi-column filtering and export capabilities.",
-        },
-        {
-          src: "Report Generator.png",
-          title: "Automated Report Generator",
-          caption: "Regulatory compliance reporting engine with visual data exports.",
-        },
-        {
-          src: "Analytics & Trends.png",
-          title: "Outcome Trends Visualizer",
-          caption: "Interactive charts breaking down trial outcomes across cohort groups.",
-        },
-      ],
-    },
-    {
       id: "helply",
       imgSrc: "helpliq.png",
       category: "FULLSTACK WEB DEV",
@@ -263,47 +192,20 @@ export default function Portfolio() {
       link: "https://library-management-api-xaum.onrender.com/api-docs/",
       tags: ["Node.js", "Express", "Swagger API", "REST API", "Render"],
     },
-    {
-      id: "audiophile",
-      imgSrc: "audiophile.png",
-      category: "FRONTEND WEB DEV",
-      type: "frontend",
-      title: "Audiophile Audio Store",
-      client: "Audio Hardware Retail",
-      description:
-        "Fully functional audio accessories web store featuring dynamic cart management, seamless multi-step checkout flows, and responsive UI.",
-      link: "https://audicommerce.netlify.app/",
-      tags: ["React", "E-Commerce", "State Management", "Netlify"],
-    },
-    {
-      id: "procleaning",
-      imgSrc: "Cover.png",
-      category: "FRONTEND WEB DEV",
-      type: "frontend",
-      title: "ProCleaning Services Platform",
-      client: "Service Marketplace",
-      description:
-        "Modern, responsive front-end booking platform for professional home cleaning services with live booking previews and transparent estimates.",
-      link: "https://procleaningservices.netlify.app/",
-      tags: ["JavaScript", "HTML5", "CSS3", "Responsive"],
-    },
   ];
 
   const categories = [
-    { id: "all", label: "All Projects" },
     { id: "uiux", label: "UI/UX Design" },
     { id: "frontend", label: "Web Development" },
   ];
 
   const filteredProjects =
-    activeCategory === "all"
-      ? projects
-      : projects.filter((p) => p.type === activeCategory);
+    activeCategory === "frontend"
+      ? projects.filter((project) => project.type === "frontend")
+      : [];
 
   const handleCardClick = (project) => {
-    if (project.type === "uiux") {
-      setSelectedProject(project);
-    } else if (project.link) {
+    if (project.link) {
       window.open(project.link, "_blank", "noopener,noreferrer");
     }
   };
@@ -317,8 +219,6 @@ export default function Portfolio() {
           : "bg-[#fafaf9] border-black/5 text-black"
       }`}
     >
-      <MockupShowcase />
-
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 border-b pb-8 border-inherit">
@@ -370,12 +270,12 @@ export default function Portfolio() {
           </motion.div>
         </div>
 
+        {activeCategory === "uiux" && <MockupShowcase />}
+
         {/* Projects Grid (Matching Reference 2-Column Responsive Aesthetic) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => {
-              const isUiUx = project.type === "uiux";
-
               return (
                 <motion.article
                   key={project.id}
@@ -423,7 +323,7 @@ export default function Portfolio() {
                               : "bg-white/90 text-black border-black/10"
                           }`}
                         >
-                          {isUiUx ? <Expand size={13} /> : <ExternalLink size={13} />}
+                          <ExternalLink size={13} />
                         </div>
                       </div>
                     </div>
@@ -478,7 +378,7 @@ export default function Portfolio() {
                           isDarkMode ? "text-white" : "text-black"
                         }`}
                       >
-                        {isUiUx ? "View Case Study & Screens" : "Explore Live Product"}
+                        Explore Live Product
                       </span>
                       <ArrowUpRight
                         size={14}

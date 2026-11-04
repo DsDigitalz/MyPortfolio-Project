@@ -47,16 +47,14 @@ export default function MockupShowcase() {
         "Figma",
         "Auto-Layout 5.0",
         "Design Tokens",
-        "React",
-        "Tailwind CSS",
-        "Motion",
+       
       ],
       screens: [
         {
           id: "skilconomy-core",
           title: "Core Platform Overview",
           caption: "Main ecosystem landing page connecting technology ventures, services, and innovation labs.",
-          image: "images/skilleconomy/skilleconomy-main.jpg",
+          image: "images/Homepage.png",
           alt: "Skilconomy Core Ecosystem Platform Mockup",
         },
         {
@@ -99,7 +97,7 @@ export default function MockupShowcase() {
         "Mobile UI Kit (iOS HIG)",
         "Micro-Prototypes",
         "User Journey Mapping",
-        "React Native",
+        // "React Native",
       ],
       screens: [
         {
@@ -161,9 +159,9 @@ export default function MockupShowcase() {
       techStack: [
         "Figma",
         "Mobile UI Kit",
-        "FinTech Design System",
+        "Revenue Tracking Design System",
         "Interactive Prototyping",
-        "React Native",
+        // "React Native",
       ],
       screens: [
         {
@@ -221,8 +219,7 @@ export default function MockupShowcase() {
   };
 
   return (
-    <section
-      id="mockup-showcase"
+    <div
       className="relative py-28 sm:py-36 px-4 sm:px-8 lg:px-12 overflow-hidden bg-gradient-to-b from-[#0b0f17] via-[#0f172a] to-[#080c14] text-slate-100 border-t border-slate-800/80"
     >
       {/* Studio Lighting Background */}
@@ -314,15 +311,24 @@ export default function MockupShowcase() {
           {/* Auto-Scroll Toggle */}
           <button
             onClick={() => setIsAutoScrolling((prev) => !prev)}
+            aria-pressed={isAutoScrolling}
+            aria-label={
+              isAutoScrolling
+                ? "Pause automatic screen scrolling"
+                : "Start automatic screen scrolling"
+            }
             className={`flex items-center gap-2 px-3.5 py-2 rounded-full border text-xs font-medium transition-all ${
               isAutoScrolling
                 ? "bg-slate-700/50 border-slate-600 text-slate-100"
                 : "bg-slate-800/40 border-slate-700/50 text-slate-400 hover:text-white"
             }`}
-            title={isAutoScrolling ? "Pause Auto-Scroll" : "Resume Auto-Scroll"}
+            title={isAutoScrolling ? "Pause Auto Scroll" : "Start Auto Scroll"}
           >
             {isAutoScrolling ? <Pause size={13} /> : <Play size={13} />}
-            <span>{isAutoScrolling ? "Auto-Scroll: ON" : "Auto-Scroll: OFF"}</span>
+            <span>Auto Scroll</span>
+            <span className="text-[10px] opacity-70">
+              {isAutoScrolling ? "ON" : "OFF"}
+            </span>
           </button>
         </div>
 
@@ -622,6 +628,6 @@ export default function MockupShowcase() {
           </div>
         )}
       </AnimatePresence>
-    </section>
+    </div>
   );
 }

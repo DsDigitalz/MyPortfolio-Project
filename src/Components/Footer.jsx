@@ -13,7 +13,6 @@ export default function Footer() {
 
   const navLinks = [
     { name: "Home", href: "#home" },
-    { name: "Showcase", href: "#mockup-showcase" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Approach", href: "#approach" },

@@ -290,7 +290,7 @@ export default function About() {
               ))}
             </div>
             {/* Experience Timeline Rows (Matching Reference) */}
-            <div className="mt-4">
+            {/* <div className="mt-4">
               <div className="flex items-center justify-between pb-4 border-b border-inherit mb-3">
                 <span className="text-xs font-bold uppercase tracking-widest text-gray-400 flex items-center gap-2">
                   <Briefcase size={13} />
@@ -351,7 +351,7 @@ export default function About() {
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
